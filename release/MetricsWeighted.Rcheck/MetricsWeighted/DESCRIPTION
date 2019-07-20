@@ -1,0 +1,18 @@
+Package: MetricsWeighted
+Title: Weighted Metrics for Machine Learning
+Version: 0.1.0
+Authors@R: person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph'))
+Description: Provides weighted versions of several metrics used in machine learning.
+Depends: R (>= 3.5.0)
+License: GPL(>= 3)
+Encoding: UTF-8
+LazyData: true
+Type: Package
+Date: 2019-07-20
+Imports: stats, glmnet
+Author: Michael Mayer [aut, cre, cph]
+Maintainer: Michael Mayer <mayermichael79@gmail.com>
+RoxygenNote: 6.1.1
+NeedsCompilation: no
+Packaged: 2019-07-20 19:46:02 UTC; Michael
+Built: R 3.6.0; ; 2019-07-20 19:46:05 UTC; windows

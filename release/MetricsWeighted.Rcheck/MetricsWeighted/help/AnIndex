@@ -1,0 +1,13 @@
+accuracy	accuracy
+AUC	AUC
+classification_error	classification_error
+deviance_tweedie	deviance_tweedie
+logLoss	logLoss
+mae	mae
+mape	mape
+mse	mse
+precision	precision
+recall	recall
+rmse	rmse
+r_squared	r_squared
+weighted_mean	weighted_mean
