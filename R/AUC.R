@@ -2,7 +2,7 @@
 #'
 #' @importFrom glmnet auc
 #'
-#' @description Returns weighted AUC, i.e. the area under the receiver operating curve.
+#' @description Returns weighted AUC, i.e. the area under the receiver operating curve, based on \code{glmnet::auc}.
 #' @author Michael Mayer, \email{mayermichael79@gmail.com}
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values (not necessarly between 0 and 1).
