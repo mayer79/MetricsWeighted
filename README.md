@@ -10,6 +10,12 @@ You can install the released version of MetricsWeighted from [CRAN](https://CRAN
 install.packages("MetricsWeighted")
 ```
 
+To get the bleeding edge version, you can run
+``` r
+library(devtools)
+install_github("mayer79/MetricsWeighted")
+```
+
 ## Example
 
 ``` r
