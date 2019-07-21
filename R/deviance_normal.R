@@ -8,16 +8,16 @@
 #' @param ... Further arguments passed to \code{deviance_tweedie}.
 #'
 #' @return A numeric vector of length one.
-#' 
+#'
 #' @export
 #'
 #' @examples
 #' deviance_normal(1:10, (1:10)^2)
 #' deviance_normal(1:10, (1:10)^2, w = rep(1, 10))
 #' deviance_normal(1:10, (1:10)^2, w = 1:10)
-#' 
+#'
 #' @seealso \code{\link{deviance_tweedie}, \link{mse}}.
-#' 
+#'
 deviance_normal <- function(actual, predicted, w = NULL, ...) {
-  deviance_tweedie(actual = actual, predicted = predicted, w = w, p = 0)
+  deviance_tweedie(actual = actual, predicted = predicted, w = w, tweedie_p = 0)
 }

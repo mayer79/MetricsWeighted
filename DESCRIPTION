@@ -1,0 +1,23 @@
+Type: Package
+Package: MetricsWeighted
+Title: Weighted Metrics for Machine Learning
+Version: 0.1.0
+Date: 2019-07-21
+Authors@R: 
+    person(given = "Michael",
+           family = "Mayer",
+           role = c("aut", "cre", "cph"),
+           email = "mayermichael79@gmail.com")
+Author: Michael Mayer [aut, cre, cph]
+Maintainer: Michael Mayer <mayermichael79@gmail.com>
+Description: Provides weighted versions of several metrics used
+    in machine learning, including relevant metrics in actuarial science
+    like Tweedie, Poisson, and Gamma deviance.
+License: GPL(>= 3)
+Depends: 
+    R (>= 3.5.0)
+Imports: 
+    stats
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

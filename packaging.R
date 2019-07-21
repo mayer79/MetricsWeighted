@@ -2,56 +2,37 @@
 # BUILD THE PACKAGE "MetricsWeighted"
 #=====================================================================================
 
-library(devtools)
+library(usethis)
 
-stopifnot(basename(getwd()) == "MetricsWeighted")
+pkg <- "MetricsWeighted"
 
-pkg <- "release/MetricsWeighted"
-unlink(pkg, force = TRUE, recursive = TRUE)
-create_package(pkg, fields = list(
-            Title = "Weighted Metrics for Machine Learning",
-            Type = "Package",
-            Version = "0.1.0",
-            Date = Sys.Date(),
-            Description = "Provides weighted versions of several metrics used in machine learning, including relevant metrics in actuarial science like Tweedie, Poisson, and Gamma deviance.",
-            
-            `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph'))",
-            Depends = "R (>= 3.5.0)",
-            Imports = list("stats"),
-            License = "GPL(>= 3)",
-            Author = "Michael Mayer [aut, cre, cph]",
-            Maintainer = "Michael Mayer <mayermichael79@gmail.com>"), 
-  rstudio = FALSE)
+# Create a new package -------------------------------------------------
+path <- file.path(tempdir(), "pkg")
+create_package(
+  path,
+  fields = list(
+    Title = "Weighted Metrics for Machine Learning",
+    Type = "Package",
+    Version = "0.1.0",
+    Date = Sys.Date(),
+    Description = "Provides weighted versions of several metrics used in machine learning, including relevant metrics in actuarial science like Tweedie, Poisson, and Gamma deviance.",
 
-# Add R files
-Rfiles <- list.files("R", pattern = "\\.[rR]")
-stopifnot(file.exists(fp <- file.path("R", Rfiles)))
-file.copy(fp, file.path(pkg, "R"))
+    `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph'))",
+    Depends = "R (>= 3.5.0)",
+    Imports = list("stats"),
+    License = "GPL(>= 3)",
+    Author = "Michael Mayer [aut, cre, cph]",
+    Maintainer = "Michael Mayer <mayermichael79@gmail.com>"))
 
-# Create Rd files
-document(pkg)
+proj_activate(path)
 
-# Add further files
-# devtools::use_cran_comments(pkg) (is required)
-mdfiles <- c("NEWS.md", "README.md")
-stopifnot(file.exists(mdfiles))
-file.copy(mdfiles, pkg)
+# Set up various packages ---------------------------------------------
+use_roxygen_md()
 
-# Check
-check(pkg, document = FALSE, manual = TRUE, check_dir = dirname(normalizePath(pkg)))
+# Set up other files -------------------------------------------------
+use_readme_md()
+use_news_md()
+#> ✔ Writing 'NEWS.md'
 
-# tar and zip file plus check
-build(pkg, manual = TRUE) # tar
-# build(pkg, binary = TRUE) # zip
-
-# Install the package (locally)
-install(pkg) # tar
-
-check_win_devel(pkg)
-
-check_rhub(pkg)
-
-setwd(file.path("C:/projects/MetricsWeighted", pkg))
-
-devtools::release()
-
+# Use git ------------------------------------------------------------
+use_git()
