@@ -23,9 +23,12 @@ deviance_tweedie <- function(actual, predicted, w = NULL, p = 1, ...) {
   if (p == 0) {
     u <- (actual - predicted)^2 / 2
   } else if (p == 1) {
-    u <- actual * log(actual / predicted) + predicted - actual
+    u <- pmax(1e-15, predicted)
+    pos <- actual > 0
+    u[pos] <- (actual * log(actual / u) - (actual - u))[pos]
   } else if (p == 2) {
-    u <- log(predicted / actual) + actual / predicted - 1
+    predicted <- pmax(1e-15, predicted)
+    u <- -log(ifelse(actual == 0, 1, actual / predicted)) + (actual - predicted) / predicted
   } else {
     u <- pmax(actual, 0)^(2 - p) / ((1 - p) * (2 - p)) -
                 (actual * predicted^(1 - p)) / (1 - p) + (predicted^(2 - p) / (2 - p))

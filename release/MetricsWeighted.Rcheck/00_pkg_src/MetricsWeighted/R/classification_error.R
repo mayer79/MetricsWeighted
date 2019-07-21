@@ -1,6 +1,6 @@
 #' Classification error
 #'
-#' @description Returns weighted classification error, i.e. the proportion of elements in \code{predicted} that are unequal to those in \code{observed}.
+#' @description Returns weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}.
 #' @author Michael Mayer, \email{mayermichael79@gmail.com}
 #' @param actual Observed values.
 #' @param predicted Predicted values.

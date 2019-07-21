@@ -20,5 +20,5 @@ weighted_mean <- function(x, w = NULL, ...) {
   if (is.null(w)) {
     return(mean(x, ...))
   }
-  weighted.mean(x, w, ...)
+  weighted.mean(x, w = w, ...)
 }

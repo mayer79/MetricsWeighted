@@ -19,13 +19,12 @@ AUC(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Returns weighted AUC, i.e. the area under the receiver operating curve.
+Returns weighted AUC, i.e. the area under the receiver operating curve, based on a deterministic version of \code{glmnet::auc}.
 }
 \examples{
 AUC(c(0, 0, 1, 1), 2 * c(0.1, 0.1, 0.9, 0.8))
 AUC(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
 AUC(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
-
 }
 \author{
 Michael Mayer, \email{mayermichael79@gmail.com}

@@ -1,8 +1,6 @@
 #' Area under the ROC
 #'
-#' @importFrom glmnet auc
-#'
-#' @description Returns weighted AUC, i.e. the area under the receiver operating curve.
+#' @description Returns weighted AUC, i.e. the area under the receiver operating curve, based on a deterministic version of \code{glmnet::auc}.
 #' @author Michael Mayer, \email{mayermichael79@gmail.com}
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values (not necessarly between 0 and 1).
@@ -17,7 +15,24 @@
 #' AUC(c(0, 0, 1, 1), 2 * c(0.1, 0.1, 0.9, 0.8))
 #' AUC(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
 #' AUC(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
-#' 
 AUC <- function(actual, predicted, w = NULL, ...) {
-  if(is.null(w)) auc(actual, predicted) else auc(actual, predicted, w)
+  # Modified version of glmnet::auc
+  if (is.null(w)) {
+    r <- rank(predicted)
+    n_pos <- sum(actual)
+    n_neg <- length(actual) - n_pos
+    u <- sum(r[actual == 1]) - n_pos * (n_pos + 1) / 2
+    return(exp(log(u) - log(n_pos) - log(n_neg)))
+  }
+  
+  op <- order(predicted)
+  actual <- actual[op]
+  w <- w[op]
+  cw <- cumsum(w)
+  w_pos <- w[actual == 1]
+  cw_pos <- cumsum(w_pos)
+  u <- sum(w_pos * (cw[actual == 1] - cw_pos))
+  sumw_pos <- cw_pos[length(w_pos)]
+  sumw_neg <- cw[length(w)] - sumw_pos
+  exp(log(u) - log(sumw_pos) - log(sumw_neg))
 }

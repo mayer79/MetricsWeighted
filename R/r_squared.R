@@ -1,11 +1,12 @@
-#' R-squared
+#' Pseudo R-squared
 #'
-#' @description Returns weighted R-squared of predicted values.
+#' @description Returns (weighted) proportion of deviance explained. Using the mean-squared error as deviance, this equals the usual (weighted) R-squared. Very close to McFadden's pseudo R-squared which is defined as proportion of log-likelihood explained. 
 #' @author Michael Mayer, \email{mayermichael79@gmail.com}
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
-#' @param ... Further arguments passed to \code{weighted_mean}.
+#' @param deviance_function A positive function taking four arguments: "actual", "predicted", "w" and "...".
+#' @param ... Further arguments passed to \code{weighted_mean} and \code{deviance_function}.
 #'
 #' @return A numeric vector of length one.
 #' 
@@ -15,7 +16,17 @@
 #' r_squared(1:10, c(1, 1:9))
 #' r_squared(1:10, c(1, 1:9), w = rep(1, 10))
 #' r_squared(1:10, c(1, 1:9), w = 1:10)
-r_squared <- function(actual, predicted, w = NULL, ...) {
-  1 - weighted_mean((actual - predicted)^2, w, ...) / 
-      weighted_mean((actual - mean(actual))^2, w, ...)
+#' r_squared(0:2, c(0.1, 1, 1.2), deviance_function = deviance_poisson)
+#' r_squared(0:2, c(0.1, 1, 1.2), deviance_function = deviance_normal)
+#' r_squared(0:2, c(0.1, 1, 1.2))
+#' 
+#' @seealso \code{\link{deviance_normal}, \link{mse}}.
+#' 
+r_squared <- function(actual, predicted, w = NULL, deviance_function = mse, ...) {
+  stopifnot(is.function(deviance_function))
+  
+  actual_mean <- weighted_mean(actual, w = w, ...)
+  null_deviance <- deviance_function(actual = actual, predicted = actual_mean, w = w, ...)
+  residual_deviance <- deviance_function(actual = actual, predicted = predicted, w = w, ...)
+  1 - residual_deviance / null_deviance
 }

@@ -3,6 +3,7 @@ AUC	0	0	0
 accuracy	0	0	0	
 classification_error	0	0	0	
 deviance_tweedie	0	0	0	
+f1_score	0	0	0	
 logLoss	0	0	0	
 mae	0	0	0	
 mape	0	0	0	

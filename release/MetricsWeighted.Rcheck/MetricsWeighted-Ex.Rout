@@ -59,7 +59,6 @@ Type 'q()' to quit R.
 > 
 > 
 > 
-> 
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("AUC", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
@@ -141,6 +140,30 @@ Type 'q()' to quit R.
 > base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 > base::cat("deviance_tweedie", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 > cleanEx()
+> nameEx("f1_score")
+> ### * f1_score
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: f1_score
+> ### Title: F1 score
+> ### Aliases: f1_score
+> 
+> ### ** Examples
+> 
+> f1_score(c(0, 0, 1, 1), c(0, 0, 1, 1))
+[1] 1
+> f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1))
+[1] 0.5
+> f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
+[1] 0.6666667
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("f1_score", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
 > nameEx("logLoss")
 > ### * logLoss
 > 
@@ -202,11 +225,11 @@ Type 'q()' to quit R.
 > ### ** Examples
 > 
 > mape(1:10, (1:10)^2)
-[1] 4.5
+[1] 450
 > mape(1:10, (1:10)^2, w = rep(1, 10))
-[1] 4.5
+[1] 450
 > mape(1:10, (1:10)^2, w = 1:10)
-[1] 6
+[1] 600
 > 
 > 
 > 
@@ -278,7 +301,7 @@ Type 'q()' to quit R.
 > r_squared(1:10, c(1, 1:9), w = rep(1, 10))
 [1] 0.8909091
 > r_squared(1:10, c(1, 1:9), w = 1:10)
-[1] 0.8809917
+[1] 0.8363636
 > 
 > 
 > 
@@ -361,7 +384,7 @@ Type 'q()' to quit R.
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.75 0.06 1.88 NA NA 
+Time elapsed:  0.34 0.03 0.42 NA NA 
 > grDevices::dev.off()
 null device 
           1 

@@ -2,6 +2,7 @@ accuracy	accuracy
 AUC	AUC
 classification_error	classification_error
 deviance_tweedie	deviance_tweedie
+f1_score	f1_score
 logLoss	logLoss
 mae	mae
 mape	mape

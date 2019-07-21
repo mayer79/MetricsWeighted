@@ -4,7 +4,7 @@
 \alias{mape}
 \title{Mean absolute percentage error}
 \usage{
-mape(actual, predicted, w = NULL, ...)
+mape(actual, predicted, w = NULL, clip_small = 0, ...)
 }
 \arguments{
 \item{actual}{Observed values.}
@@ -12,6 +12,8 @@ mape(actual, predicted, w = NULL, ...)
 \item{predicted}{Predicted values.}
 
 \item{w}{Optional case weights.}
+
+\item{clip_small}{Minimal absolute value in the denominator. Used to avoid divisions by 0.}
 
 \item{...}{Further arguments passed to \code{weighted_mean}.}
 }

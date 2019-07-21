@@ -19,7 +19,7 @@ classification_error(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Returns weighted classification error, i.e. the proportion of elements in \code{predicted} that are unequal to those in \code{observed}.
+Returns weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}.
 }
 \examples{
 classification_error(c(0, 0, 1, 1), c(0, 0, 1, 1))

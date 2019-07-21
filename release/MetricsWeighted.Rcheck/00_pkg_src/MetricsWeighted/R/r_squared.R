@@ -16,6 +16,8 @@
 #' r_squared(1:10, c(1, 1:9), w = rep(1, 10))
 #' r_squared(1:10, c(1, 1:9), w = 1:10)
 r_squared <- function(actual, predicted, w = NULL, ...) {
-  1 - weighted_mean((actual - predicted)^2, w, ...) / 
-      weighted_mean((actual - mean(actual))^2, w, ...)
+  actual_mean <- weighted_mean(actual, w, ...)
+  tss <- weighted_mean((actual - actual_mean)^2, w, ...)
+  rss <- weighted_mean((actual - predicted)^2, w, ...)
+  1 - rss / tss
 }

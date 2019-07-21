@@ -2,6 +2,7 @@ AUC                     Area under the ROC
 accuracy                Accuracy
 classification_error    Classification error
 deviance_tweedie        Tweedie deviance
+f1_score                F1 score
 logLoss                 Log Loss / binary cross entropy
 mae                     Mean absolute error
 mape                    Mean absolute percentage error

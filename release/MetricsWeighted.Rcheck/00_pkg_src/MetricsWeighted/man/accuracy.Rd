@@ -19,7 +19,7 @@ accuracy(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Returns weighted accuracy, i.e. the proportion of elements in \code{predicted} that are equal to those in \code{observed}.
+Returns weighted accuracy, i.e. the weighted proportion of elements in \code{predicted} that are equal to those in \code{observed}.
 }
 \examples{
 accuracy(c(0, 0, 1, 1), c(0, 0, 1, 1))
