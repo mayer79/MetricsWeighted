@@ -32,6 +32,18 @@
 #'             deviance_function = deviance_tweedie, tweedie_p = 2)
 #' performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
 #'             deviance_function = deviance_tweedie, tweedie_p = 0)
+#' \dontrun{
+#' library(dplyr)
+#' iris %>%
+#'   mutate(fitted = lm(Sepal.Length ~ ., data = .)$fitted) %>%
+#'   performance("Sepal.Length", "fitted")
+#'
+#' # With case weights
+#' iris %>%
+#'   mutate(fitted = lm(Sepal.Length ~ ., data = .)$fitted,
+#'          weights = row_number()) %>%
+#'   performance("Sepal.Length", "fitted", w = "weights")
+#' }
 performance <- function(data, actual, predicted, w = NULL, metrics = rmse,
                         key = "metric", value = "value", ...) {
   stopifnot(c(actual, predicted, w) %in% names(data))
