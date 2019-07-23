@@ -1,0 +1,58 @@
+---
+title: "MetricsWeighted"
+author: "Michael Mayer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MetricsWeighted}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup}
+library(MetricsWeighted)
+```
+
+## Introduction
+
+The R package `MetricsWeighted` provides weighted versions of different machine learning metrics and performance measures.
+
+-`accuracy`, `recall`, `precision`, `f1_score`, and `classification_error`: Typical binary performance measures derived from the confusion matrix. Require binary predictions.
+
+-`AUC`, `gini_coefficient`: Area under the receiver operating curve (ROC) and the closely related Gini coefficient. Written for binary targets but not necessarly binary predictions.
+
+-`logLoss`, `deviance_bernoulli`: Further metrics relevant for binary targets, namely the unit deviance of the binary logistic regression model and the closely connected logLoss.
+
+- `mse`, `mae`, `mape`, `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error).
+
+- `deviance_tweedie`: Unit Tweedie deviance with parameter `tweedie_p`.
+
+-`deviance_normal`,  `deviance_gamma`, `deviance_poisson`: Special cases of Tweedie. `deviance_normal` equals mean-squared error.
+
+Furthermore, we provide a very general "R-squared"-like function `r_squared`, defined as proportion of deviance explained. By default, it calculates ordinary R-squared, i.e. normal deviance explained. However, you can also provide a different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the logistic regression (`deviance_bernoulli`). 
+
+In order to facilitate the use of these metrics in a `tidyverse` pipeline, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`.
+
+## Installation
+
+From CRAN:
+```
+install.packages("MetricsWeighted")
+```
+
+Latest version from github:
+```
+library(devtools)
+install_github("mayer79/MetricsWeighted")
+```
+
+## Examples

@@ -2,7 +2,7 @@ Type: Package
 Package: MetricsWeighted
 Title: Weighted Metrics for Machine Learning
 Version: 0.1.0
-Date: 2019-07-21
+Date: 2019-07-23
 Authors@R: 
     person(given = "Michael",
            family = "Mayer",

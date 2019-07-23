@@ -1,14 +1,13 @@
 #=====================================================================================
-# BUILD THE PACKAGE "MetricsWeighted"
+# BUILD THE PACKAGE
 #=====================================================================================
 
 library(usethis)
 library(devtools)
 
-pkg <- "MetricsWeighted"
-
 # Create a new package -------------------------------------------------
-path <- file.path(tempdir(), "pkg")
+pkg <- file.path("release", "MetricsWeighted")
+
 create_package(
   path,
   fields = list(
@@ -25,7 +24,7 @@ create_package(
     Author = "Michael Mayer [aut, cre, cph]",
     Maintainer = "Michael Mayer <mayermichael79@gmail.com>"))
 
-proj_activate(path)
+use_namespace()
 
 # Set up various packages ---------------------------------------------
 use_roxygen_md()
@@ -34,26 +33,25 @@ use_roxygen_md()
 # use_readme_md()
 # use_news_md()
 
-use_package_doc()
-use_cran_comments(path)
+# use_cran_comments()
 
-# Copy stuff to path
-file.copy(file.path("R", list.files("R")), file.path(path, "R"))
-dir.create(file.path(path, "man"))
-file.copy(file.path("man", list.files("man")), file.path(path, "man"))
-file.copy(c("DESCRIPTION", "NAMESPACE",
-            "NEWS.md", "README.md", "cran-comments.md"), path, overwrite = TRUE)
-file.copy(".Rbuildignore", path, overwrite = TRUE)
+# use_vignette(name = "MetricsWeighted", title = "MetricsWeighted")
+
+# Copy stuff to pkg
+file.copy(c(".Rbuildignore", "NEWS.md", "README.md", "cran-comments.md"), pkg, overwrite = TRUE)
+file.copy(list.files("R", full.names = TRUE), file.path(pkg, "R"), overwrite = TRUE)
+devtools::document(pkg)
 
 # Install the package (locally)
-install(path) # tar
+build(pkg)
+install(pkg) # tar
 
 # modify .Rbuildignore in build project to ignore the proj file.
 
-check_win_devel(path)
+check_win_devel(pkg)
 
-check_rhub(path)
+check_rhub(pkg)
 
-setwd(file.path("C:/projects/missRanger", pkg))
+setwd(pkg)
 
-devtools::release(path)
+devtools::release(pkg)
