@@ -5,11 +5,12 @@
 library(usethis)
 library(devtools)
 
-# Create a new package -------------------------------------------------
+# Create a new package
+dir.create(file.path("release"))
 pkg <- file.path("release", "MetricsWeighted")
 
 create_package(
-  path,
+  pkg,
   fields = list(
     Title = "Weighted Metrics and performance measures for Machine Learning",
     Type = "Package",
@@ -19,16 +20,14 @@ create_package(
 
     `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph'))",
     Depends = "R (>= 3.5.0)",
-    Imports = list("stats"),
-    Suggests = list("dplyr"),
-    License = "GPL(>= 3)",
+    VignetteBuilder = "knitr",
+    License = "GPL(>= 2)",
     Author = "Michael Mayer [aut, cre, cph]",
     Maintainer = "Michael Mayer <mayermichael79@gmail.com>"))
 
-use_namespace()
-
-# Set up various packages ---------------------------------------------
-use_roxygen_md()
+use_package("stats", "Imports")
+use_package("dplyr", "Suggests")
+use_package("knitr", "Suggests")
 
 # Set up other files -------------------------------------------------
 # use_readme_md()
@@ -36,15 +35,27 @@ use_roxygen_md()
 # use_cran_comments()
 # use_vignette(name = "MetricsWeighted", title = "MetricsWeighted")
 
-# Copy stuff to pkg
+# Copy readme etc.
 file.copy(c(".Rbuildignore", "NEWS.md", "README.md", "cran-comments.md"), pkg, overwrite = TRUE)
+
+# Copy R scripts and document them
 file.copy(list.files("R", full.names = TRUE), file.path(pkg, "R"), overwrite = TRUE)
 devtools::document(pkg)
+
+# Copy vignette
+dir.create(file.path(pkg, "vignettes"))
+file.copy(list.files("vignettes", full.names = TRUE), file.path(pkg, "vignettes"), overwrite = TRUE)
 devtools::build_vignettes(pkg)
 
-# Install the package (locally)
+# Check
+check(pkg)
+
+# Create
 build(pkg)
-install(pkg) # tar
+
+# Install
+install(pkg)
+
 
 # modify .Rbuildignore in build project to ignore the proj file.
 

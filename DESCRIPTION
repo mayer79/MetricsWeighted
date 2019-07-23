@@ -17,13 +17,11 @@ Description: Provides weighted versions of several metrics and
 License: GPL(>= 2)
 Depends: 
     R (>= 3.5.0)
+Imports: 
+    stats
+Suggests: 
+    dplyr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 LazyData: true
-Imports: 
-    stats
-Suggests: 
-    dplyr,
-    knitr
-RoxygenNote: 6.1.1
