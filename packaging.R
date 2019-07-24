@@ -16,7 +16,7 @@ create_package(
     Type = "Package",
     Version = "0.1.0",
     Date = Sys.Date(),
-    Description = "Provides weighted versions of several metrics and performance measures used in machine learning, including Tweedie, Poisson, and Gamma deviance as well as generalized R-squared. Can be used within 'dplyr' chains.",
+    Description = "Provides weighted versions of several metrics and performance measures used in machine learning, including average unit deviance of the Bernoulli, Tweedie, Poisson, and Gamma distributions. The package also contains a weighted version of generalized R-squared, see e.g. Cohen, Jacob. et al. (2002, ISBN: 978-0805822236). Furthermore, 'dplyr' chains are supported.",
 
     `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph'))",
     Depends = "R (>= 3.5.0)",

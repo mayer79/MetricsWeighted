@@ -102,7 +102,7 @@ deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
 
 ### Generalized R-squared
 
-Furthermore, we provide a very general function `r_squared`, defined as proportion of deviance explained, i.e. 1 minus the ratio of residual deviance and intercept-only deviance. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the logistic regression (`deviance_bernoulli`).
+Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [1]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the logistic regression (`deviance_bernoulli`).
 
 #### Examples
 ```{r}
@@ -171,3 +171,6 @@ iris %>%
               tweedie_p = 0)
 
 ```
+
+## References
+[1] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
