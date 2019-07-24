@@ -2,7 +2,7 @@
 #'
 #' @importFrom stats setNames
 #'
-#' @description Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} pipe.
+#' @description Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} chain.
 #'
 #' @author Michael Mayer, \email{mayermichael79@gmail.com}
 #' @param data A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.
@@ -32,17 +32,37 @@
 #'             deviance_function = deviance_tweedie, tweedie_p = 2)
 #' performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
 #'             deviance_function = deviance_tweedie, tweedie_p = 0)
+#'
 #' \dontrun{
 #' library(dplyr)
-#' iris %>%
-#'   mutate(fitted = lm(Sepal.Length ~ ., data = .)$fitted) %>%
-#'   performance("Sepal.Length", "fitted")
 #'
-#' # With case weights
 #' iris %>%
-#'   mutate(fitted = lm(Sepal.Length ~ ., data = .)$fitted,
-#'          weights = row_number()) %>%
-#'   performance("Sepal.Length", "fitted", w = "weights")
+#'   mutate(pred = predict(fit_num, data = .)) %>%
+#'   performance("Sepal.Length", "pred")
+#'
+#' # Same
+#' iris %>%
+#'   mutate(pred = predict(fit_num, data = .)) %>%
+#'   performance("Sepal.Length", "pred", metrics = rmse)
+#'
+#' # Grouped by Species
+#' iris %>%
+#'   mutate(pred = predict(fit_num, data = .)) %>%
+#'   group_by(Species) %>%
+#'   do(performance(data = ., "Sepal.Length", "pred"))
+#'
+#' # Multiple measures
+#' iris %>%
+#'  mutate(pred = predict(fit_num, data = .)) %>%
+#'  performance("Sepal.Length", "pred",
+#'              metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared))
+#'
+#' # Grouped by Species
+#' iris %>%
+#'  mutate(pred = predict(fit_num, data = .)) %>%
+#'  group_by(Species) %>%
+#'  do(performance(., "Sepal.Length", "pred",
+#'                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
 #' }
 performance <- function(data, actual, predicted, w = NULL, metrics = rmse,
                         key = "metric", value = "value", ...) {

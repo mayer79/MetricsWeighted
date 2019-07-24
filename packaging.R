@@ -16,7 +16,7 @@ create_package(
     Type = "Package",
     Version = "0.1.0",
     Date = Sys.Date(),
-    Description = "Provides weighted versions of several metrics and performance measures used in machine learning, including Tweedie, Poisson, and Gamma deviance as well as generalized R-squared.",
+    Description = "Provides weighted versions of several metrics and performance measures used in machine learning, including Tweedie, Poisson, and Gamma deviance as well as generalized R-squared. Can be used within 'dplyr' chains.",
 
     `Authors@R` = "person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph'))",
     Depends = "R (>= 3.5.0)",
@@ -48,7 +48,7 @@ file.copy(list.files("vignettes", full.names = TRUE), file.path(pkg, "vignettes"
 devtools::build_vignettes(pkg)
 
 # Check
-check(pkg)
+check(pkg, manual = TRUE)
 
 # Create
 build(pkg)

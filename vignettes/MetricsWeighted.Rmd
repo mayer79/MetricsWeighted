@@ -24,7 +24,7 @@ library(MetricsWeighted)
 
 ## Introduction
 
-The R package `MetricsWeighted` provides weighted versions of different machine learning metrics and performance measures.
+The R package `MetricsWeighted` provides weighted versions of different machine learning metrics and performance measures as well as tools to use it within a `dplyr` chain.
 
 ## Installation
 From CRAN:
@@ -119,9 +119,9 @@ r_squared(y_num, pred_num, w = weights, deviance_function = deviance_tweedie, tw
 
 ```
 
-### `tidyverse`-style
+### Tidyverse
 
-In order to facilitate the use of these metrics in a `tidyverse` pipeline, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`.
+In order to facilitate the use of these metrics in a `dplyr` chain, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`. Stratified performance calculations can e.g. be done by using `dplyr::do`.
 
 #### Examples
 ```{r}
@@ -137,6 +137,12 @@ iris %>%
   mutate(pred = predict(fit_num, data = .)) %>% 
   performance("Sepal.Length", "pred", metrics = rmse)
 
+# Grouped by Species
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  group_by(Species) %>% 
+  do(performance(data = ., actual = "Sepal.Length", predicted = "pred"))
+
 # Customized output
 iris %>% 
   mutate(pred = predict(fit_num, data = .)) %>% 
@@ -149,11 +155,19 @@ iris %>%
   performance("Sepal.Length", "pred",
               metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared))
 
+# Grouped by Species
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  group_by(Species) %>% 
+  do(performance(., "Sepal.Length", "pred",
+                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
+
+# Passing extra argument (Tweedie p)
 iris %>% 
   mutate(pred = predict(fit_num, data = .)) %>% 
   performance("Sepal.Length", "pred",
               metrics = list(`normal deviance` = deviance_normal, 
-                             `tweedie with p = 0` = deviance_tweedie),
+                             `Tweedie with p = 0` = deviance_tweedie),
               tweedie_p = 0)
 
 ```
