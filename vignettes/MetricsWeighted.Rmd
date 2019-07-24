@@ -52,7 +52,7 @@ Currently, the following metrics and performance measures are available.
 
 - `mse`, `mae`, `mape`, and `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error).
 
-- `deviance_tweedie`: Average unit Tweedie deviance with parameter `tweedie_p`.
+- `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`.
 
 - `deviance_normal`,  `deviance_gamma`, and `deviance_poisson`: Special cases of Tweedie. `deviance_normal` equals mean-squared error.
 
@@ -66,7 +66,7 @@ They all take four arguments:
 
 4. `...`: Further arguments.
 
-Notable exception is `deviance_tweedie` that requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance. For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
+Notable exception is `deviance_tweedie` that requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance, see e.g. [1]. For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
 
 #### Examples: Regression
 ```{r}
@@ -102,7 +102,7 @@ deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
 
 ### Generalized R-squared
 
-Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [1]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the logistic regression (`deviance_bernoulli`).
+Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [2]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the logistic regression (`deviance_bernoulli`).
 
 #### Examples
 ```{r}
@@ -173,4 +173,7 @@ iris %>%
 ```
 
 ## References
-[1] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
+
+[1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
+
+[2] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
