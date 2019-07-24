@@ -1,6 +1,6 @@
 #' Poisson deviance
 #'
-#' @description Weighted average of unit Poisson deviance.
+#' @description Weighted average of unit Poisson deviance, see e.g. [1].
 #' @author Michael Mayer, \email{mayermichael79@gmail.com}
 #' @param actual Observed values.
 #' @param predicted Predicted values.
@@ -10,6 +10,9 @@
 #' @return A numeric vector of length one.
 #'
 #' @export
+#'
+#' @references
+#' [1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
 #'
 #' @examples
 #' deviance_poisson(1:10, (1:10)^2)

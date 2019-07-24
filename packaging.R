@@ -33,18 +33,21 @@ use_package("knitr", "Suggests")
 # use_readme_md()
 # use_news_md()
 # use_cran_comments()
-# use_vignette(name = "MetricsWeighted", title = "MetricsWeighted")
 
 # Copy readme etc.
-file.copy(c(".Rbuildignore", "NEWS.md", "README.md", "cran-comments.md"), pkg, overwrite = TRUE)
+file.copy(c(".Rbuildignore", "NEWS.md", "README.md", "cran-comments.md", "DESCRIPTION"), pkg, overwrite = TRUE)
 
 # Copy R scripts and document them
 file.copy(list.files("R", full.names = TRUE), file.path(pkg, "R"), overwrite = TRUE)
 devtools::document(pkg)
 
 # Copy vignette
+# use_vignette(name = "MetricsWeighted", title = "MetricsWeighted")
 dir.create(file.path(pkg, "vignettes"))
+dir.create(file.path(pkg, "doc"))
+dir.create(file.path(pkg, "Meta"))
 file.copy(list.files("vignettes", full.names = TRUE), file.path(pkg, "vignettes"), overwrite = TRUE)
+
 devtools::build_vignettes(pkg)
 
 # Check
@@ -63,6 +66,6 @@ check_win_devel(pkg)
 
 check_rhub(pkg)
 
-setwd(pkg)
+# setwd(pkg)
 
 devtools::release(pkg)

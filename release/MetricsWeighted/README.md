@@ -1,6 +1,6 @@
 # MetricsWeighted
 
-The goal of MetricsWeighted is to provide weighted versions of metrics for machine learning.
+The goal of this package is to provide weighted versions of metrics for machine learning.
 
 ## Installation
 
@@ -36,7 +36,7 @@ r_squared(y, pred, deviance_function = deviance_gamma)
 
 ```
 
-## Example 2: Call the metrics through a common function that can be used within a `magrittr` pipe.
+## Example 2: Call the metrics through a common function that can be used within a `dplyr` chain
 
 ``` r
 dat <- data.frame(y = y, pred = pred)

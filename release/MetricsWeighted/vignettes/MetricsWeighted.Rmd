@@ -24,7 +24,7 @@ library(MetricsWeighted)
 
 ## Introduction
 
-The R package `MetricsWeighted` provides weighted versions of different machine learning metrics and performance measures.
+The R package `MetricsWeighted` provides weighted versions of different machine learning metrics and performance measures as well as tools to use it within a `dplyr` chain.
 
 ## Installation
 From CRAN:
@@ -52,7 +52,7 @@ Currently, the following metrics and performance measures are available.
 
 - `mse`, `mae`, `mape`, and `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error).
 
-- `deviance_tweedie`: Average unit Tweedie deviance with parameter `tweedie_p`.
+- `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`.
 
 - `deviance_normal`,  `deviance_gamma`, and `deviance_poisson`: Special cases of Tweedie. `deviance_normal` equals mean-squared error.
 
@@ -66,7 +66,7 @@ They all take four arguments:
 
 4. `...`: Further arguments.
 
-Notable exception is `deviance_tweedie` that requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance. For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
+Notable exception is `deviance_tweedie` that requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance, see e.g. [1]. For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
 
 #### Examples: Regression
 ```{r}
@@ -102,7 +102,7 @@ deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
 
 ### Generalized R-squared
 
-Furthermore, we provide a very general function `r_squared`, defined as proportion of deviance explained, i.e. 1 minus the ratio of residual deviance and intercept-only deviance. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the logistic regression (`deviance_bernoulli`).
+Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [2]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the logistic regression (`deviance_bernoulli`).
 
 #### Examples
 ```{r}
@@ -119,13 +119,13 @@ r_squared(y_num, pred_num, w = weights, deviance_function = deviance_tweedie, tw
 
 ```
 
-### `tidyverse`-style
+### Tidyverse
 
-In order to facilitate the use of these metrics in a `tidyverse` pipeline, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`.
+In order to facilitate the use of these metrics in a `dplyr` chain, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`. Stratified performance calculations can e.g. be done by using `do` from `dplyr`.
 
 #### Examples
 ```{r}
-library(dplyr)
+require(dplyr)
 
 # Regression with `Sepal.Length` as response
 iris %>% 
@@ -136,6 +136,12 @@ iris %>%
 iris %>% 
   mutate(pred = predict(fit_num, data = .)) %>% 
   performance("Sepal.Length", "pred", metrics = rmse)
+
+# Grouped by Species
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  group_by(Species) %>% 
+  do(performance(data = ., actual = "Sepal.Length", predicted = "pred"))
 
 # Customized output
 iris %>% 
@@ -149,11 +155,25 @@ iris %>%
   performance("Sepal.Length", "pred",
               metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared))
 
+# Grouped by Species
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  group_by(Species) %>% 
+  do(performance(., "Sepal.Length", "pred",
+                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
+
+# Passing extra argument (Tweedie p)
 iris %>% 
   mutate(pred = predict(fit_num, data = .)) %>% 
   performance("Sepal.Length", "pred",
               metrics = list(`normal deviance` = deviance_normal, 
-                             `tweedie with p = 0` = deviance_tweedie),
+                             `Tweedie with p = 0` = deviance_tweedie),
               tweedie_p = 0)
 
 ```
+
+## References
+
+[1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
+
+[2] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.

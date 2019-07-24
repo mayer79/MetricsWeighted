@@ -1,16 +1,19 @@
 #' Pseudo R-squared
 #'
-#' @description Returns (weighted) proportion of deviance explained. Using the mean-squared error as deviance, this equals the usual (weighted) R-squared. Very close to McFadden's pseudo R-squared which is defined as proportion of log-likelihood explained.
+#' @description Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared.
 #' @author Michael Mayer, \email{mayermichael79@gmail.com}
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
-#' @param deviance_function A positive function taking four arguments: "actual", "predicted", "w" and "...".
+#' @param deviance_function A positive (deviance) function taking four arguments: "actual", "predicted", "w" and "...".
 #' @param ... Further arguments passed to \code{weighted_mean} and \code{deviance_function}.
 #'
 #' @return A numeric vector of length one.
 #'
 #' @export
+#'
+#' @references
+#' [1] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
 #'
 #' @examples
 #' r_squared(1:10, c(1, 1:9))

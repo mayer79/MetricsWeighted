@@ -19,13 +19,16 @@ deviance_poisson(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted average of unit Poisson deviance.
+Weighted average of unit Poisson deviance, see e.g. [1].
 }
 \examples{
 deviance_poisson(1:10, (1:10)^2)
 deviance_poisson(1:10, (1:10)^2, w = rep(1, 10))
 deviance_poisson(1:10, (1:10)^2, w = 1:10)
 
+}
+\references{
+[1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
 }
 \seealso{
 \code{\link{deviance_tweedie}}.

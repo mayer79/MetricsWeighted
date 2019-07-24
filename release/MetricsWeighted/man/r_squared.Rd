@@ -13,7 +13,7 @@ r_squared(actual, predicted, w = NULL, deviance_function = mse, ...)
 
 \item{w}{Optional case weights.}
 
-\item{deviance_function}{A positive function taking four arguments: "actual", "predicted", "w" and "...".}
+\item{deviance_function}{A positive (deviance) function taking four arguments: "actual", "predicted", "w" and "...".}
 
 \item{...}{Further arguments passed to \code{weighted_mean} and \code{deviance_function}.}
 }
@@ -21,7 +21,7 @@ r_squared(actual, predicted, w = NULL, deviance_function = mse, ...)
 A numeric vector of length one.
 }
 \description{
-Returns (weighted) proportion of deviance explained. Using the mean-squared error as deviance, this equals the usual (weighted) R-squared. Very close to McFadden's pseudo R-squared which is defined as proportion of log-likelihood explained.
+Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared.
 }
 \examples{
 r_squared(1:10, c(1, 1:9))
@@ -34,6 +34,9 @@ r_squared(0:2, c(0.1, 1, 1.2), w = rep(1, 3), deviance_function = deviance_tweed
 r_squared(0:2, c(0.1, 1, 1.2), deviance_function = deviance_normal)
 r_squared(0:2, c(0.1, 1, 1.2))
 
+}
+\references{
+[1] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
 }
 \seealso{
 \code{\link{deviance_normal}, \link{mse}}.

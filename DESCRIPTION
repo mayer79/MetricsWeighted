@@ -1,9 +1,8 @@
 Type: Package
 Package: MetricsWeighted
-Title: Weighted Metrics and performance measures for Machine
-    Learning
+Title: Weighted Metrics and Performance Measures for Machine Learning
 Version: 0.1.0
-Date: 2019-07-23
+Date: 2019-07-24
 Authors@R: 
     person(given = "Michael",
            family = "Mayer",
@@ -12,16 +11,21 @@ Authors@R:
 Author: Michael Mayer [aut, cre, cph]
 Maintainer: Michael Mayer <mayermichael79@gmail.com>
 Description: Provides weighted versions of several metrics and
-    performance measures used in machine learning, including Tweedie,
-    Poisson, and Gamma deviance as well as generalized R-squared.
+    performance measures used in machine learning, including average unit
+    deviances of the Bernoulli, Tweedie, Poisson, and Gamma distributions,
+    see e.g. Ohlsson E. and Johansson B. (2015, ISBN: 978-3642107900). The
+    package also contains a weighted version of generalized R-squared, see
+    e.g. Cohen, Jacob. et al. (2002, ISBN: 978-0805822236). Furthermore,
+    'dplyr' chains are supported.
 License: GPL(>= 2)
 Depends: 
     R (>= 3.5.0)
-Imports: 
-    stats
-Suggests: 
-    dplyr
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    stats
+Suggests: 
+    dplyr,
+    knitr
