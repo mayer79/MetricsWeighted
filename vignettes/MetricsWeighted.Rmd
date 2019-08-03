@@ -52,7 +52,7 @@ Currently, the following metrics and performance measures are available.
 
 - `mse`, `mae`, `mape`, and `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error).
 
-- `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`.
+- `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`, see e.g. (https://en.wikipedia.org/wiki/Tweedie_distribution) for a reference of the underlying formula.
 
 - `deviance_normal`,  `deviance_gamma`, and `deviance_poisson`: Special cases of Tweedie. `deviance_normal` equals mean-squared error.
 
@@ -80,9 +80,24 @@ weights <- seq_len(nrow(iris))
 mae(y_num, pred_num)  # unweighted
 mae(y_num, pred_num, w = rep(1, length(y_num)))  # same
 mae(y_num, pred_num, w = weights)  # different
-
 rmse(y_num, pred_num)
 
+# Normal deviance equals Tweedie deviance with parameter 0
+deviance_normal(y_num, pred_num)
+deviance_tweedie(y_num, pred_num, tweedie_p = 0)
+deviance_tweedie(y_num, pred_num, tweedie_p = 0.01)
+
+# Poisson deviance equals Tweedie deviance with parameter 1
+deviance_poisson(y_num, pred_num)
+deviance_tweedie(y_num, pred_num, tweedie_p = 1)
+deviance_tweedie(y_num, pred_num, tweedie_p = 0.99)
+deviance_tweedie(y_num, pred_num, tweedie_p = 1.01)
+
+# Gamma deviance equals Tweedie deviance with parameter 2
+deviance_gamma(y_num, pred_num)
+deviance_tweedie(y_num, pred_num, tweedie_p = 2)
+deviance_tweedie(y_num, pred_num, tweedie_p = 1.99)
+deviance_tweedie(y_num, pred_num, tweedie_p = 2.01)
 ```
 
 #### Examples: Binary classification

@@ -1,17 +1,14 @@
 #' Weighted mean that handles NULL weights
 #'
+#' Returns weighted mean of numeric vector.
+#'
 #' @importFrom stats weighted.mean
-#' 
-#' @description Returns weighted mean of numeric vector.
-#' @author Michael Mayer, \email{mayermichael79@gmail.com}
+#' @author Michael Mayer
 #' @param x Numeric vector.
 #' @param w Optional case weights.
-#' @param ... Further arguments passed to \code{weighted_mean}.
-
+#' @param ... Further arguments passed to \code{mean} or \code{weighted.mean}.
 #' @return A length-one numeric vector.
-#' 
 #' @export
-#'
 #' @examples
 #' weighted_mean(1:10)
 #' weighted_mean(1:10, w = NULL)

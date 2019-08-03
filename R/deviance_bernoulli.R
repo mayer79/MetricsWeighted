@@ -1,23 +1,19 @@
 #' Bernoulli deviance
 #'
-#' @description Weighted average of unit Bernoulli deviance, defined as twice logLoss.
-#' @author Michael Mayer, \email{mayermichael79@gmail.com}
+#' Calculates weighted average of unit Bernoulli deviance. Defined as twice logLoss.
+#'
+#' @author Michael Mayer
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
 #' @param ... Further arguments passed to \code{logLoss}.
-#'
 #' @return A numeric vector of length one.
-#' 
 #' @export
-#'
 #' @examples
 #' deviance_bernoulli(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8))
 #' deviance_bernoulli(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
 #' deviance_bernoulli(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
-#' 
 #' @seealso \code{\link{logLoss}}.
-#' 
 deviance_bernoulli <- function(actual, predicted, w = NULL, ...) {
   2 * logLoss(actual = actual, predicted = predicted, w = w, ...)
 }
