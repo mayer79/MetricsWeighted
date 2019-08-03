@@ -21,16 +21,15 @@ deviance_tweedie(actual, predicted, w = NULL, tweedie_p = 0, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted average of (unscaled) unit Tweedie deviance with parameter p. This includes the normal deviance (p = 0), the Poisson deviance (p = 1), as well as the Gamma deviance (p = 2), see e.g. [1] for a reference.
+Weighted average of (unscaled) unit Tweedie deviance with parameter p. This includes the normal deviance (p = 0), the Poisson deviance (p = 1), as well as the Gamma deviance (p = 2), see e.g. [1] for a reference and \url{https://en.wikipedia.org/wiki/Tweedie_distribution} for the specific deviance formula.
 }
 \examples{
-deviance_tweedie(1:10, (1:10)^2, tweedie_p = 0)
-deviance_tweedie(1:10, (1:10)^2, tweedie_p = 1)
-deviance_tweedie(1:10, (1:10)^2, tweedie_p = 2)
-deviance_tweedie(1:10, (1:10)^2, tweedie_p = 1.5)
-deviance_tweedie(1:10, (1:10)^2, tweedie_p = 1.5, w = rep(1, 10))
-deviance_tweedie(1:10, (1:10)^2, tweedie_p = 1.5, w = 1:10)
-
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 0)
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1)
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 2)
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.5)
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.5, w = rep(1, 10))
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.5, w = 1:10)
 }
 \references{
 [1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
@@ -39,5 +38,5 @@ deviance_tweedie(1:10, (1:10)^2, tweedie_p = 1.5, w = 1:10)
 \code{\link{deviance_normal}, \link{deviance_poisson}, \link{deviance_gamma}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

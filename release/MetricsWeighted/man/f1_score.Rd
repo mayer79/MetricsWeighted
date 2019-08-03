@@ -19,17 +19,16 @@ f1_score(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted F1 score, the harmonic mean of precision and recall.
+Calculates weighted F1 score, the harmonic mean of precision and recall.
 }
 \examples{
 f1_score(c(0, 0, 1, 1), c(0, 0, 1, 1))
 f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1))
 f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-
 }
 \seealso{
 \code{\link{precision}, \link{recall}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

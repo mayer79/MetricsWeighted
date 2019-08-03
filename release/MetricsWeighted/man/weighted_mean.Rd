@@ -11,7 +11,7 @@ weighted_mean(x, w = NULL, ...)
 
 \item{w}{Optional case weights.}
 
-\item{...}{Further arguments passed to \code{weighted_mean}.}
+\item{...}{Further arguments passed to \code{mean} or \code{weighted.mean}.}
 }
 \value{
 A length-one numeric vector.
@@ -25,5 +25,5 @@ weighted_mean(1:10, w = NULL)
 weighted_mean(1:10, w = 1:10)
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

@@ -19,17 +19,16 @@ logLoss(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted logloss/cross entropy.
+Calculates weighted logloss/cross entropy. Equals half of the unit Bernoulli deviance.
 }
 \examples{
 logLoss(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8))
 logLoss(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
 logLoss(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
-
 }
 \seealso{
-\code{\link{logLoss}}.
+\code{\link{deviance_bernoulli}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

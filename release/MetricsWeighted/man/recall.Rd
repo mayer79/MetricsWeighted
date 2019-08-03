@@ -19,17 +19,16 @@ recall(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted recall.
+Calculates weighted recall.
 }
 \examples{
 recall(c(0, 0, 1, 1), c(0, 0, 1, 1))
 recall(c(1, 0, 0, 1), c(0, 0, 1, 1))
 recall(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-
 }
 \seealso{
 \code{\link{precision}, \link{f1_score}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

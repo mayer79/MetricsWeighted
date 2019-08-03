@@ -18,7 +18,7 @@ install_github("mayer79/MetricsWeighted")
 
 ## Application
 
-There are two ways to apply the package. We will go through them in the following examples. 
+There are two ways to apply the package. We will go through them in the following examples. Please have a look at the vignette on CRAN for further information and examples. 
 
 ## Example 1: Directly apply the metrics
 

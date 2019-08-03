@@ -7,6 +7,4 @@
 
 0 errors | 0 warnings | 0 note
 
-* This is a new release. 
-
-I have added references as well as a vignette describing how to use the package.
+* This is a new release.

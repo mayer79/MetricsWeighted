@@ -27,13 +27,11 @@ Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-
 r_squared(1:10, c(1, 1:9))
 r_squared(1:10, c(1, 1:9), w = rep(1, 10))
 r_squared(1:10, c(1, 1:9), w = 1:10)
-r_squared(0:2, c(0.1, 1, 1.2), deviance_function = deviance_poisson)
-r_squared(0:2, c(0.1, 1, 1.2), w = rep(1, 3), deviance_function = deviance_poisson)
-r_squared(0:2, c(0.1, 1, 1.2), deviance_function = deviance_tweedie, tweedie_p = 1)
-r_squared(0:2, c(0.1, 1, 1.2), w = rep(1, 3), deviance_function = deviance_tweedie, tweedie_p = 1)
-r_squared(0:2, c(0.1, 1, 1.2), deviance_function = deviance_normal)
-r_squared(0:2, c(0.1, 1, 1.2))
-
+r_squared(1:10, c(1, 1:9), deviance_function = deviance_normal)
+r_squared(0:2, c(0.1, 1, 2), deviance_function = deviance_poisson)
+r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3), deviance_function = deviance_poisson)
+r_squared(0:2, c(0.1, 1, 2), deviance_function = deviance_tweedie, tweedie_p = 1)
+r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3), deviance_function = deviance_tweedie, tweedie_p = 1)
 }
 \references{
 [1] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
@@ -42,5 +40,5 @@ r_squared(0:2, c(0.1, 1, 1.2))
 \code{\link{deviance_normal}, \link{mse}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

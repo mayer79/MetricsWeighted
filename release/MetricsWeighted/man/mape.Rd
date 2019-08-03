@@ -21,7 +21,7 @@ mape(actual, predicted, w = NULL, clip_small = 0, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted mean absolute percentage error of predicted values.
+Calculates weighted mean absolute percentage error of predicted values.
 }
 \examples{
 mape(1:10, (1:10)^2)
@@ -29,5 +29,5 @@ mape(1:10, (1:10)^2, w = rep(1, 10))
 mape(1:10, (1:10)^2, w = 1:10)
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

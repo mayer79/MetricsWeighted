@@ -13,23 +13,22 @@ gini_coefficient(actual, predicted, w = NULL, ...)
 
 \item{w}{Optional case weights.}
 
-\item{...}{Further arguments passed by other methods.}
+\item{...}{Further arguments passed to \code{AUC}.}
 }
 \value{
 A numeric vector of length one.
 }
 \description{
-Weighted Gini coefficient, obtained as 2 * AUC - 1. Up to ties in \code{predicted} equivalent to Somer's D.
+Calculates weighted Gini coefficient, obtained as 2 * AUC - 1. Up to ties in \code{predicted} equivalent to Somer's D.
 }
 \examples{
 gini_coefficient(c(0, 0, 1, 1), 2 * c(0.1, 0.1, 0.9, 0.8))
 gini_coefficient(c(0, 0, 1, 1), c(0.1, 0.6, 0.9, 0.5))
 gini_coefficient(c(0, 0, 1, 1), c(0.1, 0.6, 0.9, 0.5), w = 1:4)
-
 }
 \seealso{
 \code{\link{AUC}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

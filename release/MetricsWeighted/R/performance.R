@@ -1,10 +1,9 @@
 #' Apply one or more metrics to columns in a data set
 #'
+#' Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} chain.
+#'
 #' @importFrom stats setNames
-#'
-#' @description Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} chain.
-#'
-#' @author Michael Mayer, \email{mayermichael79@gmail.com}
+#' @author Michael Mayer
 #' @param data A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.
 #' @param actual The column name in \code{data} referring to actual values.
 #' @param predicted The column name in \code{data} referring to predicted values.
@@ -13,14 +12,12 @@
 #' @param key Name of the resulting column containing the name of the metric. Defaults to "metric".
 #' @param value Name of the resulting column with the value of the metric. Defaults to "value".
 #' @param ... Further arguments passed to the metric functions, e.g. if the metric is "r_squared", you could pass the relevant deviance function as additional argument (see examples).
-#'
 #' @return Data frame with one row per metric and two columns: \code{key} and \code{value}.
-#'
 #' @export
-#'
 #' @examples
 #' ir <- iris
-#' ir$fitted <- lm(Sepal.Length ~ ., data = ir)$fitted
+#' fit_num <- lm(Sepal.Length ~ ., data = ir)
+#' ir$fitted <- fit_num$fitted
 #' performance(ir, "Sepal.Length", "fitted")
 #' performance(ir, "Sepal.Length", "fitted", metrics = r_squared)
 #' performance(ir, "Sepal.Length", "fitted", metrics = c(`R-squared` = r_squared, rmse = rmse))
@@ -32,7 +29,6 @@
 #'             deviance_function = deviance_tweedie, tweedie_p = 2)
 #' performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
 #'             deviance_function = deviance_tweedie, tweedie_p = 0)
-#'
 #' \dontrun{
 #' library(dplyr)
 #'

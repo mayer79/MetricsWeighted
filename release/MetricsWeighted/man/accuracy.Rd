@@ -19,17 +19,16 @@ accuracy(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted accuracy, i.e. the weighted proportion of elements in \code{predicted} that are equal to those in \code{observed}.
+Calculates weighted accuracy, i.e. the weighted proportion of elements in \code{predicted} that are equal to those in \code{observed}.
 }
 \examples{
 accuracy(c(0, 0, 1, 1), c(0, 0, 1, 1))
 accuracy(c(1, 0, 0, 1), c(0, 0, 1, 1))
 accuracy(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-
 }
 \seealso{
 \code{\link{classification_error}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

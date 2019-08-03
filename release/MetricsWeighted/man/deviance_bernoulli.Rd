@@ -19,17 +19,16 @@ deviance_bernoulli(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted average of unit Bernoulli deviance, defined as twice logLoss.
+Calculates weighted average of unit Bernoulli deviance. Defined as twice logLoss.
 }
 \examples{
 deviance_bernoulli(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8))
 deviance_bernoulli(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
 deviance_bernoulli(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
-
 }
 \seealso{
 \code{\link{logLoss}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

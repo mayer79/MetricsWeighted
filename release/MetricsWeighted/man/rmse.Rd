@@ -22,14 +22,13 @@ A numeric vector of length one.
 Weighted root-mean-squared error of predicted values. Equals the square root of mean-squared error.
 }
 \examples{
-rmse(1:10, (1:10)^2)
-rmse(1:10, (1:10)^2, w = rep(1, 10))
-rmse(1:10, (1:10)^2, w = 1:10)
-
+rmse(1:10, c(1:9, 12))
+rmse(1:10, c(1:9, 12), w = rep(1, 10))
+rmse(1:10, c(1:9, 12), w = 1:10)
 }
 \seealso{
 \code{\link{mse}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

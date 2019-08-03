@@ -13,19 +13,20 @@ deviance_gamma(actual, predicted, w = NULL, ...)
 
 \item{w}{Optional case weights.}
 
-\item{...}{Further arguments passed to \code{deviance_tweedie}.}
+\item{...}{Further arguments passed to \code{weighted_mean}.}
 }
 \value{
 A numeric vector of length one.
 }
 \description{
-Weighted average of (unscaled) unit Gamma deviance, see e.g. [1].
+Weighted average of (unscaled) unit Gamma deviance, see e.g. [1]. Special case of Tweedie deviance with Tweedie parameter 2.
 }
 \examples{
-deviance_gamma(1:10, (1:10)^2)
-deviance_gamma(1:10, (1:10)^2, w = rep(1, 10))
-deviance_gamma(1:10, (1:10)^2, w = 1:10)
-
+deviance_gamma(1:10, c(1:9, 12))
+deviance_gamma(1:10, c(1:9, 12), w = rep(1, 10))
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 2)
+deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.99)
+deviance_gamma(1:10, c(1:9, 12), w = 1:10)
 }
 \references{
 [1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
@@ -34,5 +35,5 @@ deviance_gamma(1:10, (1:10)^2, w = 1:10)
 \code{\link{deviance_tweedie}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }

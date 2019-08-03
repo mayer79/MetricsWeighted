@@ -19,17 +19,16 @@ classification_error(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}. Equals 1 - accuracy.
+Calculates weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}. Equals 1 - accuracy.
 }
 \examples{
 classification_error(c(0, 0, 1, 1), c(0, 0, 1, 1))
 classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1))
 classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-
 }
 \seealso{
 \code{\link{accuracy}}.
 }
 \author{
-Michael Mayer, \email{mayermichael79@gmail.com}
+Michael Mayer
 }
