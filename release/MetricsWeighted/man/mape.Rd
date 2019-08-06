@@ -4,16 +4,14 @@
 \alias{mape}
 \title{Mean absolute percentage error}
 \usage{
-mape(actual, predicted, w = NULL, clip_small = 0, ...)
+mape(actual, predicted, w = NULL, ...)
 }
 \arguments{
-\item{actual}{Observed values.}
+\item{actual}{Strictly positive observed values.}
 
 \item{predicted}{Predicted values.}
 
 \item{w}{Optional case weights.}
-
-\item{clip_small}{Minimal absolute value in the denominator. Used to avoid divisions by 0.}
 
 \item{...}{Further arguments passed to \code{weighted_mean}.}
 }
@@ -27,7 +25,4 @@ Calculates weighted mean absolute percentage error of predicted values.
 mape(1:10, (1:10)^2)
 mape(1:10, (1:10)^2, w = rep(1, 10))
 mape(1:10, (1:10)^2, w = 1:10)
-}
-\author{
-Michael Mayer
 }

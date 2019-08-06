@@ -33,6 +33,3 @@ AUC(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
 \seealso{
 \code{\link{gini_coefficient}}.
 }
-\author{
-Michael Mayer
-}

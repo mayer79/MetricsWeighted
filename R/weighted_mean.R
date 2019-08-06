@@ -3,9 +3,8 @@
 #' Returns weighted mean of numeric vector.
 #'
 #' @importFrom stats weighted.mean
-#' @author Michael Mayer
 #' @param x Numeric vector.
-#' @param w Optional case weights.
+#' @param w Optional non-negative case weights.
 #' @param ... Further arguments passed to \code{mean} or \code{weighted.mean}.
 #' @return A length-one numeric vector.
 #' @export
@@ -17,5 +16,6 @@ weighted_mean <- function(x, w = NULL, ...) {
   if (is.null(w)) {
     return(mean(x, ...))
   }
+  stopifnot(all(w >= 0))
   weighted.mean(x, w = w, ...)
 }

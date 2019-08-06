@@ -2,7 +2,6 @@
 #'
 #' Calculates weighted F1 score, the harmonic mean of precision and recall.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values (0 or 1).
 #' @param w Optional case weights.

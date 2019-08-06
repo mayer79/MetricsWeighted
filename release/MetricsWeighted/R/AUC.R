@@ -2,7 +2,6 @@
 #'
 #' Calculates weighted AUC, i.e. the area under the receiver operating curve, based on a deterministic version of \code{glmnet::auc}. Note that the unweighted version can be different from the weighted one with unit weights due to ties in \code{predicted}.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values (not necessarly between 0 and 1).
 #' @param w Optional case weights.
@@ -19,6 +18,8 @@
 #' AUC(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
 #' @seealso \code{\link{gini_coefficient}}.
 AUC <- function(actual, predicted, w = NULL, ...) {
+  stopifnot(all(actual == 0 | actual == 1))
+
   # Modified version of glmnet::auc
   if (is.null(w)) {
     r <- rank(predicted)

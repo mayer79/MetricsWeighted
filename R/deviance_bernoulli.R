@@ -2,9 +2,8 @@
 #'
 #' Calculates weighted average of unit Bernoulli deviance. Defined as twice logLoss.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values.
-#' @param predicted Predicted values.
+#' @param predicted Predicted values strictly between 0 and 1.
 #' @param w Optional case weights.
 #' @param ... Further arguments passed to \code{logLoss}.
 #' @return A numeric vector of length one.

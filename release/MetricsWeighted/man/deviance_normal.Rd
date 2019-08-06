@@ -25,7 +25,6 @@ Weighted average of (unscaled) unit normal deviance. This equals the weighted me
 deviance_normal(1:10, c(1:9, 12))
 deviance_normal(1:10, c(1:9, 12), w = rep(1, 10))
 deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 0)
-deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 0.01)
 deviance_normal(1:10, c(1:9, 12), w = 1:10)
 }
 \references{
@@ -33,7 +32,4 @@ deviance_normal(1:10, c(1:9, 12), w = 1:10)
 }
 \seealso{
 \code{\link{deviance_tweedie}, \link{mse}}.
-}
-\author{
-Michael Mayer
 }

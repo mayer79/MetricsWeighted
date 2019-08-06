@@ -29,6 +29,3 @@ f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 \seealso{
 \code{\link{precision}, \link{recall}}.
 }
-\author{
-Michael Mayer
-}

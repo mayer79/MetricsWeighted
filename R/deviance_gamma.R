@@ -2,9 +2,8 @@
 #'
 #' Weighted average of (unscaled) unit Gamma deviance, see e.g. [1]. Special case of Tweedie deviance with Tweedie parameter 2.
 #'
-#' @author Michael Mayer
-#' @param actual Observed values.
-#' @param predicted Predicted values.
+#' @param actual Non-negative observed values.
+#' @param predicted Strictly positive predicted values.
 #' @param w Optional case weights.
 #' @param ... Further arguments passed to \code{weighted_mean}.
 #' @return A numeric vector of length one.
@@ -19,7 +18,9 @@
 #' deviance_gamma(1:10, c(1:9, 12), w = 1:10)
 #' @seealso \code{\link{deviance_tweedie}}.
 deviance_gamma <- function(actual, predicted, w = NULL, ...) {
-  predicted <- pmax(1e-15, predicted)
+  stopifnot(all(is.finite(predicted)),
+            all(predicted > 0),
+            all(actual >= 0))
   u <- -log(ifelse(actual == 0, 1, actual / predicted)) +
     (actual - predicted) / predicted
   weighted_mean(x = 2 * u, w = w, ...)

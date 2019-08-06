@@ -77,6 +77,3 @@ iris \%>\%
                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
 }
 }
-\author{
-Michael Mayer
-}

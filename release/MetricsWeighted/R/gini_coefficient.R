@@ -2,7 +2,6 @@
 #'
 #' Calculates weighted Gini coefficient, obtained as 2 * AUC - 1. Up to ties in \code{predicted} equivalent to Somer's D.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values (not necessarly between 0 and 1).
 #' @param w Optional case weights.

@@ -29,6 +29,3 @@ gini_coefficient(c(0, 0, 1, 1), c(0.1, 0.6, 0.9, 0.5), w = 1:4)
 \seealso{
 \code{\link{AUC}}.
 }
-\author{
-Michael Mayer
-}

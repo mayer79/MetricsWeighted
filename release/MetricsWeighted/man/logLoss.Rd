@@ -9,7 +9,7 @@ logLoss(actual, predicted, w = NULL, ...)
 \arguments{
 \item{actual}{Observed values.}
 
-\item{predicted}{Predicted values.}
+\item{predicted}{Predicted values strictly larger than 0 and smaller than 1.}
 
 \item{w}{Optional case weights.}
 
@@ -28,7 +28,4 @@ logLoss(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
 }
 \seealso{
 \code{\link{deviance_bernoulli}}.
-}
-\author{
-Michael Mayer
 }

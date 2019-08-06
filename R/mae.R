@@ -2,7 +2,6 @@
 #'
 #' Calculates weighted mean absolute error of predicted values.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.

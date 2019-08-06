@@ -2,7 +2,6 @@
 #'
 #' Calculates weighted accuracy, i.e. the weighted proportion of elements in \code{predicted} that are equal to those in \code{observed}.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.

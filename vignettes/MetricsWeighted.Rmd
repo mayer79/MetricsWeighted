@@ -66,7 +66,9 @@ They all take four arguments:
 
 4. `...`: Further arguments.
 
-Notable exception is `deviance_tweedie` that requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance, see e.g. [1]. For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
+Notable exception is `deviance_tweedie` that requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance, see e.g. [1]. For $0 < p < 1$, the Tweedie distribution is undefined.
+
+For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
 
 #### Examples: Regression
 ```{r}
@@ -85,12 +87,10 @@ rmse(y_num, pred_num)
 # Normal deviance equals Tweedie deviance with parameter 0
 deviance_normal(y_num, pred_num)
 deviance_tweedie(y_num, pred_num, tweedie_p = 0)
-deviance_tweedie(y_num, pred_num, tweedie_p = 0.01)
 
 # Poisson deviance equals Tweedie deviance with parameter 1
 deviance_poisson(y_num, pred_num)
 deviance_tweedie(y_num, pred_num, tweedie_p = 1)
-deviance_tweedie(y_num, pred_num, tweedie_p = 0.99)
 deviance_tweedie(y_num, pred_num, tweedie_p = 1.01)
 
 # Gamma deviance equals Tweedie deviance with parameter 2

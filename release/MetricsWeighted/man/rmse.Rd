@@ -29,6 +29,3 @@ rmse(1:10, c(1:9, 12), w = 1:10)
 \seealso{
 \code{\link{mse}}.
 }
-\author{
-Michael Mayer
-}

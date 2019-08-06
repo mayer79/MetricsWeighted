@@ -1,8 +1,7 @@
 #' Tweedie deviance
 #'
-#' Weighted average of (unscaled) unit Tweedie deviance with parameter p. This includes the normal deviance (p = 0), the Poisson deviance (p = 1), as well as the Gamma deviance (p = 2), see e.g. [1] for a reference and \url{https://en.wikipedia.org/wiki/Tweedie_distribution} for the specific deviance formula.
+#' Weighted average of (unscaled) unit Tweedie deviance with parameter p. This includes the normal deviance (p = 0), the Poisson deviance (p = 1), as well as the Gamma deviance (p = 2), see e.g. [1] for a reference and \url{https://en.wikipedia.org/wiki/Tweedie_distribution} for the specific deviance formula. For 0 < p < 1, the distribution is not defined.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
@@ -21,6 +20,8 @@
 #' deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.5, w = 1:10)
 #' @seealso \code{\link{deviance_normal}, \link{deviance_poisson}, \link{deviance_gamma}}.
 deviance_tweedie <- function(actual, predicted, w = NULL, tweedie_p = 0, ...) {
+  stopifnot(tweedie_p <= 0 || tweedie_p >= 1)
+
   # Catch special cases
   if (tweedie_p %in% 0:2) {
     if (tweedie_p == 0) {

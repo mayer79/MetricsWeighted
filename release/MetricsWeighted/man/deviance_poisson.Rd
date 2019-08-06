@@ -9,7 +9,7 @@ deviance_poisson(actual, predicted, w = NULL, ...)
 \arguments{
 \item{actual}{Observed values.}
 
-\item{predicted}{Predicted values.}
+\item{predicted}{Strictly positive predicted values.}
 
 \item{w}{Optional case weights.}
 
@@ -33,7 +33,4 @@ deviance_poisson(0:2, c(0.1, 1, 3), w = 1:3)
 }
 \seealso{
 \code{\link{deviance_tweedie}}.
-}
-\author{
-Michael Mayer
 }

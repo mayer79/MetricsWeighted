@@ -39,6 +39,3 @@ r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3), deviance_function = deviance_tweedie
 \seealso{
 \code{\link{deviance_normal}, \link{mse}}.
 }
-\author{
-Michael Mayer
-}

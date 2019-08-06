@@ -2,7 +2,6 @@
 #'
 #' Calculates weighted mean-squared error of prediction. Equals mean unit normal deviance.
 #'
-#' @author Michael Mayer
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.

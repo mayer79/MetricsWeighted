@@ -3,7 +3,6 @@
 #' Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} chain.
 #'
 #' @importFrom stats setNames
-#' @author Michael Mayer
 #' @param data A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.
 #' @param actual The column name in \code{data} referring to actual values.
 #' @param predicted The column name in \code{data} referring to predicted values.

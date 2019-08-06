@@ -7,9 +7,9 @@
 deviance_gamma(actual, predicted, w = NULL, ...)
 }
 \arguments{
-\item{actual}{Observed values.}
+\item{actual}{Non-negative observed values.}
 
-\item{predicted}{Predicted values.}
+\item{predicted}{Strictly positive predicted values.}
 
 \item{w}{Optional case weights.}
 
@@ -33,7 +33,4 @@ deviance_gamma(1:10, c(1:9, 12), w = 1:10)
 }
 \seealso{
 \code{\link{deviance_tweedie}}.
-}
-\author{
-Michael Mayer
 }

@@ -9,7 +9,7 @@ weighted_mean(x, w = NULL, ...)
 \arguments{
 \item{x}{Numeric vector.}
 
-\item{w}{Optional case weights.}
+\item{w}{Optional non-negative case weights.}
 
 \item{...}{Further arguments passed to \code{mean} or \code{weighted.mean}.}
 }
@@ -23,7 +23,4 @@ Returns weighted mean of numeric vector.
 weighted_mean(1:10)
 weighted_mean(1:10, w = NULL)
 weighted_mean(1:10, w = 1:10)
-}
-\author{
-Michael Mayer
 }
