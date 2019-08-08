@@ -1,6 +1,6 @@
 #' Root-mean-squared error
 #'
-#' Weighted root-mean-squared error of predicted values. Equals the square root of mean-squared error.
+#' Weighted root-mean-squared error of predicted values. Equals the square root of mean-squared error. Smaller values are better.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.

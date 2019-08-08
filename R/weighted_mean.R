@@ -1,6 +1,6 @@
-#' Weighted mean that handles NULL weights
+#' Weighted mean
 #'
-#' Returns weighted mean of numeric vector.
+#' Returns weighted mean of numeric vector. In contrast to \code{stats::weighted.mean}, \code{w} is not required.
 #'
 #' @importFrom stats weighted.mean
 #' @param x Numeric vector.

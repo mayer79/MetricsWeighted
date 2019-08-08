@@ -42,15 +42,15 @@ install_github("mayer79/MetricsWeighted")
 
 ### Metrics and Performance Measures
 
-Currently, the following metrics and performance measures are available.
+Currently, the following metrics and performance measures are available:
 
-- `accuracy`, `recall`, `precision`, `f1_score`, and `classification_error`: Typical binary performance measures derived from the confusion matrix. Require binary predictions.
+- `accuracy`, `recall`, `precision`, `f1_score`, and `classification_error`: Typical binary performance measures derived from the confusion matrix, see e.g. (https://en.wikipedia.org/wiki/Precision_and_recall). Require binary predictions. Except for classification error, high values mean better models (regarding that metric).
 
-- `AUC` and `gini_coefficient`: Area under the receiver operating curve (ROC) and the closely related Gini coefficient. Written for binary targets but not necessarly binary predictions.
+- `AUC` and `gini_coefficient`: Area under the receiver operating curve (ROC) and the closely related Gini coefficient. Actual values must be 0 or 1, while predictions can take any value (only their order is relevant). Higher values mean better models.
 
-- `deviance_bernoulli` and `logLoss`: Further metrics relevant for binary targets, namely the average unit deviance of the binary logistic regression model and the closely connected logLoss.
+- `deviance_bernoulli` and `logLoss`: Further metrics relevant for binary targets, namely the average unit deviance of the binary logistic regression model and logLoss (half the deviance). As with all deviances, lower values mean better models.
 
-- `mse`, `mae`, `mape`, and `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error).
+- `mse`, `mae`, `mape`, and `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error). Small values mean better models.
 
 - `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`, see e.g. (https://en.wikipedia.org/wiki/Tweedie_distribution) for a reference of the underlying formula.
 
@@ -189,6 +189,6 @@ iris %>%
 
 ## References
 
-[1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
+[1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 
-[2] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
+[2] Cohen, J. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.

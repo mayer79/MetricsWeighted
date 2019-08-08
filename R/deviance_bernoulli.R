@@ -1,8 +1,8 @@
 #' Bernoulli deviance
 #'
-#' Calculates weighted average of unit Bernoulli deviance. Defined as twice logLoss.
+#' Calculates weighted average of unit Bernoulli deviance. Defined as twice logLoss. The smaller the deviance, the better the model.
 #'
-#' @param actual Observed values.
+#' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values strictly between 0 and 1.
 #' @param w Optional case weights.
 #' @param ... Further arguments passed to \code{logLoss}.

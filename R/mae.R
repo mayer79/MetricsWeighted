@@ -1,6 +1,6 @@
 #' Mean absolute error
 #'
-#' Calculates weighted mean absolute error of predicted values.
+#' Calculates weighted mean absolute error of predicted values. The smaller the value, the better.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.

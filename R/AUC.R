@@ -1,9 +1,11 @@
 #' Area under the ROC
 #'
-#' Calculates weighted AUC, i.e. the area under the receiver operating curve, based on a deterministic version of \code{glmnet::auc}. Note that the unweighted version can be different from the weighted one with unit weights due to ties in \code{predicted}.
+#' Calculates weighted AUC, i.e. the area under the receiver operating curve, based on a deterministic version of \code{glmnet::auc}. The larger the AUC, the better the model.
+#'
+#' The unweighted version can be different from the weighted one with unit weights due to ties in \code{predicted}.
 #'
 #' @param actual Observed values (0 or 1).
-#' @param predicted Predicted values (not necessarly between 0 and 1).
+#' @param predicted Predicted values of any value (not necessarly between 0 and 1).
 #' @param w Optional case weights.
 #' @param ... Further arguments passed by other methods.
 #' @return A numeric vector of length one.
@@ -28,7 +30,7 @@ AUC <- function(actual, predicted, w = NULL, ...) {
     u <- sum(r[actual == 1]) - n_pos * (n_pos + 1) / 2
     return(exp(log(u) - log(n_pos) - log(n_neg)))
   }
-
+  stopifnot(all(w >= 0))
   op <- order(predicted)
   actual <- actual[op]
   w <- w[op]

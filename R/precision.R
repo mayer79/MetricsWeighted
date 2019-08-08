@@ -1,6 +1,6 @@
 #' Precision
 #'
-#' Calculates weighted precision.
+#' Calculates weighted precision, see \url{https://en.wikipedia.org/wiki/Precision_and_recall} for the (unweighted) version. Higher values are better.
 #'
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values (0 or 1).

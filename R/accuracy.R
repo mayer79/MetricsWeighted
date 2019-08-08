@@ -1,6 +1,6 @@
 #' Accuracy
 #'
-#' Calculates weighted accuracy, i.e. the weighted proportion of elements in \code{predicted} that are equal to those in \code{observed}.
+#' Calculates weighted accuracy, i.e. the weighted proportion of elements in \code{predicted} that are equal to those in \code{actual}. Higher values are better.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.

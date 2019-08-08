@@ -1,6 +1,6 @@
 #' F1 score
 #'
-#' Calculates weighted F1 score, the harmonic mean of precision and recall.
+#' Calculates weighted F1 score or F measure, the harmonic mean of precision and recall, see \url{https://en.wikipedia.org/wiki/Precision_and_recall} for some background. Higher values are better.
 #'
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values (0 or 1).

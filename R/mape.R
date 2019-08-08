@@ -1,6 +1,6 @@
 #' Mean absolute percentage error
 #'
-#' Calculates weighted mean absolute percentage error of predicted values.
+#' Calculates weighted mean absolute percentage error of predicted values. The smaller the value, the better.
 #'
 #' @param actual Strictly positive observed values.
 #' @param predicted Predicted values.

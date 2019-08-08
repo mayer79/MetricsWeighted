@@ -1,6 +1,6 @@
 #' Classification error
 #'
-#' Calculates weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}. Equals 1 - accuracy.
+#' Calculates weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}. Equals 1 - accuracy, thus lower values are better.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.

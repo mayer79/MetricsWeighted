@@ -1,6 +1,6 @@
 #' Mean-squared error
 #'
-#' Calculates weighted mean-squared error of prediction. Equals mean unit normal deviance.
+#' Calculates weighted mean-squared error of prediction. Equals mean unit normal deviance. The smaller the value, the better.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.

@@ -1,6 +1,6 @@
 #' Normal deviance
 #'
-#' Weighted average of (unscaled) unit normal deviance. This equals the weighted mean-squared error, see e.g. [1].
+#' Weighted average of (unscaled) unit normal deviance. This equals the weighted mean-squared error, see e.g. [1]. The smaller the deviance, the better the model.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.
@@ -9,7 +9,7 @@
 #' @return A numeric vector of length one.
 #' @export
 #' @references
-#' [1] Ohlsson E. and Johansson B. (2015). Non-Life Insurance Pricing with Generalized Linear Models. Springer Nature EN. ISBN 978-3642107900.
+#' [1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 #' @examples
 #' deviance_normal(1:10, c(1:9, 12))
 #' deviance_normal(1:10, c(1:9, 12), w = rep(1, 10))
