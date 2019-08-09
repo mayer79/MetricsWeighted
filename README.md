@@ -1,6 +1,6 @@
 # MetricsWeighted
 
-The goal of this package is to provide weighted versions of metrics for machine learning.
+The goal of this package is to provide weighted versions of metrics, scoring functions and performance measures for machine learning.
 
 ## Installation
 

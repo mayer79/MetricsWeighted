@@ -12,8 +12,7 @@ Authors@R:
       person(given = "Christian",
              family = "Lorentzen",
              role = "rev",
-             email = "test@test.ch"))
-Author: Michael Mayer [aut, cre, cph]
+             email = "lorentzen.ch@googlemail.com"))
 Maintainer: Michael Mayer <mayermichael79@gmail.com>
 Description: Provides weighted versions of several metrics,
     scoring functions and performance measures used in machine learning,
