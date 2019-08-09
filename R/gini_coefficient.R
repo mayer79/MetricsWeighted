@@ -1,6 +1,6 @@
 #' Gini coefficient
 #'
-#' Calculates weighted Gini coefficient, obtained as 2 * AUC - 1. Up to ties in \code{predicted} equivalent to Somer's D. The larger the Gini coefficient, the better the model.
+#' Calculates weighted Gini coefficient, obtained as 2 * AUC - 1. Up to ties in \code{predicted} equivalent to Somer's D. The larger the Gini coefficient, the better.
 #'
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values of any value (not necessarly between 0 and 1).

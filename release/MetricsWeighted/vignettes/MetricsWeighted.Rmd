@@ -1,0 +1,204 @@
+---
+title: "MetricsWeighted"
+author: "Michael Mayer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MetricsWeighted}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+```{r setup}
+library(MetricsWeighted)
+```
+
+## Introduction
+
+The R package `MetricsWeighted` provides weighted versions of different machine learning metrics, scoring functions and performance measures as well as tools to use it within a `dplyr` chain.
+
+## Installation
+From CRAN:
+```
+install.packages("MetricsWeighted")
+```
+
+Latest version from github:
+```
+library(devtools)
+install_github("mayer79/MetricsWeighted")
+```
+
+## Illustration
+
+### Metrics, Scoring Functions and Performance Measures
+
+Currently, the following metrics, scoring functions and performance measures are available:
+
+- `accuracy`, `recall`, `precision`, `f1_score`, and `classification_error`: Typical binary performance measures derived from the confusion matrix, see e.g. (https://en.wikipedia.org/wiki/Precision_and_recall). Require binary predictions. Except for classification error, high values are better.
+
+- `AUC` and `gini_coefficient`: Area under the receiver operating curve (ROC) and the closely related Gini coefficient. Actual values must be 0 or 1, while predictions can take any value (only their order is relevant). The higher, the better.
+
+- `deviance_bernoulli` and `logLoss`: Further metrics relevant for binary targets, namely the average unit deviance of the *binary* logistic regression model (0-1 response) and logLoss (half the deviance). As with all deviance measures, smaller values are better.
+
+- `mse`, `mae`, `mape`, and `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error). The lower, the better.
+
+- `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`, see [1] and (https://en.wikipedia.org/wiki/Tweedie_distribution) for a reference of the underlying formula.
+
+- `deviance_normal`,  `deviance_gamma`, and `deviance_poisson`: Special cases of Tweedie. `deviance_normal` equals mean-squared error.
+
+They all take four arguments: 
+
+1. `actual`: Actual observed values.
+
+2. `predicted`: Predicted values.
+
+3. `w`: Optional vector with case weights.
+
+4. `...`: Further arguments.
+
+Notable exception is `deviance_tweedie`. It requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance, see e.g. [1]. For $0 < p < 1$, the Tweedie distribution is undefined.
+
+For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
+
+#### Examples: Regression
+```{r}
+# The data
+y_num <- iris[["Sepal.Length"]]
+fit_num <- lm(Sepal.Length ~ ., data = iris)
+pred_num <- fit_num$fitted
+weights <- seq_len(nrow(iris))
+
+# Performance metrics
+mae(y_num, pred_num)  # unweighted
+mae(y_num, pred_num, w = rep(1, length(y_num)))  # same
+mae(y_num, pred_num, w = weights)  # different
+rmse(y_num, pred_num)
+
+# Normal deviance equals Tweedie deviance with parameter 0
+deviance_normal(y_num, pred_num)
+deviance_tweedie(y_num, pred_num, tweedie_p = 0)
+deviance_tweedie(y_num, pred_num, tweedie_p = -0.001)
+
+# Poisson deviance equals Tweedie deviance with parameter 1
+deviance_poisson(y_num, pred_num)
+deviance_tweedie(y_num, pred_num, tweedie_p = 1)
+deviance_tweedie(y_num, pred_num, tweedie_p = 1.01)
+
+# Gamma deviance equals Tweedie deviance with parameter 2
+deviance_gamma(y_num, pred_num)
+deviance_tweedie(y_num, pred_num, tweedie_p = 2)
+deviance_tweedie(y_num, pred_num, tweedie_p = 1.99)
+deviance_tweedie(y_num, pred_num, tweedie_p = 2.01)
+
+```
+
+#### Examples: Binary classification
+```{r}
+# The data
+y_cat <- iris[["Species"]] == "setosa"
+fit_cat <- glm(y_cat ~ Sepal.Length, data = iris, family = binomial())
+pred_cat <- predict(fit_cat, type = "response")
+
+# Performance metrics
+AUC(y_cat, pred_cat)  # unweighted
+AUC(y_cat, pred_cat, w = weights)  # weighted
+logLoss(y_cat, pred_cat)  # Logloss
+deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
+
+```
+
+### Generalized R-squared
+
+Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [2]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the *binary* logistic regression (`deviance_bernoulli`).
+
+#### Examples
+```{r}
+summary(fit_num)$r.squared
+
+# same
+r_squared(y_num, pred_num)
+r_squared(y_num, pred_num, deviance_function = deviance_tweedie, tweedie_p = 0)
+r_squared(y_num, pred_num, deviance_function = deviance_tweedie, tweedie_p = 1.5)
+
+# weighted
+r_squared(y_num, pred_num, w = weights)
+r_squared(y_num, pred_num, w = weights, deviance_function = deviance_gamma) 
+r_squared(y_num, pred_num, w = weights, deviance_function = deviance_tweedie, tweedie_p = 2)
+r_squared(y_num, pred_num, deviance_function = deviance_tweedie, tweedie_p = 1.5)
+
+# respect to own deviance formula
+myTweedie <- function(actual, predicted, w = NULL, ...) {
+  deviance_tweedie(actual, predicted, w, tweedie_p = 1.5, ...)
+}
+r_squared(y_num, pred_num, deviance_function = myTweedie)
+
+```
+
+### Tidyverse
+
+In order to facilitate the use of these metrics in a `dplyr` chain, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`. Stratified performance calculations can e.g. be done by using `do` from `dplyr`.
+
+#### Examples
+```{r}
+require(dplyr)
+
+# Regression with `Sepal.Length` as response
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  performance("Sepal.Length", "pred")
+
+# Same
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  performance("Sepal.Length", "pred", metrics = rmse)
+
+# Grouped by Species
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  group_by(Species) %>% 
+  do(performance(data = ., actual = "Sepal.Length", predicted = "pred"))
+
+# Customized output
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  performance("Sepal.Length", "pred", value = "performance",
+              metrics = list(`root-mean-squared error` = rmse))
+
+# Multiple measures
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  performance("Sepal.Length", "pred",
+              metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared))
+
+# Grouped by Species
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  group_by(Species) %>% 
+  do(performance(., "Sepal.Length", "pred",
+                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
+
+# Passing extra argument (Tweedie p)
+iris %>% 
+  mutate(pred = predict(fit_num, data = .)) %>% 
+  performance("Sepal.Length", "pred",
+              metrics = list(`normal deviance` = deviance_normal, 
+                             `Tweedie with p = 0` = deviance_tweedie),
+              tweedie_p = 0)
+
+```
+
+## References
+
+[1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
+
+[2] Cohen, J. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.

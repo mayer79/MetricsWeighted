@@ -1,6 +1,6 @@
 #' Pseudo R-squared
 #'
-#' Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. Higher values mean better models.
+#' Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.
@@ -21,12 +21,12 @@
 #' r_squared(0:2, c(0.1, 1, 2), deviance_function = deviance_tweedie, tweedie_p = 1)
 #' r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3),
 #'   deviance_function = deviance_tweedie, tweedie_p = 1)
-# respect to own deviance formula
+#'
+#' # respect to own deviance formula
 #' myTweedie <- function(actual, predicted, w = NULL, ...) {
 #'   deviance_tweedie(actual, predicted, w, tweedie_p = 1.5, ...)
 #' }
-#'
-#' r_squared(y_num, pred_num, deviance_function = myTweedie)
+#' r_squared(1:10, c(1, 1:9), deviance_function = myTweedie)
 #' @seealso \code{\link{deviance_normal}, \link{mse}}.
 r_squared <- function(actual, predicted, w = NULL, deviance_function = mse, ...) {
   stopifnot(is.function(deviance_function))
