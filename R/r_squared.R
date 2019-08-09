@@ -21,12 +21,12 @@
 #' r_squared(0:2, c(0.1, 1, 2), deviance_function = deviance_tweedie, tweedie_p = 1)
 #' r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3),
 #'   deviance_function = deviance_tweedie, tweedie_p = 1)
-#' # Define own deviance function
-#' tweedie_1_5 <- function(actual, predicted, w = NULL, ...) {
+# respect to own deviance formula
+#' myTweedie <- function(actual, predicted, w = NULL, ...) {
 #'   deviance_tweedie(actual, predicted, w, tweedie_p = 1.5, ...)
 #' }
-#' r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3),
-#'   deviance_function = tweedie_1_5)
+#'
+#' r_squared(y_num, pred_num, deviance_function = myTweedie)
 #' @seealso \code{\link{deviance_normal}, \link{mse}}.
 r_squared <- function(actual, predicted, w = NULL, deviance_function = mse, ...) {
   stopifnot(is.function(deviance_function))
