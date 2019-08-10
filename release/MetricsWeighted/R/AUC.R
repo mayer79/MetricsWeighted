@@ -31,6 +31,9 @@ AUC <- function(actual, predicted, w = NULL, ...) {
     return(exp(log(u) - log(n_pos) - log(n_neg)))
   }
   stopifnot(all(w >= 0))
+  if (all(w == 0)) {
+    stop("All weights are zero")
+  }
   op <- order(predicted)
   actual <- actual[op]
   w <- w[op]
