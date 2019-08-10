@@ -1,4 +1,4 @@
-#' Mean absolute percentage error
+#' Mean Absolute Percentage Error
 #'
 #' Calculates weighted mean absolute percentage error of predicted values. The smaller, the better.
 #'
@@ -9,11 +9,11 @@
 #' @return A numeric vector of length one.
 #' @export
 #' @examples
-#' mape(1:10, (1:10)^2)
-#' mape(1:10, (1:10)^2, w = rep(1, 10))
-#' mape(1:10, (1:10)^2, w = 1:10)
+#' mape(1:10, c(1:9, 12))
+#' mape(1:10, c(1:9, 12), w = rep(1, 10))
+#' mape(1:10, c(1:9, 12), w = 1:10)
 mape <- function(actual, predicted, w = NULL, ...) {
-  stopifnot(all(actual > 0))
+  stopifnot(all(actual != 0))
   val <- abs(actual - predicted) / abs(actual)
   100 * weighted_mean(val, w = w, ...)
 }

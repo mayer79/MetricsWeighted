@@ -1,4 +1,4 @@
-#' Pseudo R-squared
+#' Pseudo R-Squared
 #'
 #' Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
 #'

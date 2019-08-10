@@ -1,4 +1,4 @@
-#' Poisson deviance
+#' Poisson Deviance
 #'
 #' Weighted average of unit Poisson deviance, see [1]. Special case of Tweedie deviance with Tweedie parameter 1.
 #'

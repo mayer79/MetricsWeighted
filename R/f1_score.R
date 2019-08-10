@@ -1,4 +1,4 @@
-#' F1 score
+#' F1 Score
 #'
 #' Calculates weighted F1 score or F measure defined as the harmonic mean of precision and recall, see \url{https://en.wikipedia.org/wiki/Precision_and_recall} for some background. The higher, the better.
 #'

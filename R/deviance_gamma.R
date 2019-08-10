@@ -1,4 +1,4 @@
-#' Gamma deviance
+#' Gamma Deviance
 #'
 #' Weighted average of (unscaled) unit Gamma deviance, see e.g. [1]. Special case of Tweedie deviance with Tweedie parameter 2. The smaller the deviance, the better.
 #'

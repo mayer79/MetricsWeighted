@@ -1,4 +1,4 @@
-#' Classification error
+#' Classification Error
 #'
 #' Calculates weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}. Equals 1 - accuracy, thus lower values are better.
 #'

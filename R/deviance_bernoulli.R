@@ -1,4 +1,4 @@
-#' Bernoulli deviance
+#' Bernoulli Deviance
 #'
 #' Calculates weighted average of unit Bernoulli deviance. Defined as twice logLoss. The smaller the deviance, the better.
 #'

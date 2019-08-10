@@ -1,4 +1,4 @@
-#' Apply one or more metrics to columns in a data set
+#' Performance
 #'
 #' Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} chain.
 #'

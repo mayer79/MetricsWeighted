@@ -1,4 +1,4 @@
-#' Tweedie deviance
+#' Tweedie Deviance
 #'
 #' Weighted average of (unscaled) unit Tweedie deviance with parameter p. This includes the normal deviance (p = 0), the Poisson deviance (p = 1), as well as the Gamma deviance (p = 2), see [1] for a reference and \url{https://en.wikipedia.org/wiki/Tweedie_distribution} for the specific deviance formula. For 0 < p < 1, the distribution is not defined. The smaller the deviance, the better.
 #'
