@@ -48,7 +48,7 @@ Currently, the following metrics, scoring functions and performance measures are
 
 - `AUC` and `gini_coefficient`: Area under the receiver operating curve (ROC) and the closely related Gini coefficient. Actual values must be 0 or 1, while predictions can take any value (only their order is relevant). The higher, the better.
 
-- `deviance_bernoulli` and `logLoss`: Further metrics relevant for binary targets, namely the average unit deviance of the *binary* logistic regression model (0-1 response) and logLoss (half the deviance). As with all deviance measures, smaller values are better.
+- `deviance_bernoulli` and `logLoss`: Further metrics relevant for binary targets, namely the average unit deviance of the *binary* logistic regression model (0-1 response) and logLoss (half that deviance). As with all deviance measures, smaller values are better.
 
 - `mse`, `mae`, `mape`, and `rmse`: Typical regression metrics (mean-squared error, mean-absolute error, mean absolute percentage error and root-mean-squared error). The lower, the better.
 
