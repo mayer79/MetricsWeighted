@@ -5,7 +5,7 @@
 \title{Weighted Quantiles}
 \usage{
 weighted_quantile(x, w = NULL, probs = seq(0, 1, 0.25), na.rm = TRUE,
-  names = TRUE, ...)
+  names = TRUE, type = 4, ...)
 }
 \arguments{
 \item{x}{Numeric vector.}
@@ -18,15 +18,17 @@ weighted_quantile(x, w = NULL, probs = seq(0, 1, 0.25), na.rm = TRUE,
 
 \item{names}{Return names?}
 
+\item{type}{Quantile type. Only relevant for the unweighted case.}
+
 \item{...}{Further arguments passed to \code{stats::quantile} in the unweighted case. Not used in the weighted case.}
 }
 \description{
-Function copied (and adapted) from spatstat package. Based on linear interpolation of the weighted empirical cdf (like type 4 in stats::quantile).
+Calculates weighted quantiles. Based on linear interpolation of the weighted empirical cdf (like type 4 in stats::quantile). If no weights are passed, uses \code{stats::quantile} with type = 4.
 }
 \examples{
 n <- 11
-quantile(seq_len(n))
-weighted_quantile(seq_len(n), type = 4)
+quantile(seq_len(n), type = 4)
+weighted_quantile(seq_len(n))
 weighted_quantile(seq_len(n), w = rep(1, n))
 weighted_quantile(seq_len(n), w = seq_len(n))
 weighted_quantile(seq_len(n), w = seq_len(n), names = FALSE)

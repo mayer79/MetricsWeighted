@@ -14,5 +14,6 @@
 #' accuracy(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 #' @seealso \code{\link{classification_error}}.
 accuracy <- function(actual, predicted, w = NULL, ...) {
+  stopifnot(length(actual) == length(predicted))
   weighted_mean(actual == predicted, w = w, ...)
 }

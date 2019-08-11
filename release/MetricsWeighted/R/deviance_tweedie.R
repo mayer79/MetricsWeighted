@@ -34,7 +34,8 @@ deviance_tweedie <- function(actual, predicted, w = NULL, tweedie_p = 0, ...) {
     return(fun(actual = actual, predicted = predicted, w = w, ...))
   }
   # General Tweedie case
-  stopifnot(all(predicted > 0))
+  stopifnot(length(actual) == length(predicted),
+            all(predicted > 0))
   if (tweedie_p >= 1 && tweedie_p < 2) {
     stopifnot(all(actual >= 0))
   }

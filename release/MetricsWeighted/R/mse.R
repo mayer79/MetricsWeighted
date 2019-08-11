@@ -14,5 +14,6 @@
 #' mse(1:10, c(1:9, 12), w = 1:10)
 #' @seealso \code{\link{rmse}, \link{deviance_normal}}.
 mse <- function(actual, predicted, w = NULL, ...) {
+  stopifnot(length(actual) == length(predicted))
   weighted_mean((actual - predicted)^2, w = w, ...)
 }

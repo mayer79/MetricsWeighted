@@ -20,7 +20,8 @@
 #' AUC(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
 #' @seealso \code{\link{gini_coefficient}}.
 AUC <- function(actual, predicted, w = NULL, ...) {
-  stopifnot(all(actual == 0 | actual == 1))
+  stopifnot(length(actual) == length(predicted),
+            all(actual == 0 | actual == 1))
 
   # Modified version of glmnet::auc
   if (is.null(w)) {
@@ -30,7 +31,8 @@ AUC <- function(actual, predicted, w = NULL, ...) {
     u <- sum(r[actual == 1]) - n_pos * (n_pos + 1) / 2
     return(exp(log(u) - log(n_pos) - log(n_neg)))
   }
-  stopifnot(all(w >= 0))
+  stopifnot(all(w >= 0),
+            length(predicted) == length(w))
   if (all(w == 0)) {
     stop("All weights are zero")
   }

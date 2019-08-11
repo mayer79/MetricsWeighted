@@ -18,7 +18,9 @@
 #' deviance_poisson(0:2, c(0.1, 1, 3), w = 1:3)
 #' @seealso \code{\link{deviance_tweedie}}.
 deviance_poisson <- function(actual, predicted, w = NULL, ...) {
-  stopifnot(all(actual >= 0), all(predicted > 0))
+  stopifnot(length(actual) == length(predicted),
+            all(actual >= 0),
+            all(predicted > 0))
   pos <- actual > 0
   predicted[pos] <- (actual * log(actual / predicted) - (actual - predicted))[pos]
   weighted_mean(x = 2 * predicted, w = w, ...)

@@ -13,7 +13,8 @@
 #' mape(1:10, c(1:9, 12), w = rep(1, 10))
 #' mape(1:10, c(1:9, 12), w = 1:10)
 mape <- function(actual, predicted, w = NULL, ...) {
-  stopifnot(all(actual != 0))
+  stopifnot(length(actual) == length(predicted),
+            all(actual != 0))
   val <- abs(actual - predicted) / abs(actual)
   100 * weighted_mean(val, w = w, ...)
 }

@@ -18,7 +18,7 @@ weighted_mean <- function(x, w = NULL, ...) {
   if (is.null(w)) {
     return(mean(x, ...))
   }
-  stopifnot(all(w >= 0))
+  stopifnot(all(w >= 0), length(x) == length(w))
   if (all(w == 0)) {
     stop("All weights are zero")
   }

@@ -18,7 +18,9 @@
 #' deviance_gamma(1:10, c(1:9, 12), w = 1:10)
 #' @seealso \code{\link{deviance_tweedie}}.
 deviance_gamma <- function(actual, predicted, w = NULL, ...) {
-  stopifnot(all(predicted > 0), all(actual > 0))
+  stopifnot(length(actual) == length(predicted),
+            all(predicted > 0),
+            all(actual > 0))
   u <- -log(ifelse(actual == 0, 1, actual / predicted)) +
     (actual - predicted) / predicted
   weighted_mean(x = 2 * u, w = w, ...)
