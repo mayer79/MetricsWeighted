@@ -13,6 +13,7 @@
 #' weighted_mean(1:10, w = NULL)
 #' weighted_mean(1:10, w = 1:10)
 #' # weighted_mean(1, 0) # Raises error
+#' @seealso \code{\link{weighted_quantile}}.
 weighted_mean <- function(x, w = NULL, ...) {
   if (is.null(w)) {
     return(mean(x, ...))
