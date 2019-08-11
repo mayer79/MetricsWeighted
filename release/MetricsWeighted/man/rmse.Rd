@@ -2,7 +2,7 @@
 % Please edit documentation in R/rmse.R
 \name{rmse}
 \alias{rmse}
-\title{Root-mean-squared error}
+\title{Root-Mean-Squared Error}
 \usage{
 rmse(actual, predicted, w = NULL, ...)
 }

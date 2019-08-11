@@ -2,7 +2,7 @@
 % Please edit documentation in R/performance.R
 \name{performance}
 \alias{performance}
-\title{Apply one or more metrics to columns in a data set}
+\title{Performance}
 \usage{
 performance(data, actual, predicted, w = NULL, metrics = rmse,
   key = "metric", value = "value", ...)

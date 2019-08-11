@@ -2,7 +2,7 @@
 % Please edit documentation in R/weighted_mean.R
 \name{weighted_mean}
 \alias{weighted_mean}
-\title{Weighted mean}
+\title{Weighted Mean}
 \usage{
 weighted_mean(x, w = NULL, ...)
 }
@@ -23,4 +23,8 @@ Returns weighted mean of a numeric vector. In contrast to \code{stats::weighted.
 weighted_mean(1:10)
 weighted_mean(1:10, w = NULL)
 weighted_mean(1:10, w = 1:10)
+# weighted_mean(1, 0) # Raises error
+}
+\seealso{
+\code{\link{weighted_quantile}}.
 }

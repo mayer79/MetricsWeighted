@@ -2,7 +2,7 @@
 % Please edit documentation in R/mape.R
 \name{mape}
 \alias{mape}
-\title{Mean absolute percentage error}
+\title{Mean Absolute Percentage Error}
 \usage{
 mape(actual, predicted, w = NULL, ...)
 }
@@ -22,7 +22,7 @@ A numeric vector of length one.
 Calculates weighted mean absolute percentage error of predicted values. The smaller, the better.
 }
 \examples{
-mape(1:10, (1:10)^2)
-mape(1:10, (1:10)^2, w = rep(1, 10))
-mape(1:10, (1:10)^2, w = 1:10)
+mape(1:10, c(1:9, 12))
+mape(1:10, c(1:9, 12), w = rep(1, 10))
+mape(1:10, c(1:9, 12), w = 1:10)
 }

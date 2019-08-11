@@ -2,7 +2,7 @@
 % Please edit documentation in R/gini_coefficient.R
 \name{gini_coefficient}
 \alias{gini_coefficient}
-\title{Gini coefficient}
+\title{Gini Coefficient}
 \usage{
 gini_coefficient(actual, predicted, w = NULL, ...)
 }

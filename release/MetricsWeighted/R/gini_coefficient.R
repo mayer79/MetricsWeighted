@@ -1,4 +1,4 @@
-#' Gini coefficient
+#' Gini Coefficient
 #'
 #' Calculates weighted Gini coefficient, obtained as 2 * AUC - 1. Up to ties in \code{predicted} equivalent to Somer's D. The larger the Gini coefficient, the better.
 #'

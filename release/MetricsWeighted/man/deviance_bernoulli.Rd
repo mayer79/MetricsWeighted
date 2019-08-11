@@ -2,7 +2,7 @@
 % Please edit documentation in R/deviance_bernoulli.R
 \name{deviance_bernoulli}
 \alias{deviance_bernoulli}
-\title{Bernoulli deviance}
+\title{Bernoulli Deviance}
 \usage{
 deviance_bernoulli(actual, predicted, w = NULL, ...)
 }

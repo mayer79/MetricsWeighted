@@ -2,7 +2,7 @@
 % Please edit documentation in R/deviance_poisson.R
 \name{deviance_poisson}
 \alias{deviance_poisson}
-\title{Poisson deviance}
+\title{Poisson Deviance}
 \usage{
 deviance_poisson(actual, predicted, w = NULL, ...)
 }

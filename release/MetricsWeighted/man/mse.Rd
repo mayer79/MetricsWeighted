@@ -2,7 +2,7 @@
 % Please edit documentation in R/mse.R
 \name{mse}
 \alias{mse}
-\title{Mean-squared error}
+\title{Mean-Squared Error}
 \usage{
 mse(actual, predicted, w = NULL, ...)
 }

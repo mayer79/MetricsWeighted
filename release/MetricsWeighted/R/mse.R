@@ -1,4 +1,4 @@
-#' Mean-squared error
+#' Mean-Squared Error
 #'
 #' Calculates weighted mean-squared error of prediction. Equals mean unit normal deviance. The smaller, the better.
 #'

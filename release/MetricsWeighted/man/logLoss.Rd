@@ -2,7 +2,7 @@
 % Please edit documentation in R/logLoss.R
 \name{logLoss}
 \alias{logLoss}
-\title{Log Loss/binary cross entropy}
+\title{Log Loss/Binary Cross Entropy}
 \usage{
 logLoss(actual, predicted, w = NULL, ...)
 }

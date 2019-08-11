@@ -2,7 +2,7 @@
 % Please edit documentation in R/deviance_normal.R
 \name{deviance_normal}
 \alias{deviance_normal}
-\title{Normal deviance}
+\title{Normal Deviance}
 \usage{
 deviance_normal(actual, predicted, w = NULL, ...)
 }

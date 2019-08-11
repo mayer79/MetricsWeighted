@@ -2,7 +2,7 @@
 % Please edit documentation in R/classification_error.R
 \name{classification_error}
 \alias{classification_error}
-\title{Classification error}
+\title{Classification Error}
 \usage{
 classification_error(actual, predicted, w = NULL, ...)
 }

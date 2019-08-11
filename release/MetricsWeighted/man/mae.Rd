@@ -2,7 +2,7 @@
 % Please edit documentation in R/mae.R
 \name{mae}
 \alias{mae}
-\title{Mean absolute error}
+\title{Mean Absolute Error}
 \usage{
 mae(actual, predicted, w = NULL, ...)
 }

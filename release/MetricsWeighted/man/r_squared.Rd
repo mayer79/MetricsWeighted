@@ -2,7 +2,7 @@
 % Please edit documentation in R/r_squared.R
 \name{r_squared}
 \alias{r_squared}
-\title{Pseudo R-squared}
+\title{Pseudo R-Squared}
 \usage{
 r_squared(actual, predicted, w = NULL, deviance_function = mse, ...)
 }

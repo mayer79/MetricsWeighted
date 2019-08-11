@@ -1,4 +1,4 @@
-#' Normal deviance
+#' Normal Deviance
 #'
 #' Weighted average of (unscaled) unit normal deviance. This equals the weighted mean-squared error, see e.g. [1]. The smaller the deviance, the better.
 #'

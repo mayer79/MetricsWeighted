@@ -2,7 +2,7 @@
 % Please edit documentation in R/deviance_tweedie.R
 \name{deviance_tweedie}
 \alias{deviance_tweedie}
-\title{Tweedie deviance}
+\title{Tweedie Deviance}
 \usage{
 deviance_tweedie(actual, predicted, w = NULL, tweedie_p = 0, ...)
 }

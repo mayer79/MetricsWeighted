@@ -1,4 +1,4 @@
-#' Root-mean-squared error
+#' Root-Mean-Squared Error
 #'
 #' Weighted root-mean-squared error of predicted values. Equals the square root of mean-squared error. Smaller values are better.
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/deviance_gamma.R
 \name{deviance_gamma}
 \alias{deviance_gamma}
-\title{Gamma deviance}
+\title{Gamma Deviance}
 \usage{
 deviance_gamma(actual, predicted, w = NULL, ...)
 }

@@ -6,3 +6,5 @@
 
 * More strict error handling.
 
+* Added median absolute error (and weighted_median, weighted_quantile)
+

@@ -19,7 +19,7 @@ AUC(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Calculates weighted AUC, i.e. the area under the receiver operating curve, based on a deterministic version of \code{glmnet::auc}. The larger the AUC, the better.
+Function copied from glmnet package (modified to ensure deterministic results). Calculates weighted AUC, i.e. the area under the receiver operating curve. The larger, the better.
 }
 \details{
 The unweighted version can be different from the weighted one with unit weights due to ties in \code{predicted}.

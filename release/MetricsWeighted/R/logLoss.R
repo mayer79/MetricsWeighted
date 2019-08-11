@@ -1,4 +1,4 @@
-#' Log Loss/binary cross entropy
+#' Log Loss/Binary Cross Entropy
 #'
 #' Calculates weighted logloss resp. cross entropy. Equals half of the unit Bernoulli deviance. The smaller, the better.
 #'

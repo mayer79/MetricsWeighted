@@ -2,7 +2,7 @@
 % Please edit documentation in R/f1_score.R
 \name{f1_score}
 \alias{f1_score}
-\title{F1 score}
+\title{F1 Score}
 \usage{
 f1_score(actual, predicted, w = NULL, ...)
 }
