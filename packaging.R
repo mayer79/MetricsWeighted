@@ -28,7 +28,7 @@ create_package(
   #  Author = "Michael Mayer [aut, cre, cph]",
     Maintainer = "Michael Mayer <mayermichael79@gmail.com>"))
 
-# file.copy(file.path(pkg, "DESCRIPTION"), to = getwd(), overwrite = TRUE)
+file.copy(file.path(pkg, "DESCRIPTION"), to = getwd(), overwrite = TRUE)
 # Use package has no option to look for pkg, so we first copy description from pkg, modify it and move back
 use_package("stats", "Imports")
 use_package("dplyr", "Suggests")

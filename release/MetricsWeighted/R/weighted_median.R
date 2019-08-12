@@ -1,17 +1,18 @@
 #' Weighted Median
 #'
-#' Calculates weighted median.
+#' Calculates weighted median. For odd sample sizes consistent with unweighted quantiles.
 #'
 #' @param x Numeric vector.
 #' @param w Optional non-negative case weights.
 #' @param ... Further arguments passed to \code{weighted_quantile}.
 #' @export
 #' @examples
-#' n <- 20
-#' quantile(seq_len(n), probs = 0.5, type = 4, names = FALSE)
-#' weighted_median(seq_len(n), type = 4)
-#' weighted_median(seq_len(n), w = rep(1, n))
-#' weighted_median(seq_len(n), w = seq_len(n))
+#' n <- 21
+#' x <- seq_len(n)
+#' quantile(x, probs = 0.5)
+#' weighted_median(x, w = rep(1, n))
+#' weighted_median(x, w = x)
+#' quantile(rep(x, x), probs = 0.5)
 #' @seealso \code{\link{weighted_quantile}}.
 weighted_median <- function(x, w = NULL, ...) {
   weighted_quantile(x, w, probs = 0.5, names = FALSE, ...)

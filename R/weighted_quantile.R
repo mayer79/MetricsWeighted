@@ -2,7 +2,7 @@
 #'
 #' Calculates weighted quantiles based on the generalized inverse of the weighted ECDF. If no weights are passed, uses \code{stats::quantile}.
 #'
-#' @importFrom stats quantile
+#' @importFrom stats quantile stepfun
 #' @param x Numeric vector.
 #' @param w Optional non-negative case weights.
 #' @param probs Vector of probabilities.
@@ -11,12 +11,12 @@
 #' @param ... Further arguments passed to \code{stats::quantile} in the unweighted case. Not used in the weighted case.
 #' @export
 #' @examples
-#' n <- 11
+#' n <- 10
 #' x <- seq_len(n)
 #' quantile(x)
 #' weighted_quantile(x)
 #' weighted_quantile(x, w = rep(1, n))
-#' quantile(x, type = 1) # same
+#' quantile(x, type = 1)
 #' weighted_quantile(x, w = x)
 #' weighted_quantile(x, w = x, names = FALSE)
 #' weighted_quantile(x, w = x, probs = 0.5, names = FALSE)
