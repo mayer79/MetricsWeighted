@@ -1,6 +1,6 @@
 #' Weighted Quantiles
 #'
-#' Calculates weighted quantiles. Based on linear interpolation of the weighted empirical cdf (like type 4 in stats::quantile). If no weights are passed, uses \code{stats::quantile} with type = 4.
+#' Calculates weighted quantiles based on the generalized inverse of the weighted ECDF. If no weights are passed, uses \code{stats::quantile}.
 #'
 #' @importFrom stats quantile
 #' @param x Numeric vector.
@@ -8,23 +8,30 @@
 #' @param probs Vector of probabilities.
 #' @param na.rm Ignore missing data?
 #' @param names Return names?
-#' @param type Quantile type. Only relevant for the unweighted case.
 #' @param ... Further arguments passed to \code{stats::quantile} in the unweighted case. Not used in the weighted case.
 #' @export
 #' @examples
 #' n <- 11
-#' quantile(seq_len(n), type = 4)
-#' weighted_quantile(seq_len(n))
-#' weighted_quantile(seq_len(n), w = rep(1, n))
-#' weighted_quantile(seq_len(n), w = seq_len(n))
-#' weighted_quantile(seq_len(n), w = seq_len(n), names = FALSE)
-#' weighted_quantile(seq_len(n), w = seq_len(n), probs = 0.5, names = FALSE)
+#' x <- seq_len(n)
+#' quantile(x)
+#' weighted_quantile(x)
+#' weighted_quantile(x, w = rep(1, n))
+#' quantile(x, type = 1) # same
+#' weighted_quantile(x, w = x)
+#' weighted_quantile(x, w = x, names = FALSE)
+#' weighted_quantile(x, w = x, probs = 0.5, names = FALSE)
+#'
+#' # Example with integer weights
+#' x <- c(1, 1:11, 11, 11)
+#' w <- seq_along(x)
+#' weighted_quantile(x, w)
+#' quantile(rep(x, w)) # same
 #' @seealso \code{\link{weighted_median}}.
 weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
-                              na.rm = TRUE, names = TRUE, type = 4, ...) {
+                              na.rm = TRUE, names = TRUE, ...) {
   # Initial checks and subsetting
   if (is.null(w)) {
-    return(quantile(x = x, probs = probs, na.rm = na.rm, names = names, type = type, ...))
+    return(quantile(x = x, probs = probs, na.rm = na.rm, names = names, ...))
   }
   stopifnot(length(x) == length(w),
             all(probs >= 0 & probs <= 1))
@@ -45,7 +52,9 @@ weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
     ord <- order(x)
     x <- x[ord]
     w <- w[ord]
-    out <- approxfun(cumsum(w) / sum(w), x, rule = 2)(probs)
+    w <- w / sum(w)
+    cs <- cumsum(w[-length(w)])
+    out <- stepfun(cs, x)(probs)
   }
   if (names) {
     names(out) <- paste0(format(100 * probs, trim = TRUE), "%")
