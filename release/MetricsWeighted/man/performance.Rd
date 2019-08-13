@@ -6,23 +6,23 @@
 \alias{performance.data.frame}
 \title{Performance}
 \usage{
-performance(data, ...)
+performance(object, ...)
 
-\method{performance}{default}(data, ...)
+\method{performance}{default}(object, ...)
 
-\method{performance}{data.frame}(data, actual, predicted, w = NULL,
+\method{performance}{data.frame}(object, actual, predicted, w = NULL,
   metrics = rmse, key = "metric", value = "value", ...)
 }
 \arguments{
-\item{data}{A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.}
+\item{object}{A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.}
 
 \item{...}{Further arguments passed to the metric functions, e.g. if the metric is "r_squared", you could pass the relevant deviance function as additional argument (see examples).}
 
-\item{actual}{The column name in \code{data} referring to actual values.}
+\item{actual}{The column name in \code{object} referring to actual values.}
 
-\item{predicted}{The column name in \code{data} referring to predicted values.}
+\item{predicted}{The column name in \code{object} referring to predicted values.}
 
-\item{w}{The optional column name in \code{data} referring to case weights.}
+\item{w}{The optional column name in \code{object} referring to case weights.}
 
 \item{metrics}{Either a function or a named list of functions. Each function represents a metric and has four arguments: observed, predicted, case weights and \code{...}. If not a named list but a single function, the name of the function is guessed by \code{deparse(substitute(...))}, which would not provide the actual name of the function if called within \code{lapply} etc. In such cases, you can pass a named list with one element, e.g. \code{list(rmse = rmse)}.}
 
@@ -74,7 +74,7 @@ iris \%>\%
 iris \%>\%
   mutate(pred = predict(fit_num, data = .)) \%>\%
   group_by(Species) \%>\%
-  do(performance(data = ., "Sepal.Length", "pred"))
+  do(performance(., "Sepal.Length", "pred"))
 
 # Multiple measures
 iris \%>\%

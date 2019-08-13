@@ -167,7 +167,7 @@ iris %>%
 iris %>% 
   mutate(pred = predict(fit_num, data = .)) %>% 
   group_by(Species) %>% 
-  do(performance(data = ., actual = "Sepal.Length", predicted = "pred"))
+  do(performance(., actual = "Sepal.Length", predicted = "pred"))
 
 # Customized output
 iris %>% 
