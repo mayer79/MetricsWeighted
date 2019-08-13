@@ -2,13 +2,21 @@
 % Please edit documentation in R/performance.R
 \name{performance}
 \alias{performance}
+\alias{performance.default}
+\alias{performance.data.frame}
 \title{Performance}
 \usage{
-performance(data, actual, predicted, w = NULL, metrics = rmse,
-  key = "metric", value = "value", ...)
+performance(data, ...)
+
+\method{performance}{default}(data, ...)
+
+\method{performance}{data.frame}(data, actual, predicted, w = NULL,
+  metrics = rmse, key = "metric", value = "value", ...)
 }
 \arguments{
 \item{data}{A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.}
+
+\item{...}{Further arguments passed to the metric functions, e.g. if the metric is "r_squared", you could pass the relevant deviance function as additional argument (see examples).}
 
 \item{actual}{The column name in \code{data} referring to actual values.}
 
@@ -21,8 +29,6 @@ performance(data, actual, predicted, w = NULL, metrics = rmse,
 \item{key}{Name of the resulting column containing the name of the metric. Defaults to "metric".}
 
 \item{value}{Name of the resulting column with the value of the metric. Defaults to "value".}
-
-\item{...}{Further arguments passed to the metric functions, e.g. if the metric is "r_squared", you could pass the relevant deviance function as additional argument (see examples).}
 }
 \value{
 Data frame with one row per metric and two columns: \code{key} and \code{value}.
@@ -30,6 +36,13 @@ Data frame with one row per metric and two columns: \code{key} and \code{value}.
 \description{
 Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} chain.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{default}: Default performance method.
+
+\item \code{data.frame}: \code{performance} method for a data.frame.
+}}
+
 \examples{
 ir <- iris
 fit_num <- lm(Sepal.Length ~ ., data = ir)
@@ -76,4 +89,5 @@ iris \%>\%
  do(performance(., "Sepal.Length", "pred",
                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
 }
+
 }

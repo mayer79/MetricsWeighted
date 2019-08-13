@@ -30,7 +30,7 @@ quantile(x)
 weighted_quantile(x)
 weighted_quantile(x, w = rep(1, n))
 quantile(x, type = 1)
-weighted_quantile(x, w = x)
+weighted_quantile(x, w = x) # same as Hmisc::wtd.quantile
 weighted_quantile(x, w = x, names = FALSE)
 weighted_quantile(x, w = x, probs = 0.5, names = FALSE)
 

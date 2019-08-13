@@ -59,7 +59,20 @@
 #'  do(performance(., "Sepal.Length", "pred",
 #'                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
 #' }
-performance <- function(data, actual, predicted, w = NULL, metrics = rmse,
+#'
+performance <- function(data, ...) {
+  UseMethod("performance")
+}
+
+#' @describeIn performance Default performance method.
+#' @export
+performance.default <- function(data, ...) {
+  stop("No default performance method available.")
+}
+
+#' @describeIn performance \code{performance} method for a data.frame.
+#' @export
+performance.data.frame <- function(data, actual, predicted, w = NULL, metrics = rmse,
                         key = "metric", value = "value", ...) {
   stopifnot(c(actual, predicted, w) %in% names(data))
 
