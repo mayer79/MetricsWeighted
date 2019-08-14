@@ -3,10 +3,10 @@
 #' Applies one or more metrics to a \code{data.frame} containing columns with actual and predicted values as well as an optional column with case weights. The results are returned as a \code{data.frame} and can be used in a \code{dplyr} chain.
 #'
 #' @importFrom stats setNames
-#' @param object A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.
-#' @param actual The column name in \code{object} referring to actual values.
-#' @param predicted The column name in \code{object} referring to predicted values.
-#' @param w The optional column name in \code{object} referring to case weights.
+#' @param data A \code{data.frame} containing \code{actual}, \code{predicted} and possibly \code{w}.
+#' @param actual The column name in \code{data} referring to actual values.
+#' @param predicted The column name in \code{data} referring to predicted values.
+#' @param w The optional column name in \code{data} referring to case weights.
 #' @param metrics Either a function or a named list of functions. Each function represents a metric and has four arguments: observed, predicted, case weights and \code{...}. If not a named list but a single function, the name of the function is guessed by \code{deparse(substitute(...))}, which would not provide the actual name of the function if called within \code{lapply} etc. In such cases, you can pass a named list with one element, e.g. \code{list(rmse = rmse)}.
 #' @param key Name of the resulting column containing the name of the metric. Defaults to "metric".
 #' @param value Name of the resulting column with the value of the metric. Defaults to "value".
@@ -59,22 +59,9 @@
 #'  do(performance(., "Sepal.Length", "pred",
 #'                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
 #' }
-#'
-performance <- function(object, ...) {
-  UseMethod("performance")
-}
-
-#' @describeIn performance Default performance method.
-#' @export
-performance.default <- function(object, ...) {
-  stop("No default performance method available.")
-}
-
-#' @describeIn performance \code{performance} method for a data.frame.
-#' @export
-performance.data.frame <- function(object, actual, predicted, w = NULL, metrics = rmse,
+performance <- function(data, actual, predicted, w = NULL, metrics = rmse,
                         key = "metric", value = "value", ...) {
-  stopifnot(c(actual, predicted, w) %in% names(object))
+  stopifnot(is.data.frame(data), c(actual, predicted, w) %in% names(data))
 
   if (is.list(metrics)) {
     if (is.null(names(metrics))) {
@@ -88,8 +75,8 @@ performance.data.frame <- function(object, actual, predicted, w = NULL, metrics 
     if (!is.function(metric)) {
       stop("Metric does not appear to be a function.")
     }
-    val <- metric(actual = object[[actual]], predicted = object[[predicted]],
-                  w = if (!is.null(w)) object[[w]], ...)
+    val <- metric(actual = data[[actual]], predicted = data[[predicted]],
+                  w = if (!is.null(w)) data[[w]], ...)
     setNames(data.frame(nm, val, row.names = NULL), c(key, value))
   }
   out <- do.call(rbind, c(Map(one_metric, metrics, names(metrics)),
