@@ -1,4 +1,4 @@
-# MetricsWeighted 0.1.1
+# MetricsWeighted 0.2.0
 
 * Improvement of documentation and examples. 
 
