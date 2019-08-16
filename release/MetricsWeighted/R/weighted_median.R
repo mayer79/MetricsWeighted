@@ -15,6 +15,6 @@
 #' quantile(rep(x, x), probs = 0.5)
 #' @seealso \code{\link{weighted_quantile}}.
 weighted_median <- function(x, w = NULL, ...) {
-  weighted_quantile(x, w, probs = 0.5, names = FALSE, ...)
+  weighted_quantile(x = x, w = w, probs = 0.5, names = FALSE, ...)
 }
 

@@ -61,6 +61,7 @@ check(pkg, manual = TRUE)
 
 # Create
 build(pkg)
+build(pkg, binary = TRUE)
 
 # Install
 install(pkg)
