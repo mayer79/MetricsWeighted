@@ -1,0 +1,35 @@
+Type: Package
+Package: MetricsWeighted
+Title: Weighted Metrics, Scoring Functions and Performance
+    Measures for Machine Learning
+Version: 0.2.0
+Date: 2019-08-16
+Authors@R: 
+    c(person(given = "Michael",
+             family = "Mayer",
+             role = c("aut", "cre", "cph"),
+             email = "mayermichael79@gmail.com"),
+      person(given = "Christian",
+             family = "Lorentzen",
+             role = "rev",
+             email = "lorentzen.ch@googlemail.com"))
+Maintainer: Michael Mayer <mayermichael79@gmail.com>
+Description: Provides weighted versions of several metrics,
+    scoring functions and performance measures used in machine learning,
+    including average unit deviances of the Bernoulli, Tweedie, Poisson,
+    and Gamma distributions, see Jorgensen B. (1997, ISBN:
+    978-0412997112). The package also contains a weighted version of
+    generalized R-squared, see e.g. Cohen, J. et al. (2002, ISBN:
+    978-0805822236). Furthermore, 'dplyr' chains are supported.
+License: GPL(>= 2)
+Depends: 
+    R (>= 3.5.0)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    stats
+Suggests: 
+    dplyr,
+    knitr
