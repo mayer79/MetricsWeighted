@@ -9,7 +9,7 @@ weighted_mean(x, w = NULL, ...)
 \arguments{
 \item{x}{Numeric vector.}
 
-\item{w}{Optional non-negative case weights.}
+\item{w}{Optional non-negative, non-missing case weights.}
 
 \item{...}{Further arguments passed to \code{mean} or \code{weighted.mean}.}
 }
@@ -23,7 +23,6 @@ Returns weighted mean of a numeric vector. In contrast to \code{stats::weighted.
 weighted_mean(1:10)
 weighted_mean(1:10, w = NULL)
 weighted_mean(1:10, w = 1:10)
-# weighted_mean(1, 0) # Raises error
 }
 \seealso{
 \code{\link{weighted_quantile}}.

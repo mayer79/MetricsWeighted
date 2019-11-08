@@ -4,7 +4,7 @@
 #'
 #' @importFrom stats weighted.mean
 #' @param x Numeric vector.
-#' @param w Optional non-negative case weights.
+#' @param w Optional non-negative, non-missing case weights.
 #' @param ... Further arguments passed to \code{mean} or \code{weighted.mean}.
 #' @return A length-one numeric vector.
 #' @export
@@ -12,7 +12,6 @@
 #' weighted_mean(1:10)
 #' weighted_mean(1:10, w = NULL)
 #' weighted_mean(1:10, w = 1:10)
-#' # weighted_mean(1, 0) # Raises error
 #' @seealso \code{\link{weighted_quantile}}.
 weighted_mean <- function(x, w = NULL, ...) {
   if (is.null(w)) {
