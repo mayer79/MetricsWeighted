@@ -4,8 +4,14 @@
 \alias{weighted_quantile}
 \title{Weighted Quantiles}
 \usage{
-weighted_quantile(x, w = NULL, probs = seq(0, 1, 0.25), na.rm = TRUE,
-  names = TRUE, ...)
+weighted_quantile(
+  x,
+  w = NULL,
+  probs = seq(0, 1, 0.25),
+  na.rm = TRUE,
+  names = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{Numeric vector.}

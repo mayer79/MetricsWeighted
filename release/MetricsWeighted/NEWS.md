@@ -1,3 +1,15 @@
+# MetricsWeighted 0.4.0
+
+## New functions
+
+Added the following convenience wrappers to `r_squared`.
+
+- `r_squared_poisson`
+
+- `r_squared_gamma`
+
+- `r_squared_bernoulli`
+
 # MetricsWeighted 0.3.0
 
 ## New function

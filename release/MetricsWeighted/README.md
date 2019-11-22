@@ -45,6 +45,8 @@ performance(dat, actual = "y", predicted = "pred")
 performance(dat, actual = "y", predicted = "pred", metrics = r_squared)
 performance(dat, actual = "y", predicted = "pred", 
             metrics = list(rmse = rmse, `R-squared` = r_squared))
+performance(dat, actual = "y", predicted = "pred",
+            metrics = list(deviance = deviance_gamma, pseudo_r2 = r_squared_gamma))
 
 ```
 
