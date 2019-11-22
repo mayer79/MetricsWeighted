@@ -4,8 +4,7 @@
 \alias{weighted_var}
 \title{Weighted Variance}
 \usage{
-weighted_var(x, w = NULL, method = c("unbiased", "ML"),
-  na.rm = FALSE, ...)
+weighted_var(x, w = NULL, method = c("unbiased", "ML"), na.rm = FALSE, ...)
 }
 \arguments{
 \item{x}{Numeric vector.}
