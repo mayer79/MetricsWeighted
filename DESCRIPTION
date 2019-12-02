@@ -3,7 +3,7 @@ Package: MetricsWeighted
 Title: Weighted Metrics, Scoring Functions and Performance
     Measures for Machine Learning
 Version: 0.4.0
-Date: 2019-11-22
+Date: 2019-12-02
 Authors@R: 
     c(person(given = "Michael",
              family = "Mayer",
