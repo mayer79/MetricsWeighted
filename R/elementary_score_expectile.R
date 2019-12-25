@@ -16,8 +16,8 @@
 #' @references
 #' [1] Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 #' @examples
-#' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 1)
-#' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 1, w = rep(1, 10))
+#' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
+#' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11, w = rep(1, 10))
 elementary_score_expectile <- function(actual, predicted, w = NULL, alpha = 0.5, theta = 0, ...) {
   stopifnot(length(alpha) == 1L, alpha >= 0, alpha <= 1,
             length(theta) == 1L,
