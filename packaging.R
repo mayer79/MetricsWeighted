@@ -21,7 +21,9 @@ create_package(
     Description = "Provides weighted versions of several metrics, scoring functions and performance measures used in machine learning, including average unit deviances of the Bernoulli, Tweedie, Poisson, and Gamma distributions, see Jorgensen B. (1997, ISBN: 978-0412997112). The package also contains a weighted version of generalized R-squared, see e.g. Cohen, J. et al. (2002, ISBN: 978-0805822236). Furthermore, 'dplyr' chains are supported.",
 
     `Authors@R` = "c(person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph')),
-       person('Christian', 'Lorentzen', email = 'lorentzen.ch@googlemail.com', role = c('rev')))",
+       person('Christian', 'Lorentzen', email = 'lorentzen.ch@googlemail.com', role = c('ctb', 'rev')))",
+    URL = "https://github.com/mayer79/MetricsWeighted",
+    BugReports = "https://github.com/mayer79/MetricsWeighted/issues",
     Depends = "R (>= 3.5.0)",
     VignetteBuilder = "knitr",
     License = "GPL(>= 2)",
