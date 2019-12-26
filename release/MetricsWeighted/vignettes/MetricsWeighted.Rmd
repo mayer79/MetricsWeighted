@@ -2,6 +2,8 @@
 title: "MetricsWeighted"
 author: "Michael Mayer"
 date: "`r Sys.Date()`"
+bibliography: "biblio.bib"
+link-citations: true
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{MetricsWeighted}
@@ -52,11 +54,13 @@ Currently, the following metrics, scoring functions and performance measures are
 
 - `mse`, `mae`, `mape`, `rmse`, and `medae`: Typical regression metrics (mean-squared error, mean absolute error, mean absolute percentage error, root-mean-squared error, and median absolute error). The lower, the better.
 
-- `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`, see [1] and (https://en.wikipedia.org/wiki/Tweedie_distribution) for a reference of the underlying formula.
+- `deviance_tweedie`: (Unscaled) average unit Tweedie deviance with parameter `tweedie_p`, see [@jorgensen] and (https://en.wikipedia.org/wiki/Tweedie_distribution) for a reference of the underlying formula.
 
 - `deviance_normal`,  `deviance_gamma`, and `deviance_poisson`: Special cases of Tweedie. `deviance_normal` equals mean-squared error.
 
-They all take four arguments: 
+- `elementary_score_quantile` and `elementary_score_expectile`: Consistent scoring functions for quantiles and expectiles, see [@gneiting].
+
+They all take at least four arguments: 
 
 1. `actual`: Actual observed values.
 
@@ -65,10 +69,6 @@ They all take four arguments:
 3. `w`: Optional vector with case weights.
 
 4. `...`: Further arguments.
-
-Notable exception is `deviance_tweedie`. It requires the Tweedie power as additional parameter. The value 0 corresponds to the Gaussian/normal deviance, the value 1 to the Poisson deviance and the value 2 to the Gamma deviance, see e.g. [1]. For $0 < p < 1$, the Tweedie distribution is undefined.
-
-For fixed actual and predicted values, the Tweedie deviance is continuous with respect to this parameter.
 
 #### Examples: Regression
 ```{r}
@@ -120,7 +120,7 @@ deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
 
 ### Generalized R-squared
 
-Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [2]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the *binary* logistic regression (`deviance_bernoulli`).
+Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [@cohen]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the *binary* logistic regression (`deviance_bernoulli`).
 
 #### Examples
 ```{r}
@@ -198,8 +198,34 @@ iris %>%
 
 ```
 
+### Parametrized scoring functions
+
+Some scoring functions depend on a further parameter $p$, e.g.
+
+- `tweedie_deviance` and `r_squared` for `deviance_function = deviance_tweedie`: depends on `tweedie_p`,
+- `elementary_score_expectile`, `elementary_score_quantile`: depend on `theta`.
+
+It might be of key relevance to evaluate such function for varying $p$. That is where the function `multi_metric` shines.
+
+#### Examples
+```{r}
+ir <- iris
+ir$pred <- predict(fit_num, data = ir)
+
+# Create multiple Tweedie deviance functions
+multi_Tweedie <- multi_metric(deviance_tweedie, tweedie_p = c(0, seq(1, 3, by = 0.2)))
+perf <- performance(ir, actual = "Sepal.Length", predicted = "pred", 
+                    metrics = multi_Tweedie, key = "Tweedie p", value = "deviance")
+head(perf)
+plot(deviance ~ as.numeric(as.character(`Tweedie p`)), data = perf, type = "s")
+
+# Same for Tweedie-R-squared
+multi_Tweedie_r2 <- multi_metric(r_squared, deviance_function = deviance_tweedie, 
+                                 tweedie_p = c(0, seq(1, 3, by = 0.2)))
+perf <- performance(ir, actual = "Sepal.Length", predicted = "pred", 
+                    metrics = multi_Tweedie_r2, key = "Tweedie p", value = "R-squared")
+plot(`R-squared` ~ as.numeric(as.character(`Tweedie p`)), data = perf, type = "s")
+```
+
 ## References
 
-[1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
-
-[2] Cohen, J. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.

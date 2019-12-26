@@ -56,31 +56,31 @@ performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
 \dontrun{
 library(dplyr)
 
-iris %>%
-  mutate(pred = predict(fit_num, data = .)) %>%
+iris \%>\%
+  mutate(pred = predict(fit_num, data = .)) \%>\%
   performance("Sepal.Length", "pred")
 
 # Same
-iris %>%
-  mutate(pred = predict(fit_num, data = .)) %>%
+iris \%>\%
+  mutate(pred = predict(fit_num, data = .)) \%>\%
   performance("Sepal.Length", "pred", metrics = rmse)
 
 # Grouped by Species
-iris %>%
-  mutate(pred = predict(fit_num, data = .)) %>%
-  group_by(Species) %>%
+iris \%>\%
+  mutate(pred = predict(fit_num, data = .)) \%>\%
+  group_by(Species) \%>\%
   do(performance(., "Sepal.Length", "pred"))
 
 # Multiple measures
-iris %>%
- mutate(pred = predict(fit_num, data = .)) %>%
+iris \%>\%
+ mutate(pred = predict(fit_num, data = .)) \%>\%
  performance("Sepal.Length", "pred",
              metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared))
 
 # Grouped by Species
-iris %>%
- mutate(pred = predict(fit_num, data = .)) %>%
- group_by(Species) %>%
+iris \%>\%
+ mutate(pred = predict(fit_num, data = .)) \%>\%
+ group_by(Species) \%>\%
  do(performance(., "Sepal.Length", "pred",
                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
 }

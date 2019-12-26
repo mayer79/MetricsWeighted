@@ -1,3 +1,11 @@
+# MetricsWeighted 0.5.0
+
+## New functions
+
+- Elementary scoring functions for expectiles and quantiles.
+
+- `multi_metric`: A way to create a named list of performance measures parametrized by a parameter.
+
 # MetricsWeighted 0.4.0
 
 ## New functions
