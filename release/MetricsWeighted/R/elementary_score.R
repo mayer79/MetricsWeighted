@@ -5,6 +5,7 @@
 #' Note that the expectile at level \code{alpha = 0.5} is the expectation (mean).
 #' The smaller the score, the better.
 #'
+#' @name elementary_score
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
@@ -12,14 +13,16 @@
 #' @param theta Optional parameter.
 #' @param ... Further arguments passed to \code{weighted_mean}.
 #' @return A numeric vector of length one.
-#' @export
 #' @references
 #' [1] Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 #' @examples
 #' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
 #' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11, w = rep(1, 10))
 #' elementary_score_quantile(1:10, c(1:9, 12), alpha = 0.5, theta = 11, w = rep(1, 10))
-#' @describeIn elementary_score_expectile Elementary scoring function for expectiles.
+NULL
+
+#' @rdname elementary_score
+#' @export
 elementary_score_expectile <- function(actual, predicted, w = NULL, alpha = 0.5, theta = 0, ...) {
   stopifnot(length(alpha) == 1L, alpha >= 0, alpha <= 1,
             length(theta) == 1L,
@@ -34,7 +37,7 @@ elementary_score_expectile <- function(actual, predicted, w = NULL, alpha = 0.5,
   weighted_mean(x = score, w = w, ...)
 }
 
-#' @describeIn elementary_score_expectile Elementary scoring function for quantiles.
+#' @rdname elementary_score
 #' @export
 elementary_score_quantile <- function(actual, predicted, w = NULL, alpha = 0.5, theta = 0, ...) {
   stopifnot(length(alpha) == 1L, alpha >= 0, alpha <= 1,
