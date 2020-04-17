@@ -23,6 +23,9 @@ A numeric vector of length one.
 \description{
 Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
 }
+\details{
+For simplicity, the deviance gain is calculated regarding the null model derived from the actual values.
+}
 \examples{
 r_squared(1:10, c(1, 1:9))
 r_squared(1:10, c(1, 1:9), w = rep(1, 10))

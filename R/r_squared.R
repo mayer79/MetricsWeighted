@@ -2,6 +2,8 @@
 #'
 #' Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
 #'
+#' For simplicity, the deviance gain is calculated regarding the null model derived from the actual values.
+#'
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.

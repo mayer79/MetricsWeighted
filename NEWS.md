@@ -1,3 +1,19 @@
+# MetricsWeighted 0.5.1
+
+## New function
+
+- `weighted_cor` to calculate weighted correlation between actual and observed values.
+
+- `prop_within` to calculate weighted proportion of predictions within a tolerance around actual values.
+
+## Requirements
+
+- Reduced necessary R version from 3.5 to 3.1.
+
+## Documentation
+
+- Clarified that R-squared is calculated with respect to the null model calculated from the actual values.
+
 # MetricsWeighted 0.5.0
 
 ## New functions
