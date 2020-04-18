@@ -72,3 +72,7 @@ check_win_devel(pkg)
 check_rhub(pkg)
 
 devtools::release(pkg)
+
+usethis::use_pkgdown()
+pkgdown::build_site(pkg)
+

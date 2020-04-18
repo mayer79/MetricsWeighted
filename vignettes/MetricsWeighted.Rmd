@@ -60,6 +60,8 @@ Currently, the following metrics, scoring functions and performance measures are
 
 - `elementary_score_quantile` and `elementary_score_expectile`: Consistent scoring functions for quantiles and expectiles, see [@gneiting].
 
+- `prop_within`: Proportion of predicted values within a given band around the true values.
+
 They all take at least four arguments: 
 
 1. `actual`: Actual observed values.
@@ -204,6 +206,7 @@ Some scoring functions depend on a further parameter $p$, e.g.
 
 - `tweedie_deviance` and `r_squared` for `deviance_function = deviance_tweedie`: depends on `tweedie_p`,
 - `elementary_score_expectile`, `elementary_score_quantile`: depend on `theta`.
+- `prop_within`: Depend on `tol`.
 
 It might be of key relevance to evaluate such function for varying $p$. That is where the function `multi_metric` shines.
 
@@ -216,15 +219,21 @@ ir$pred <- predict(fit_num, data = ir)
 multi_Tweedie <- multi_metric(deviance_tweedie, tweedie_p = c(0, seq(1, 3, by = 0.2)))
 perf <- performance(ir, actual = "Sepal.Length", predicted = "pred", 
                     metrics = multi_Tweedie, key = "Tweedie p", value = "deviance")
+perf$`Tweedie p` <- as.numeric(as.character(perf$`Tweedie p`))
 head(perf)
-plot(deviance ~ as.numeric(as.character(`Tweedie p`)), data = perf, type = "s")
+
+# Murphy diagram
+plot(deviance ~ `Tweedie p`, data = perf, type = "s")
 
 # Same for Tweedie-R-squared
 multi_Tweedie_r2 <- multi_metric(r_squared, deviance_function = deviance_tweedie, 
                                  tweedie_p = c(0, seq(1, 3, by = 0.2)))
 perf <- performance(ir, actual = "Sepal.Length", predicted = "pred", 
                     metrics = multi_Tweedie_r2, key = "Tweedie p", value = "R-squared")
-plot(`R-squared` ~ as.numeric(as.character(`Tweedie p`)), data = perf, type = "s")
+perf$`Tweedie p` <- as.numeric(as.character(perf$`Tweedie p`))
+
+# Murphy diagram
+plot(`R-squared` ~ `Tweedie p`, data = perf, type = "s")
 ```
 
 ## References

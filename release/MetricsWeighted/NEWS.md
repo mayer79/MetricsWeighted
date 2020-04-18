@@ -8,7 +8,7 @@
 
 ## Requirements
 
-- Reduced necessary R version from 3.5 to 3.1.
+- Reduced minimal R version from 3.5 to 3.1.
 
 ## Documentation
 
