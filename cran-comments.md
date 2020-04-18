@@ -1,3 +1,3 @@
-## R CMD check results
+This is a minor update
 
-0 errors | 0 warnings | 0 note
+It introduces two new weighted performance measures and lowers the requirement of the R version from 3.5 to 3.1. No problem with reverse dependencies.
