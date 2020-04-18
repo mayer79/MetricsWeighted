@@ -1,7 +1,0 @@
-pandoc: 2.7.3
-pkgdown: 1.5.0
-pkgdown_sha: ~
-articles:
-  MetricsWeighted: MetricsWeighted.html
-last_built: 2020-04-18T13:18Z
-
