@@ -13,7 +13,7 @@ install.packages("MetricsWeighted")
 To get the bleeding edge version, you can run
 ``` r
 library(devtools)
-install_github("mayer79/MetricsWeighted")
+install_github("mayer79/MetricsWeighted", subdir = "release/MetricsWeighted")
 ```
 
 ## Application
