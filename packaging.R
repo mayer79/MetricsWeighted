@@ -26,6 +26,7 @@ create_package(
     Depends = "R (>= 3.1.0)",
     VignetteBuilder = "knitr",
     License = "GPL(>= 2)",
+    LazyData = NULL,
     Maintainer = "Michael Mayer <mayermichael79@gmail.com>"))
 
 file.copy(file.path(pkg, "DESCRIPTION"), to = getwd(), overwrite = TRUE)
