@@ -1,6 +1,6 @@
 #' Tweedie Deviance
 #'
-#' Weighted average of (unscaled) unit Tweedie deviance with parameter p. This includes the normal deviance (p = 0), the Poisson deviance (p = 1), as well as the Gamma deviance (p = 2), see [1] for a reference and \url{https://en.wikipedia.org/wiki/Tweedie_distribution} for the specific deviance formula. For 0 < p < 1, the distribution is not defined. The smaller the deviance, the better.
+#' Weighted average of (unscaled) unit Tweedie deviance with parameter p. This includes the normal deviance (p = 0), the Poisson deviance (p = 1), as well as the Gamma deviance (p = 2), see reference below and \url{https://en.wikipedia.org/wiki/Tweedie_distribution} for the specific deviance formula. For 0 < p < 1, the distribution is not defined. The smaller the deviance, the better.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.
@@ -10,7 +10,7 @@
 #' @return A numeric vector of length one.
 #' @export
 #' @references
-#' [1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
+#' Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 #' @examples
 #' deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 0)
 #' deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1)

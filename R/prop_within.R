@@ -5,7 +5,7 @@
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
-#' @param tol Predictions in [actual - tol, actual + tol] count as within.
+#' @param tol Predictions in the closed interval from actual - tol to actual + tol count as within.
 #' @param ... Further arguments passed to \code{weighted_mean}.
 #' @return A numeric vector of length one.
 #' @export

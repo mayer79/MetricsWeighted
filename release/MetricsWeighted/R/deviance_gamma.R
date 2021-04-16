@@ -1,6 +1,6 @@
 #' Gamma Deviance
 #'
-#' Weighted average of (unscaled) unit Gamma deviance, see e.g. [1]. Special case of Tweedie deviance with Tweedie parameter 2. The smaller the deviance, the better.
+#' Weighted average of (unscaled) unit Gamma deviance, see e.g. the reference below. Special case of Tweedie deviance with Tweedie parameter 2. The smaller the deviance, the better.
 #'
 #' @param actual Strictly positive observed values.
 #' @param predicted Strictly positive predicted values.
@@ -9,7 +9,7 @@
 #' @return A numeric vector of length one.
 #' @export
 #' @references
-#' [1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
+#' Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 #' @examples
 #' deviance_gamma(1:10, c(1:9, 12))
 #' deviance_gamma(1:10, c(1:9, 12), w = rep(1, 10))

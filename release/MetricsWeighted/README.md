@@ -1,5 +1,7 @@
 # MetricsWeighted
 
+[![CRAN version](http://www.r-pkg.org/badges/version/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted) [![](https://cranlogs.r-pkg.org/badges/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted) [![](https://cranlogs.r-pkg.org/badges/grand-total/MetricsWeighted?color=orange)](https://cran.r-project.org/package=MetricsWeighted)
+
 The goal of this package is to provide weighted versions of metrics, scoring functions and performance measures for machine learning.
 
 ## Installation
@@ -13,7 +15,7 @@ install.packages("MetricsWeighted")
 To get the bleeding edge version, you can run
 ``` r
 library(devtools)
-install_github("mayer79/MetricsWeighted")
+install_github("mayer79/MetricsWeighted", subdir = "release/MetricsWeighted")
 ```
 
 ## Application

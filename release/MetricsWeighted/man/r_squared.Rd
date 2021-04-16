@@ -21,7 +21,7 @@ r_squared(actual, predicted, w = NULL, deviance_function = mse, ...)
 A numeric vector of length one.
 }
 \description{
-Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
+Returns (weighted) proportion of deviance explained, see reference below. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
 }
 \details{
 For simplicity, the deviance gain is calculated regarding the null model derived from the actual values.
@@ -44,7 +44,7 @@ myTweedie <- function(actual, predicted, w = NULL, ...) {
 r_squared(1:10, c(1, 1:9), deviance_function = myTweedie)
 }
 \references{
-[1] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
+Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
 }
 \seealso{
 \code{\link{deviance_normal}, \link{mse}}.

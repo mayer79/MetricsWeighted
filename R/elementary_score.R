@@ -1,6 +1,6 @@
 #' Elementary Scoring Function for Expectiles and Quantiles
 #'
-#' Weighted average of the elementary scoring function for expectiles resp. quantiles at level \code{alpha} with parameter \code{theta}, see [1].
+#' Weighted average of the elementary scoring function for expectiles resp. quantiles at level \code{alpha} with parameter \code{theta}, see reference below.
 #' Every choice of \code{theta} gives a scoring function consistent for the expectile resp. quantile at level \code{alpha}.
 #' Note that the expectile at level \code{alpha = 0.5} is the expectation (mean).
 #' The smaller the score, the better.
@@ -14,7 +14,7 @@
 #' @param ... Further arguments passed to \code{weighted_mean}.
 #' @return A numeric vector of length one.
 #' @references
-#' [1] Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
+#' Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 #' @examples
 #' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
 #' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11, w = rep(1, 10))

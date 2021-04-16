@@ -1,6 +1,6 @@
 #' Poisson Deviance
 #'
-#' Weighted average of unit Poisson deviance, see [1]. Special case of Tweedie deviance with Tweedie parameter 1.
+#' Weighted average of unit Poisson deviance, see reference below. Special case of Tweedie deviance with Tweedie parameter 1.
 #'
 #' @param actual Observed non-negative values.
 #' @param predicted Strictly positive predicted values.
@@ -9,7 +9,7 @@
 #' @return A numeric vector of length one.
 #' @export
 #' @references
-#' [1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
+#' Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 #' @examples
 #' deviance_poisson(0:2, c(0.1, 1, 3))
 #' deviance_poisson(0:2, c(0.1, 1, 3), w = c(1, 1, 1))

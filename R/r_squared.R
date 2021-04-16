@@ -1,6 +1,6 @@
 #' Pseudo R-Squared
 #'
-#' Returns (weighted) proportion of deviance explained, see e.g. [1]. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
+#' Returns (weighted) proportion of deviance explained, see reference below. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
 #'
 #' For simplicity, the deviance gain is calculated regarding the null model derived from the actual values.
 #'
@@ -12,7 +12,7 @@
 #' @return A numeric vector of length one.
 #' @export
 #' @references
-#' [1] Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
+#' Cohen, Jacob. et al. (2002). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
 #' @examples
 #' r_squared(1:10, c(1, 1:9))
 #' r_squared(1:10, c(1, 1:9), w = rep(1, 10))

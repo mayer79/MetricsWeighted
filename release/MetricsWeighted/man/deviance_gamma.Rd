@@ -19,7 +19,7 @@ deviance_gamma(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted average of (unscaled) unit Gamma deviance, see e.g. [1]. Special case of Tweedie deviance with Tweedie parameter 2. The smaller the deviance, the better.
+Weighted average of (unscaled) unit Gamma deviance, see e.g. the reference below. Special case of Tweedie deviance with Tweedie parameter 2. The smaller the deviance, the better.
 }
 \examples{
 deviance_gamma(1:10, c(1:9, 12))
@@ -29,7 +29,7 @@ deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.99)
 deviance_gamma(1:10, c(1:9, 12), w = 1:10)
 }
 \references{
-[1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
+Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 }
 \seealso{
 \code{\link{deviance_tweedie}}.

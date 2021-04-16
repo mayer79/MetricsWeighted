@@ -19,7 +19,7 @@ deviance_poisson(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted average of unit Poisson deviance, see [1]. Special case of Tweedie deviance with Tweedie parameter 1.
+Weighted average of unit Poisson deviance, see reference below. Special case of Tweedie deviance with Tweedie parameter 1.
 }
 \examples{
 deviance_poisson(0:2, c(0.1, 1, 3))
@@ -29,7 +29,7 @@ deviance_tweedie(0:2, c(0.1, 1, 3), tweedie_p = 1.01)
 deviance_poisson(0:2, c(0.1, 1, 3), w = 1:3)
 }
 \references{
-[1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
+Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 }
 \seealso{
 \code{\link{deviance_tweedie}}.

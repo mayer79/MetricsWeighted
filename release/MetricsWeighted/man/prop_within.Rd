@@ -13,7 +13,7 @@ prop_within(actual, predicted, w = NULL, tol = 1, ...)
 
 \item{w}{Optional case weights.}
 
-\item{tol}{Predictions in [actual - tol, actual + tol] count as within.}
+\item{tol}{Predictions in the closed interval from actual - tol to actual + tol count as within.}
 
 \item{...}{Further arguments passed to \code{weighted_mean}.}
 }

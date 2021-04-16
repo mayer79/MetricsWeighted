@@ -19,7 +19,7 @@ deviance_normal(actual, predicted, w = NULL, ...)
 A numeric vector of length one.
 }
 \description{
-Weighted average of (unscaled) unit normal deviance. This equals the weighted mean-squared error, see e.g. [1]. The smaller the deviance, the better.
+Weighted average of (unscaled) unit normal deviance. This equals the weighted mean-squared error, see e.g. the reference below. The smaller the deviance, the better.
 }
 \examples{
 deviance_normal(1:10, c(1:9, 12))
@@ -28,7 +28,7 @@ deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 0)
 deviance_normal(1:10, c(1:9, 12), w = 1:10)
 }
 \references{
-[1] Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
+Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 }
 \seealso{
 \code{\link{deviance_tweedie}, \link{mse}}.
