@@ -1,4 +1,4 @@
-# MetricsWeighted
+# MetricsWeighted <a href='https://github.com/mayer79/MetricsWeighted'><img src='man/figures/logo.png' align="right" height="138.5"/></a>
 
 [![CRAN version](http://www.r-pkg.org/badges/version/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted) [![](https://cranlogs.r-pkg.org/badges/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted) [![](https://cranlogs.r-pkg.org/badges/grand-total/MetricsWeighted?color=orange)](https://cran.r-project.org/package=MetricsWeighted)
 
