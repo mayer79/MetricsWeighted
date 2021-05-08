@@ -28,6 +28,7 @@ library(MetricsWeighted)
 The R package `MetricsWeighted` provides weighted versions of different machine learning metrics, scoring functions and performance measures as well as tools to use it within a `dplyr` chain.
 
 ## Installation
+
 From CRAN:
 ```
 install.packages("MetricsWeighted")
@@ -72,6 +73,7 @@ They all take at least four arguments:
 4. `...`: Further arguments.
 
 #### Examples: Regression
+
 ```{r}
 # The data
 y_num <- iris[["Sepal.Length"]]
@@ -105,6 +107,7 @@ deviance_tweedie(y_num, pred_num, tweedie_p = 2.01)
 ```
 
 #### Examples: Binary classification
+
 ```{r}
 # The data
 y_cat <- iris[["Species"]] == "setosa"
@@ -116,7 +119,6 @@ AUC(y_cat, pred_cat)  # unweighted
 AUC(y_cat, pred_cat, w = weights)  # weighted
 logLoss(y_cat, pred_cat)  # Logloss
 deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
-
 ```
 
 ### Generalized R-squared
@@ -124,33 +126,40 @@ deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
 Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [@cohen]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the *binary* logistic regression (`deviance_bernoulli`).
 
 #### Examples
+
 ```{r}
 summary(fit_num)$r.squared
 
 # same
 r_squared(y_num, pred_num)
-r_squared(y_num, pred_num, deviance_function = deviance_tweedie, tweedie_p = 0)
-r_squared(y_num, pred_num, deviance_function = deviance_tweedie, tweedie_p = 1.5)
+r_squared(y_num, pred_num, deviance_function = deviance_tweedie, 
+          tweedie_p = 0)
+r_squared(y_num, pred_num, deviance_function = deviance_tweedie, 
+          tweedie_p = 1.5)
 
 # weighted
 r_squared(y_num, pred_num, w = weights)
 r_squared(y_num, pred_num, w = weights, deviance_function = deviance_gamma) 
-r_squared(y_num, pred_num, w = weights, deviance_function = deviance_tweedie, tweedie_p = 2)
-r_squared(y_num, pred_num, deviance_function = deviance_tweedie, tweedie_p = 1.5)
+r_squared(y_num, pred_num, w = weights, deviance_function = deviance_tweedie, 
+          tweedie_p = 2)
+r_squared(y_num, pred_num, deviance_function = deviance_tweedie, 
+          tweedie_p = 1.5)
 
 # respect to own deviance formula
 myTweedie <- function(actual, predicted, w = NULL, ...) {
   deviance_tweedie(actual, predicted, w, tweedie_p = 1.5, ...)
 }
 r_squared(y_num, pred_num, deviance_function = myTweedie)
-
 ```
 
 ### Tidyverse
 
-In order to facilitate the use of these metrics in a `dplyr` chain, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`. Stratified performance calculations can e.g. be done by using `do` from `dplyr`.
+In order to facilitate the use of these metrics in a `dplyr` chain, you can try out the function `performance`: Starting from a data set with actual and predicted values (and optional case weights), it calculates one or more metrics. The resulting values are returned as a `data.frame`. 
+
+Stratified performance calculations can e.g. be done by using `do` from `dplyr`.
 
 #### Examples
+
 ```{r}
 require(dplyr)
 
@@ -187,7 +196,9 @@ iris %>%
   mutate(pred = predict(fit_num, data = .)) %>% 
   group_by(Species) %>% 
   do(performance(., "Sepal.Length", "pred",
-                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
+                 metrics = list(rmse = rmse, 
+                                mae = mae, 
+                                `R-squared` = r_squared)))
 
 # Passing extra argument (Tweedie p)
 iris %>% 
@@ -210,6 +221,7 @@ Some scoring functions depend on a further parameter $p$, e.g.
 It might be of key relevance to evaluate such function for varying $p$. That is where the function `multi_metric` shines.
 
 #### Examples
+
 ```{r}
 ir <- iris
 ir$pred <- predict(fit_num, data = ir)
@@ -221,17 +233,17 @@ perf <- performance(ir, actual = "Sepal.Length", predicted = "pred",
 perf$`Tweedie p` <- as.numeric(as.character(perf$`Tweedie p`))
 head(perf)
 
-# Murphy diagram
+# Deviance vs p
 plot(deviance ~ `Tweedie p`, data = perf, type = "s")
 
-# Same for Tweedie-R-squared
+# Same for Pseudo-R-Squared regarding Tweedie deviance
 multi_Tweedie_r2 <- multi_metric(r_squared, deviance_function = deviance_tweedie, 
                                  tweedie_p = c(0, seq(1, 3, by = 0.2)))
 perf <- performance(ir, actual = "Sepal.Length", predicted = "pred", 
                     metrics = multi_Tweedie_r2, key = "Tweedie p", value = "R-squared")
 perf$`Tweedie p` <- as.numeric(as.character(perf$`Tweedie p`))
 
-# Murphy diagram
+# Values vs. p
 plot(`R-squared` ~ `Tweedie p`, data = perf, type = "s")
 ```
 
