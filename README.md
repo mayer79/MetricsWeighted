@@ -22,7 +22,7 @@ install_github("mayer79/MetricsWeighted", subdir = "release/MetricsWeighted")
 
 There are two ways to apply the package. We will go through them in the following examples. Please have a look at the vignette on CRAN for further information and examples. 
 
-## Example 1: Directly apply the metrics
+### Example 1: Standard interface
 
 ``` r
 library(MetricsWeighted)
@@ -30,25 +30,33 @@ library(MetricsWeighted)
 y <- 1:10
 pred <- c(2:10, 14)
 
-rmse(y, pred)
-rmse(y, pred, w = 1:10)
+rmse(y, pred)            # 1.58
+rmse(y, pred, w = 1:10)  # 1.93
 
-r_squared(y, pred)
-r_squared(y, pred, deviance_function = deviance_gamma)
+r_squared(y, pred)       # 0.70
+r_squared(y, pred, deviance_function = deviance_gamma)  # 0.78
 
 ```
 
-## Example 2: Call the metrics through a common function that can be used within a `dplyr` chain
+### Example 2: data.frame interface
+
+Can e.g. be used in a `dplyr` chain.
 
 ``` r
 dat <- data.frame(y = y, pred = pred)
 
 performance(dat, actual = "y", predicted = "pred")
-performance(dat, actual = "y", predicted = "pred", metrics = r_squared)
+
+> metric    value
+>   rmse 1.581139
+
+
 performance(dat, actual = "y", predicted = "pred", 
             metrics = list(rmse = rmse, `R-squared` = r_squared))
-performance(dat, actual = "y", predicted = "pred",
-            metrics = list(deviance = deviance_gamma, pseudo_r2 = r_squared_gamma))
+
+>    metric     value
+>      rmse 1.5811388
+> R-squared 0.6969697
 
 ```
 
