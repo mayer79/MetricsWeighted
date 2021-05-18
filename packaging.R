@@ -34,10 +34,12 @@ create_package(
 file.copy(file.path(pkg, "DESCRIPTION"), to = getwd(), overwrite = TRUE)
 
 use_package("stats", "Imports")
+
 use_package("graphics", "Suggests")
 use_package("dplyr", "Suggests")
 use_package("knitr", "Suggests")
 use_package("rmarkdown", "Suggests")
+use_package("testthat", "Suggests")
 
 # Set up other files -------------------------------------------------
 # use_readme_md()
@@ -60,6 +62,13 @@ use_logo("logo.png")
 dir.create(file.path(pkg, "man", "figures"))
 file.copy(file.path("man", "figures", "logo.png"),
           file.path(pkg, "man", "figures", "logo.png"))
+
+# Tests
+if (!dir.exists(file.path(pkg, "tests"))) {
+  dir.create(file.path(pkg, "tests"))
+}
+file.copy("tests", pkg, recursive = TRUE)
+test(pkg)
 
 if (TRUE) {
   # Copy vignette
