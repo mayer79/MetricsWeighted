@@ -1,4 +1,4 @@
-context("regression metrics")
+context("MAE")
 
 test_that("mae works without weights", {
   y <- c(0, 2)
