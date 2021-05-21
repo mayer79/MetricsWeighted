@@ -30,3 +30,4 @@ test_that("Not all weights should be 0", {
   bad_w <- c(0.0, 0.0)
   expect_error(weighted_mean(y - bad_pred, bad_w))
 })
+
