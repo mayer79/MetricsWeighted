@@ -13,11 +13,8 @@
 #' @examples
 #' AUC(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8))
 #' AUC(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
-#' AUC(c(1, 0, 0, 1), 2 * c(0.1, 0.1, 0.9, 0.8))
-#' AUC(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8), w = rep(1, 4)) # different from last due to ties
-#' AUC(c(1, 0, 0, 1), c(0.1, 0.2, 0.9, 0.8))
-#' AUC(c(1, 0, 0, 1), c(0.1, 0.2, 0.9, 0.8), w = rep(1, 4)) # same as last (no ties)
-#' AUC(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
+#' # different from last due to ties 'in predicted':
+#' AUC(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8), w = rep(1, 4))
 #' @seealso \code{\link{gini_coefficient}}.
 AUC <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted),

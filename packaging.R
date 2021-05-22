@@ -47,14 +47,16 @@ use_package("testthat", "Suggests")
 # use_cran_comments()
 
 # Copy readme etc.
-file.copy(c(".Rbuildignore", "NEWS.md", "README.md", "cran-comments.md", "DESCRIPTION"),
+file.copy(c(".Rbuildignore", "NEWS.md", "README.md",
+            "cran-comments.md", "DESCRIPTION"),
           pkg, overwrite = TRUE)
 
 # Copy R scripts and document them
 if (!dir.exists(file.path(pkg, "R"))) {
   dir.create(file.path(pkg, "R"))
 }
-file.copy(list.files("R", full.names = TRUE), file.path(pkg, "R"), overwrite = TRUE)
+file.copy(list.files("R", full.names = TRUE),
+          file.path(pkg, "R"), overwrite = TRUE)
 devtools::document(pkg)
 
 # Add logo
@@ -76,7 +78,8 @@ if (TRUE) {
   dir.create(file.path(pkg, "vignettes"))
   dir.create(file.path(pkg, "doc"))
   dir.create(file.path(pkg, "Meta"))
-  file.copy(list.files("vignettes", full.names = TRUE), file.path(pkg, "vignettes"), overwrite = TRUE)
+  file.copy(list.files("vignettes", full.names = TRUE),
+            file.path(pkg, "vignettes"), overwrite = TRUE)
 
   devtools::build_vignettes(pkg)
 }

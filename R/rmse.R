@@ -10,7 +10,6 @@
 #' @export
 #' @examples
 #' rmse(1:10, c(1:9, 12))
-#' rmse(1:10, c(1:9, 12), w = rep(1, 10))
 #' rmse(1:10, c(1:9, 12), w = 1:10)
 #' @seealso \code{\link{mse}}.
 rmse <- function(actual, predicted, w = NULL, ...) {

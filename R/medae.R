@@ -10,7 +10,6 @@
 #' @export
 #' @examples
 #' medae(1:10, c(2:10, 100))
-#' medae(1:10, c(2:10, 100), w = rep(1, 10))
 #' medae(1:10, c(2:10, 100), w = 1:10)
 medae <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted))

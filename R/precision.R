@@ -10,7 +10,6 @@
 #' @export
 #' @examples
 #' precision(c(0, 0, 1, 1), c(0, 0, 1, 1))
-#' precision(c(1, 0, 0, 1), c(0, 0, 1, 1))
 #' precision(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 #' @seealso \code{\link{recall}, \link{f1_score}}.
 precision <- function(actual, predicted, w = NULL, ...) {

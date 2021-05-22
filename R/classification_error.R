@@ -9,7 +9,6 @@
 #' @return A numeric vector of length one.
 #' @export
 #' @examples
-#' classification_error(c(0, 0, 1, 1), c(0, 0, 1, 1))
 #' classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1))
 #' classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 #' @seealso \code{\link{accuracy}}.
