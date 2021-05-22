@@ -10,7 +10,6 @@
 #' @export
 #' @examples
 #' f1_score(c(0, 0, 1, 1), c(0, 0, 1, 1))
-#' f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1))
 #' f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 #' @seealso \code{\link{precision}, \link{recall}}.
 f1_score <- function(actual, predicted, w = NULL, ...) {

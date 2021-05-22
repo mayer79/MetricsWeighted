@@ -19,15 +19,12 @@
 #' ir$fitted <- fit_num$fitted
 #' performance(ir, "Sepal.Length", "fitted")
 #' performance(ir, "Sepal.Length", "fitted", metrics = r_squared)
-#' performance(ir, "Sepal.Length", "fitted", metrics = c(`R-squared` = r_squared, rmse = rmse))
+#' performance(ir, "Sepal.Length", "fitted",
+#'             metrics = c(`R-squared` = r_squared, rmse = rmse))
 #' performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
 #'             deviance_function = deviance_gamma)
 #' performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
-#'             deviance_function = deviance_tweedie)
-#' performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
 #'             deviance_function = deviance_tweedie, tweedie_p = 2)
-#' performance(ir, "Sepal.Length", "fitted", metrics = r_squared,
-#'             deviance_function = deviance_tweedie, tweedie_p = 0)
 #' \dontrun{
 #' library(dplyr)
 #'
@@ -57,7 +54,8 @@
 #'  mutate(pred = predict(fit_num, data = .)) %>%
 #'  group_by(Species) %>%
 #'  do(performance(., "Sepal.Length", "pred",
-#'                 metrics = list(rmse = rmse, mae = mae, `R-squared` = r_squared)))
+#'                 metrics = list(rmse = rmse, mae = mae,
+#'                 `R-squared` = r_squared)))
 #' }
 performance <- function(data, actual, predicted, w = NULL, metrics = rmse,
                         key = "metric", value = "value", ...) {

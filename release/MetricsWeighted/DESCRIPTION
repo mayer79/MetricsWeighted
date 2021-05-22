@@ -2,8 +2,8 @@ Type: Package
 Package: MetricsWeighted
 Title: Weighted Metrics, Scoring Functions and Performance Measures for
     Machine Learning
-Version: 0.5.2
-Date: 2021-04-16
+Version: 0.5.3
+Date: 2021-05-22
 Authors@R: 
     c(person(given = "Michael",
              family = "Mayer",
@@ -37,4 +37,5 @@ Suggests:
     knitr,
     dplyr,
     graphics,
-    rmarkdown
+    rmarkdown,
+    testthat

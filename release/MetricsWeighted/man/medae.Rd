@@ -23,6 +23,5 @@ Calculates weighted median absolute error of predicted values. The smaller the v
 }
 \examples{
 medae(1:10, c(2:10, 100))
-medae(1:10, c(2:10, 100), w = rep(1, 10))
 medae(1:10, c(2:10, 100), w = 1:10)
 }

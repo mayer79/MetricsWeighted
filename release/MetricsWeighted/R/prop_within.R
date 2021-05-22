@@ -11,7 +11,6 @@
 #' @export
 #' @examples
 #' prop_within(1:10, c(1:9, 12))
-#' prop_within(1:10, c(1:9, 12), w = rep(1, 10))
 #' prop_within(1:10, c(1:9, 12), w = 1:10)
 #' data <- data.frame(act = 1:10, pred = c(1:9, 12), w = 1:10)
 #' multi <- multi_metric(fun = prop_within, tol = 0:3)

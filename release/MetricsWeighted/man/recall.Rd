@@ -23,7 +23,6 @@ Calculates weighted recall, see \url{https://en.wikipedia.org/wiki/Precision_and
 }
 \examples{
 recall(c(0, 0, 1, 1), c(0, 0, 1, 1))
-recall(c(1, 0, 0, 1), c(0, 0, 1, 1))
 recall(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 }
 \seealso{

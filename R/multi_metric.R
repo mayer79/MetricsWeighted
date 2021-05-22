@@ -9,15 +9,20 @@
 #' @export
 #' @examples
 #' data <- data.frame(act = 1:10, pred = c(1:9, 12))
-#' multi <- multi_metric(fun = deviance_tweedie, tweedie_p = c(0, seq(1, 3, by = 0.1)))
-#' performance(data, actual = "act", predicted = "pred", metrics = multi, key = "Tweedie p")
+#' multi <- multi_metric(fun = deviance_tweedie,
+#'                       tweedie_p = c(0, seq(1, 3, by = 0.1)))
+#' performance(data, actual = "act", predicted = "pred", metrics = multi)
 #' multi <- multi_metric(fun = r_squared, deviance_function = deviance_tweedie,
-#'   tweedie_p = c(0, seq(1, 3, by = 0.1)))
-#' performance(data, actual = "act", predicted = "pred", metrics = multi, key = "Tweedie p")
-#' multi <- multi_metric(fun = elementary_score_expectile, theta = 1:11, alpha = 0.1)
-#' performance(data, actual = "act", predicted = "pred", metrics = multi, key = "theta")
-#' multi <- multi_metric(fun = elementary_score_expectile, theta = 1:11, alpha = 0.5)
-#' performance(data, actual = "act", predicted = "pred", metrics = multi, key = "theta")
+#'                       tweedie_p = c(0, seq(1, 3, by = 0.1)))
+#' performance(data, actual = "act", predicted = "pred", metrics = multi)
+#' multi <- multi_metric(fun = elementary_score_expectile,
+#'                       theta = 1:11, alpha = 0.1)
+#' performance(data, actual = "act", predicted = "pred",
+#'             metrics = multi, key = "theta")
+#' multi <- multi_metric(fun = elementary_score_expectile,
+#'                       theta = 1:11, alpha = 0.5)
+#' performance(data, actual = "act", predicted = "pred",
+#'             metrics = multi, key = "theta")
 #' @seealso \code{\link{performance}}.
 multi_metric <- function(fun, ...) {
   stopifnot(is.function(fun),

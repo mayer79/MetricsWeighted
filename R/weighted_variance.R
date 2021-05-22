@@ -17,7 +17,8 @@
 #' weighted_var(1:10, w = 1:10)
 #' weighted_var(1:10, w = 1:10, method = "ML")
 #' @seealso \code{\link{weighted_mean}}.
-weighted_var <- function(x, w = NULL, method = c("unbiased", "ML"), na.rm = FALSE, ...) {
+weighted_var <- function(x, w = NULL, method = c("unbiased", "ML"),
+                         na.rm = FALSE, ...) {
   method <- match.arg(method)
   cf <- 1
   if (is.null(w)) {

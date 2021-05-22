@@ -10,7 +10,6 @@
 #' @export
 #' @examples
 #' recall(c(0, 0, 1, 1), c(0, 0, 1, 1))
-#' recall(c(1, 0, 0, 1), c(0, 0, 1, 1))
 #' recall(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 #' @seealso \code{\link{precision}, \link{f1_score}}.
 recall <- function(actual, predicted, w = NULL, ...) {

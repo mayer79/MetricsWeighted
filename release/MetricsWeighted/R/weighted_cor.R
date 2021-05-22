@@ -12,8 +12,6 @@
 #' @export
 #' @examples
 #' weighted_cor(1:10, c(1, 1:9))
-#' cor(1:10, c(1, 1:9))
-#' weighted_cor(1:10, c(1, 1:9), w = rep(1, 10))
 #' weighted_cor(1:10, c(1, 1:9), w = 1:10)
 #' @seealso \code{\link{weighted_mean}}.
 weighted_cor <- function(actual, predicted, w = NULL, na.rm = FALSE, ...) {

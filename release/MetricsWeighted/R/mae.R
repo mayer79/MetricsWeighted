@@ -10,7 +10,6 @@
 #' @export
 #' @examples
 #' mae(1:10, c(1:9, 12))
-#' mae(1:10, c(1:9, 12), w = rep(1, 10))
 #' mae(1:10, c(1:9, 12), w = 1:10)
 mae <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted))

@@ -23,7 +23,6 @@ Calculates weighted average of unit Bernoulli deviance. Defined as twice logLoss
 }
 \examples{
 deviance_bernoulli(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8))
-deviance_bernoulli(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
 deviance_bernoulli(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
 }
 \seealso{

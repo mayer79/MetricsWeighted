@@ -23,7 +23,6 @@ Calculates weighted precision, see \url{https://en.wikipedia.org/wiki/Precision_
 }
 \examples{
 precision(c(0, 0, 1, 1), c(0, 0, 1, 1))
-precision(c(1, 0, 0, 1), c(0, 0, 1, 1))
 precision(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 }
 \seealso{
