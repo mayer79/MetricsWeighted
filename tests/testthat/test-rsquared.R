@@ -33,7 +33,7 @@ test_that("R-squared with weight 1 gives same as unweighted", {
                r_squared_bernoulli(y_binary, pred, w))
 })
 
-test_that("deviance with weight 2 gives same as weight 1", {
+test_that("R-squared with weight 2 gives same as weight 1", {
   y_binary <- c(0, 0, 1, 1)
   y_pos <- c(0.1, 0.2, 0.8, 0.9)
   pred <- c(0.2, 0.3, 0.7, 0.8)
@@ -48,7 +48,7 @@ test_that("deviance with weight 2 gives same as weight 1", {
                r_squared_bernoulli(y_binary, pred, w1))
 })
 
-test_that("deviance with varying weights is different from unweighted", {
+test_that("R-squared with varying weights is different from unweighted", {
   y_binary <- c(0, 0, 1, 1)
   y_pos <- c(0.1, 0.2, 0.8, 0.9)
   pred <- c(0.2, 0.3, 0.7, 0.8)
