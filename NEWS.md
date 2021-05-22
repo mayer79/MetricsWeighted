@@ -1,3 +1,7 @@
+# MetricsWeighted 0.5.3
+
+- Added unit tests
+
 # MetricsWeighted 0.5.2
 
 Maintainance release. `rmarkdown` is now an explicit "Suggested" package.

@@ -28,16 +28,14 @@ For simplicity, the deviance gain is calculated regarding the null model derived
 }
 \examples{
 r_squared(1:10, c(1, 1:9))
-r_squared(1:10, c(1, 1:9), w = rep(1, 10))
 r_squared(1:10, c(1, 1:9), w = 1:10)
-r_squared(1:10, c(1, 1:9), deviance_function = deviance_normal)
 r_squared(0:2, c(0.1, 1, 2), deviance_function = deviance_poisson)
-r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3), deviance_function = deviance_poisson)
-r_squared(0:2, c(0.1, 1, 2), deviance_function = deviance_tweedie, tweedie_p = 1)
 r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3),
-  deviance_function = deviance_tweedie, tweedie_p = 1)
+          deviance_function = deviance_poisson)
+r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3),
+          deviance_function = deviance_tweedie, tweedie_p = 1)
 
-# respect to own deviance formula
+# respect to 'own' deviance formula
 myTweedie <- function(actual, predicted, w = NULL, ...) {
   deviance_tweedie(actual, predicted, w, tweedie_p = 1.5, ...)
 }

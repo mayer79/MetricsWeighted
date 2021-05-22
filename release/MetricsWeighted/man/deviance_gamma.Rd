@@ -23,9 +23,6 @@ Weighted average of (unscaled) unit Gamma deviance, see e.g. the reference below
 }
 \examples{
 deviance_gamma(1:10, c(1:9, 12))
-deviance_gamma(1:10, c(1:9, 12), w = rep(1, 10))
-deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 2)
-deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.99)
 deviance_gamma(1:10, c(1:9, 12), w = 1:10)
 }
 \references{

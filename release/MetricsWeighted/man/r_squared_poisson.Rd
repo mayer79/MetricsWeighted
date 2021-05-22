@@ -22,7 +22,8 @@ A numeric vector of length one.
 Wrapper to \code{r_squared} with \code{deviance_function = deviance_poisson}.
 }
 \examples{
-r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3), deviance_function = deviance_poisson)
+r_squared(0:2, c(0.1, 1, 2), w = rep(1, 3),
+          deviance_function = deviance_poisson)
 r_squared_poisson(0:2, c(0.1, 1, 2), w = rep(1, 3))
 }
 \seealso{

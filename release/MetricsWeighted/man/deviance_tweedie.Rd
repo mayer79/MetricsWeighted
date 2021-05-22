@@ -28,7 +28,6 @@ deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 0)
 deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1)
 deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 2)
 deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.5)
-deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.5, w = rep(1, 10))
 deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.5, w = 1:10)
 }
 \references{

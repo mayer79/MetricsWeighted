@@ -23,6 +23,5 @@ Calculates weighted mean absolute percentage error of predicted values. The smal
 }
 \examples{
 mape(1:10, c(1:9, 12))
-mape(1:10, c(1:9, 12), w = rep(1, 10))
 mape(1:10, c(1:9, 12), w = 1:10)
 }

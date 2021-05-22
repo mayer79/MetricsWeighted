@@ -12,9 +12,6 @@
 #' Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC. ISBN 978-0412997112.
 #' @examples
 #' deviance_gamma(1:10, c(1:9, 12))
-#' deviance_gamma(1:10, c(1:9, 12), w = rep(1, 10))
-#' deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 2)
-#' deviance_tweedie(1:10, c(1:9, 12), tweedie_p = 1.99)
 #' deviance_gamma(1:10, c(1:9, 12), w = 1:10)
 #' @seealso \code{\link{deviance_tweedie}}.
 deviance_gamma <- function(actual, predicted, w = NULL, ...) {

@@ -23,7 +23,6 @@ Calculates weighted mean-squared error of prediction. Equals mean unit normal de
 }
 \examples{
 mse(1:10, c(1:9, 12))
-mse(1:10, c(1:9, 12), w = rep(1, 10))
 mse(1:10, c(1:9, 12), w = 1:10)
 }
 \seealso{

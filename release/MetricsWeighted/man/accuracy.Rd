@@ -23,7 +23,6 @@ Calculates weighted accuracy, i.e. the weighted proportion of elements in \code{
 }
 \examples{
 accuracy(c(0, 0, 1, 1), c(0, 0, 1, 1))
-accuracy(c(1, 0, 0, 1), c(0, 0, 1, 1))
 accuracy(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 }
 \seealso{

@@ -23,7 +23,6 @@ Calculates weighted logloss resp. cross entropy. Equals half of the unit Bernoul
 }
 \examples{
 logLoss(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8))
-logLoss(c(1, 0, 0, 1), c(0.1, 0.1, 0.9, 0.8))
 logLoss(c(0, 0, 1, 1), c(0.1, 0.1, 0.9, 0.8), w = 1:4)
 }
 \seealso{

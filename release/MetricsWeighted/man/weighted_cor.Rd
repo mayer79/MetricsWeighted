@@ -25,8 +25,6 @@ Calculates weighted Pearson correlation coefficient between observed and predict
 }
 \examples{
 weighted_cor(1:10, c(1, 1:9))
-cor(1:10, c(1, 1:9))
-weighted_cor(1:10, c(1, 1:9), w = rep(1, 10))
 weighted_cor(1:10, c(1, 1:9), w = 1:10)
 }
 \seealso{

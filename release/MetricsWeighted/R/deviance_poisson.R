@@ -22,6 +22,7 @@ deviance_poisson <- function(actual, predicted, w = NULL, ...) {
             all(actual >= 0),
             all(predicted > 0))
   pos <- actual > 0
-  predicted[pos] <- (actual * log(actual / predicted) - (actual - predicted))[pos]
+  predicted[pos] <- (actual * log(actual / predicted) -
+                       (actual - predicted))[pos]
   weighted_mean(x = 2 * predicted, w = w, ...)
 }

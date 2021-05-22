@@ -22,7 +22,6 @@ A numeric vector of length one.
 Calculates weighted classification error, i.e. the weighted proportion of elements in \code{predicted} that are unequal to those in \code{observed}. Equals 1 - accuracy, thus lower values are better.
 }
 \examples{
-classification_error(c(0, 0, 1, 1), c(0, 0, 1, 1))
 classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1))
 classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
 }
