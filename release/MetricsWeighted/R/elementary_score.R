@@ -18,6 +18,7 @@
 #' @examples
 #' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
 #' elementary_score_quantile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
+#' @seealso \code{\link{murphy_diagram}}.
 NULL
 
 #' @rdname elementary_score

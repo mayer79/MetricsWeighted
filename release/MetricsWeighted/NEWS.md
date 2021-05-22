@@ -2,6 +2,7 @@
 
 - Added unit tests
 - Added option `reference_mean` to `r_squared()` functions. This allows clean out-of-sample applications.
+- Added Murphy diagrams
 
 # MetricsWeighted 0.5.2
 

@@ -33,9 +33,9 @@ create_package(
 
 file.copy(file.path(pkg, "DESCRIPTION"), to = getwd(), overwrite = TRUE)
 
+use_package("graphics", "Imports")
 use_package("stats", "Imports")
 
-use_package("graphics", "Suggests")
 use_package("dplyr", "Suggests")
 use_package("knitr", "Suggests")
 use_package("rmarkdown", "Suggests")

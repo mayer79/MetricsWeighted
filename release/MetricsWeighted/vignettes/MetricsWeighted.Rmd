@@ -15,7 +15,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  fig.width = 5.5,
+  fig.height = 4.5
 )
 ```
 
@@ -246,6 +248,18 @@ perf$`Tweedie p` <- as.numeric(as.character(perf$`Tweedie p`))
 
 # Values vs. p
 plot(`R-squared` ~ `Tweedie p`, data = perf, type = "s")
+```
+
+### Murphy diagrams
+
+The same logic as in the last example can be used to create so-called *Murphy diagrams* [@gneiting]. The function `murphy_diagram()` wraps above calls and allows to get elementary scores for one or multiple models across a range of theta values.
+
+#### Example
+
+```{r}
+y <- 1:10
+two_models <- cbind(m1 = 1.1 * y, m2 = 1.2 * y)
+murphy_diagram(y, two_models, theta = seq(0.9, 1.3, by = 0.01))
 ```
 
 ## References
