@@ -2,9 +2,16 @@
 % Please edit documentation in R/r_squared.R
 \name{r_squared}
 \alias{r_squared}
-\title{Pseudo R-Squared}
+\title{Generalized R-Squared}
 \usage{
-r_squared(actual, predicted, w = NULL, deviance_function = mse, ...)
+r_squared(
+  actual,
+  predicted,
+  w = NULL,
+  deviance_function = mse,
+  reference_mean = NULL,
+  ...
+)
 }
 \arguments{
 \item{actual}{Observed values.}
@@ -15,6 +22,8 @@ r_squared(actual, predicted, w = NULL, deviance_function = mse, ...)
 
 \item{deviance_function}{A positive (deviance) function taking four arguments: "actual", "predicted", "w" and "...".}
 
+\item{reference_mean}{An optional reference mean used to derive the null deviance. Recommended in out-of-sample applications.}
+
 \item{...}{Further arguments passed to \code{weighted_mean} and \code{deviance_function}.}
 }
 \value{
@@ -24,7 +33,7 @@ A numeric vector of length one.
 Returns (weighted) proportion of deviance explained, see reference below. For the mean-squared error as deviance, this equals the usual (weighted) R-squared. The higher, the better.
 }
 \details{
-For simplicity, the deviance gain is calculated regarding the null model derived from the actual values.
+The deviance gain is calculated regarding the null model derived from the actual values. While fine for in-sample considerations, this is only an approximation for out-of-sample considerations. There, it is recommended to calculate null deviance regarding the in-sample (weighted) mean. This value can be passed by the argument \code{reference_mean}.
 }
 \examples{
 r_squared(1:10, c(1, 1:9))

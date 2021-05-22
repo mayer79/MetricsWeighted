@@ -4,7 +4,7 @@
 \alias{r_squared_gamma}
 \title{Pseudo R-Squared regarding Gamma deviance}
 \usage{
-r_squared_gamma(actual, predicted, w = NULL, ...)
+r_squared_gamma(actual, predicted, w = NULL, reference_mean = NULL, ...)
 }
 \arguments{
 \item{actual}{Observed values.}
@@ -13,6 +13,8 @@ r_squared_gamma(actual, predicted, w = NULL, ...)
 
 \item{w}{Optional case weights.}
 
+\item{reference_mean}{An optional reference mean used to derive the null deviance. Recommended in out-of-sample applications.}
+
 \item{...}{Further arguments passed to \code{r_squared}.}
 }
 \value{
@@ -20,6 +22,9 @@ A numeric vector of length one.
 }
 \description{
 Wrapper to \code{r_squared} with \code{deviance_function = deviance_gamma}.
+}
+\details{
+The deviance gain is calculated regarding the null model derived from the actual values. While fine for in-sample considerations, this is only an approximation for out-of-sample considerations. There, it is recommended to calculate null deviance regarding the in-sample (weighted) mean. This value can be passed by the argument \code{reference_mean}.
 }
 \examples{
 r_squared(1:10, c(1:9, 12), w = 1:10, deviance_function = deviance_gamma)

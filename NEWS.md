@@ -1,6 +1,7 @@
 # MetricsWeighted 0.5.3
 
 - Added unit tests
+- Added option `reference_mean` to `r_squared()` functions. This allows clean out-of-sample applications.
 
 # MetricsWeighted 0.5.2
 

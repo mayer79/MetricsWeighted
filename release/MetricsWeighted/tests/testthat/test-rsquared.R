@@ -62,5 +62,19 @@ test_that("R-squared with varying weights is different from unweighted", {
                r_squared_bernoulli(y_binary, pred, w))
 })
 
+test_that("if predictions match average of train, r-squared should be 0 rather than negative", {
+  y_train <- 1:5
+  y_test <- 2:6
+  pred <- rep(mean(y_train), length(y_train))
+  expect_equal(r_squared(y_test, pred, reference_mean = mean(y_train)), 0)
+  expect_lt(r_squared(y_test, pred), 0)
+})
 
+test_that("out-of-sample application gives better score when training average is far away from test", {
+  y_train <- 1:5
+  y_test <- 2:6
+  pred <- 1:5
+  expect_gt(r_squared(y_test, pred, reference_mean = mean(y_train)),
+            r_squared(y_test, pred))
+})
 

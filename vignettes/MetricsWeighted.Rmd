@@ -103,7 +103,6 @@ deviance_gamma(y_num, pred_num)
 deviance_tweedie(y_num, pred_num, tweedie_p = 2)
 deviance_tweedie(y_num, pred_num, tweedie_p = 1.99)
 deviance_tweedie(y_num, pred_num, tweedie_p = 2.01)
-
 ```
 
 #### Examples: Binary classification
@@ -125,6 +124,8 @@ deviance_bernoulli(y_cat, pred_cat)  # LogLoss * 2
 
 Furthermore, we provide a generalization of R-squared, defined as the proportion of deviance explained, i.e. one minus the ratio of residual deviance and intercept-only deviance, see e.g. [@cohen]. By default, it calculates the ordinary R-squared, i.e. proportion of *normal* deviance (mean-squared error) explained. However, you can specify any different deviance function, e.g. `deviance_tweedie` with paramter 1.5 or the deviance of the *binary* logistic regression (`deviance_bernoulli`).
 
+*For out-of-sample calculations, the null deviance is ideally calculated from the average in the training data. This can be controlled by setting `reference_mean` to the (possibly weighted) average in the training data.*
+
 #### Examples
 
 ```{r}
@@ -145,7 +146,7 @@ r_squared(y_num, pred_num, w = weights, deviance_function = deviance_tweedie,
 r_squared(y_num, pred_num, deviance_function = deviance_tweedie, 
           tweedie_p = 1.5)
 
-# respect to own deviance formula
+# respect to 'own' deviance formula
 myTweedie <- function(actual, predicted, w = NULL, ...) {
   deviance_tweedie(actual, predicted, w, tweedie_p = 1.5, ...)
 }
