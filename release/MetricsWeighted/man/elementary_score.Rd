@@ -53,3 +53,6 @@ elementary_score_quantile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
 \references{
 Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 }
+\seealso{
+\code{\link{murphy_diagram}}.
+}

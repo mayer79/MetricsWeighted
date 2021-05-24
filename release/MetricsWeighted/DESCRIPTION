@@ -3,7 +3,7 @@ Package: MetricsWeighted
 Title: Weighted Metrics, Scoring Functions and Performance Measures for
     Machine Learning
 Version: 0.5.3
-Date: 2021-05-22
+Date: 2021-05-24
 Authors@R: 
     c(person(given = "Michael",
              family = "Mayer",
@@ -32,10 +32,10 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    stats
+    stats,
+    graphics
 Suggests: 
     knitr,
     dplyr,
-    graphics,
     rmarkdown,
     testthat
