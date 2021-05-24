@@ -252,7 +252,7 @@ plot(`R-squared` ~ `Tweedie p`, data = perf, type = "s")
 
 ### Murphy diagrams
 
-The same logic as in the last example can be used to create so-called *Murphy diagrams* [@gneiting]. The function `murphy_diagram()` wraps above calls and allows to get elementary scores for one or multiple models across a range of theta values.
+The same logic as in the last example can be used to create so-called *Murphy diagrams* [@gneiting]. The function `murphy_diagram()` wraps above calls and allows to get elementary scores for one or multiple models across a range of theta values, see also R package [murphydiagram](https://cran.r-project.org/web/packages/murphydiagram/index.html).
 
 #### Example
 

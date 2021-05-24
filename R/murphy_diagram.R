@@ -1,16 +1,16 @@
 #' Murphy diagram
 #'
-#' Murphy diagram for elementary scores. Can be used to compare performance of one or multiple models across ranges of thetas for elementary scores. If the plot needs to be customized, set \code{plot = FALSE} to get the resulting data instead of the plot.
+#' Murphy diagram of the elementary scoring function for expectiles resp. quantiles at level \code{alpha} for different values of \code{theta}.
+#' Can be used to study and compare performance of one or multiple models. If the plot needs to be customized, set \code{plot = FALSE} to get the resulting data instead of the plot.
 #'
 #' @importFrom graphics matplot legend
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
-#' @param alpha Level of expectile resp. quantile.
-#' @param theta Vector of theta values.
-#' @param type One of "expectile", "quantile".
+#' @param alpha Level of expectile resp. quantile. The default \code{alpha = 0.5} corresponds to the expectation resp. median.
+#' @param theta Vector of evaluation points.
+#' @param functional Either "expectile" or "quantile".
 #' @param plot Should plot (\code{TRUE}) be returned or the data to be plotted?
-#'
 #' @param ... Further arguments passed to \code{plot}.
 #' @return A named list of functions.
 #' @export
@@ -26,11 +26,11 @@
 murphy_diagram <- function(actual, predicted, w = NULL,
                            alpha = 0.5,
                            theta = seq(-2, 2, length.out = 100),
-                           type = c("expectile", "quantile"),
+                           functional = c("expectile", "quantile"),
                            plot = TRUE, ...) {
   # Create list of elementary scores
-  type <- match.arg(type)
-  fun <- switch(type,
+  functional <- match.arg(functional)
+  fun <- switch(functional,
                 expectile = elementary_score_expectile,
                 quantile = elementary_score_quantile)
   multi <- multi_metric(fun, theta = theta, alpha = alpha)
