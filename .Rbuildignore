@@ -1,8 +1,12 @@
-^MetricsWeighted\.Rproj$
+^LICENSE\.md$
+^packaging.R$
+[.]Rproj$
+^backlog$
+logo.png
+^.*\.Rproj$
 ^\.Rproj\.user$
-^cran-comments\.md$
 ^doc$
 ^Meta$
-^_pkgdown\.yml$
-^docs$
-^pkgdown$
+^cran-comments.md$
+^logo.png$
+^cran-comments\.md$
