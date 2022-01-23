@@ -1,3 +1,10 @@
+# MetricsWeighted 0.5.4
+
+This is a maintainance update without any code change.
+
+- Fixed problematic unit tests.
+- Internal restructuring how package content is being generated.
+
 # MetricsWeighted 0.5.3
 
 - Added unit tests

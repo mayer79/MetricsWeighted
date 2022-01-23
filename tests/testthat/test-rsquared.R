@@ -26,7 +26,7 @@ test_that("R-squared with weight 1 gives same as unweighted", {
   w <- rep(1, length(y_pos))
   expect_equal(r_squared(y_pos, pred), r_squared(y_pos, pred, w))
   expect_equal(r_squared_poisson(y_pos, pred),
-               r_squared_poisson(y_pos, pred), w)
+               r_squared_poisson(y_pos, pred, w))
   expect_equal(r_squared_gamma(y_pos, pred),
                r_squared_gamma(y_pos, pred, w))
   expect_equal(r_squared_bernoulli(y_binary, pred),
@@ -41,7 +41,7 @@ test_that("R-squared with weight 2 gives same as weight 1", {
   w2 <- rep(2, length(y_pos))
   expect_equal(r_squared(y_pos, pred), r_squared(y_pos, pred, w1))
   expect_equal(r_squared_poisson(y_pos, pred, w2),
-               r_squared_poisson(y_pos, pred), w1)
+               r_squared_poisson(y_pos, pred, w1))
   expect_equal(r_squared_gamma(y_pos, pred, w2),
                r_squared_gamma(y_pos, pred, w1))
   expect_equal(r_squared_bernoulli(y_binary, pred, w2),
