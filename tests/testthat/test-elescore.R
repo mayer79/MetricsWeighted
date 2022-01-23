@@ -1,5 +1,3 @@
-context("Elementary score")
-
 test_that("measures with weight 1 gives same as unweighted", {
   y <- 1:10
   pred <- c(1:9, 12)

@@ -1,5 +1,3 @@
-context("Median absolute error")
-
 test_that("medae works without weights", {
   y <- 1:3
   pred <- 3:1

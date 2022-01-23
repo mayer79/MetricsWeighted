@@ -1,5 +1,3 @@
-context("Accuracy and classification error")
-
 test_that("accuracy works without weights", {
   y <- c(0, 0, 1)
   pred <- c(0, 1, 1)

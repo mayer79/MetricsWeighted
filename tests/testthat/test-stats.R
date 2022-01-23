@@ -1,5 +1,3 @@
-context("mean, variance, quantiles, cor")
-
 test_that("unweighted stats match unweighted function", {
   x <- c(0, 1, 2, 1, 2, 3, 4, 5)
   y <- 1:length(x)

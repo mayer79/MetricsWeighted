@@ -1,5 +1,3 @@
-context("MSE and RMSE")
-
 test_that("mse works without weights", {
   y <- c(0, 2)
   pred <- c(1, 1)

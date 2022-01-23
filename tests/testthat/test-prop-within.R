@@ -1,5 +1,3 @@
-context("prop_within")
-
 test_that("prop_within works without weights", {
   y <- -2:2
   pred <- c(-1, -1, 0, 1, 10)

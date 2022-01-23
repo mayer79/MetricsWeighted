@@ -1,5 +1,3 @@
-context("Precision, recall and f1 score")
-
 test_that("measures work without weights", {
   y <- c(0, 0, 1)
   pred <- c(0, 1, 1)

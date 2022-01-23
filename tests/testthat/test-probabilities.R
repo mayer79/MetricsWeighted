@@ -1,5 +1,3 @@
-context("Bernoulli deviance, logLoss, Gini, AUC")
-
 test_that("Bernoulli deviance equals 2 logloss", {
   y <- c(0, 0, 1)
   pred <- c(0.1, 0.9, 0.5)

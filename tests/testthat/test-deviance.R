@@ -1,5 +1,3 @@
-context("deviance")
-
 test_that("normal deviance equals MSE", {
   y <- c(0, 2)
   pred <- c(1, 1)
