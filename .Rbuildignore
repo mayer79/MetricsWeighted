@@ -2,11 +2,10 @@
 ^packaging.R$
 [.]Rproj$
 ^backlog$
-logo.png
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^doc$
 ^Meta$
-^cran-comments.md$
-^logo.png$
 ^cran-comments\.md$
+^CRAN-RELEASE$
+^logo.png$
