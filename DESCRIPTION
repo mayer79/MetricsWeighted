@@ -2,8 +2,8 @@ Type: Package
 Package: MetricsWeighted
 Title: Weighted Metrics, Scoring Functions and Performance Measures for
     Machine Learning
-Version: 0.5.3
-Date: 2021-06-06
+Version: 0.5.4
+Date: 2022-01-23
 Authors@R: 
     c(person(given = "Michael",
              family = "Mayer",
@@ -21,21 +21,11 @@ Description: Provides weighted versions of several metrics, scoring
     package also contains a weighted version of generalized R-squared, see
     e.g. Cohen, J. et al. (2002, ISBN: 978-0805822236). Furthermore,
     'dplyr' chains are supported.
-License: GPL(>= 2)
-URL: https://github.com/mayer79/MetricsWeighted
-BugReports: https://github.com/mayer79/MetricsWeighted/issues
+License: GPL (>= 2)
 Depends: 
     R (>= 3.1.0)
-VignetteBuilder: 
-    knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Imports: 
-    stats,
-    graphics
-Suggests: 
-    knitr,
-    dplyr,
-    rmarkdown,
-    testthat
+URL: https://github.com/mayer79/MetricsWeighted
+BugReports: https://github.com/mayer79/MetricsWeighted/issues
