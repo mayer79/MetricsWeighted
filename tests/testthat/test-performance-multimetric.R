@@ -1,5 +1,3 @@
-context("performance and multi_metric")
-
 ir <- iris
 fit_num <- lm(Sepal.Length ~ ., data = ir)
 ir$fitted <- fit_num$fitted

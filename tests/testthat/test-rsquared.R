@@ -1,5 +1,3 @@
-context("R-squared")
-
 test_that("R-squared is 0 if predicted = mean", {
   y_binary <- c(0, 0, 1, 1)
   y_pos <- c(0.1, 0.2, 0.8, 0.9)
@@ -16,7 +14,7 @@ test_that("R-squared is 1 if predicted = actual (except Bernoulli)", {
   expect_equal(r_squared(y, pred), 1)
   expect_equal(r_squared_poisson(y, pred), 1)
   expect_equal(r_squared_gamma(y, pred), 1)
-  expect_error(r_squared_bernoulli(y, pred), 1)
+  expect_error(r_squared_bernoulli(y, pred))
 })
 
 test_that("R-squared with weight 1 gives same as unweighted", {
@@ -26,7 +24,7 @@ test_that("R-squared with weight 1 gives same as unweighted", {
   w <- rep(1, length(y_pos))
   expect_equal(r_squared(y_pos, pred), r_squared(y_pos, pred, w))
   expect_equal(r_squared_poisson(y_pos, pred),
-               r_squared_poisson(y_pos, pred), w)
+               r_squared_poisson(y_pos, pred, w))
   expect_equal(r_squared_gamma(y_pos, pred),
                r_squared_gamma(y_pos, pred, w))
   expect_equal(r_squared_bernoulli(y_binary, pred),
@@ -41,7 +39,7 @@ test_that("R-squared with weight 2 gives same as weight 1", {
   w2 <- rep(2, length(y_pos))
   expect_equal(r_squared(y_pos, pred), r_squared(y_pos, pred, w1))
   expect_equal(r_squared_poisson(y_pos, pred, w2),
-               r_squared_poisson(y_pos, pred), w1)
+               r_squared_poisson(y_pos, pred, w1))
   expect_equal(r_squared_gamma(y_pos, pred, w2),
                r_squared_gamma(y_pos, pred, w1))
   expect_equal(r_squared_bernoulli(y_binary, pred, w2),

@@ -1,5 +1,3 @@
-context("Interface")
-
 test_that("'actual' has same length as 'predicted'", {
   y <- c(0, 2)
   pred <- c(1, 1)

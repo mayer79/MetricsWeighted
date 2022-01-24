@@ -1,23 +1,19 @@
-Resubmission
-
-Fixed the following bad URL as mentioned by Uwe.
-
-  "Found the following (possibly) invalid URLs:
-     URL: https://cran.r-project.org/web/packages/murphydiagram/index.html
-       From: inst/doc/MetricsWeighted.html
-       Status: 200
-       Message: OK
-       CRAN URL not in canonical form
-     The canonical URL of the CRAN page for a package is
-       https://CRAN.R-project.org/package=pkgname
-"
-
 # Original message
 
 Hello CRAN
 
-This is a small release.
+This is a small update to fix bugs in unit tests that implied a wrong usage of `all.equal()`.
 
-- Introduction of unit tests
-- Added possibility for clean calculation of out-of-sample r-squared.
-- Added Murphy diagram
+CRAN checks were okay, with the usual warning about qpdf. The note about time is new to me.
+
+-- R CMD check results ------------ MetricsWeighted 0.5.4 ----
+Duration: 1m 13.6s
+
+> checking for unstated dependencies in examples ... OK
+   WARNING
+  'qpdf' is needed for checks on size reduction of PDFs
+
+> checking for future file timestamps ... NOTE
+  unable to verify current time
+
+0 errors √ | 1 warning x | 1 note x

@@ -1,5 +1,3 @@
-context("MAPE")
-
 test_that("mape does not allow 0 actuals", {
   y <- 0:2
   pred <- 2 * y
