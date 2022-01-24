@@ -61,6 +61,10 @@ use_news_md()
 # Add logo
 use_logo("logo.png")
 
+# If package goes to CRAN: infos (check results etc.) for CRAN
+use_cran_comments()
+
+
 #=============================================================================
 # Finish package building (can use fresh session)
 #=============================================================================
@@ -77,7 +81,6 @@ install()
 
 # Run only if package is public(!) and should go to CRAN
 if (FALSE) {
-  use_cran_comments()                # Write something to CRAN, including what type checks were done.
   check_win_devel()
   check_rhub()
 
