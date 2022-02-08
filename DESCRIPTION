@@ -1,9 +1,7 @@
-Type: Package
 Package: MetricsWeighted
 Title: Weighted Metrics, Scoring Functions and Performance Measures for
     Machine Learning
-Version: 0.5.4
-Date: 2022-01-23
+Version: 0.5.4.9000
 Authors@R: 
     c(person(given = "Michael",
              family = "Mayer",
@@ -13,7 +11,6 @@ Authors@R:
              family = "Lorentzen",
              role = c("ctb", "rev"),
              email = "lorentzen.ch@googlemail.com"))
-Maintainer: Michael Mayer <mayermichael79@gmail.com>
 Description: Provides weighted versions of several metrics, scoring
     functions and performance measures used in machine learning, including
     average unit deviances of the Bernoulli, Tweedie, Poisson, and Gamma
@@ -27,8 +24,6 @@ Depends:
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-URL: https://github.com/mayer79/MetricsWeighted
-BugReports: https://github.com/mayer79/MetricsWeighted/issues
 Imports: 
     stats,
     graphics
@@ -37,5 +32,7 @@ Suggests:
     dplyr,
     rmarkdown,
     testthat (>= 3.0.0)
+URL: https://github.com/mayer79/MetricsWeighted
+BugReports: https://github.com/mayer79/MetricsWeighted/issues
 VignetteBuilder: knitr
 Config/testthat/edition: 3

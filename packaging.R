@@ -14,30 +14,27 @@ library(usethis)
 use_description(
   fields = list(
     Title = "Weighted Metrics, Scoring Functions and Performance Measures for Machine Learning",
-    Type = "Package",
-    Version = "0.5.4",
-    Date = Sys.Date(),
+    Version = "0.5.4.9000",
     Description = "Provides weighted versions of several metrics, scoring functions and performance measures used in machine learning, including average unit deviances of the Bernoulli, Tweedie, Poisson, and Gamma distributions, see Jorgensen B. (1997, ISBN: 978-0412997112). The package also contains a weighted version of generalized R-squared, see e.g. Cohen, J. et al. (2002, ISBN: 978-0805822236). Furthermore, 'dplyr' chains are supported.",
     `Authors@R` = "c(person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre', 'cph')),
        person('Christian', 'Lorentzen', email = 'lorentzen.ch@googlemail.com', role = c('ctb', 'rev')))",
     Depends = "R (>= 3.1.0)",
-    LazyData = NULL,
-    Maintainer = "Michael Mayer <mayermichael79@gmail.com>"
+    LazyData = NULL
   ),
   roxygen = TRUE
 )
 
+use_package("graphics", "Imports")
+use_package("stats", "Imports")
+use_package("dplyr", "Suggests")
+
 use_gpl_license(2)
+
 use_github_links() # use this if this project is on github
 
 # Your files that do not belong to the package itself (others are added by "use_* function")
 use_build_ignore(c("^packaging.R$", "[.]Rproj$", "^backlog$",
                    "^cran-comments.md$", "^logo.png$"), escape = FALSE)
-
-# Required external packages
-use_package("graphics", "Imports")
-use_package("stats", "Imports")
-use_package("dplyr", "Suggests")
 
 # If your code uses the pipe operator %>%
 # use_pipe()
