@@ -1,3 +1,15 @@
+# MetricsWeighted 0.5.5
+
+## Maintenance
+
+- Use github workflows
+- Add github pages
+- Better README
+
+## Dependencies
+
+- Removed {dplyr} from suggested packages.
+
 # MetricsWeighted 0.5.4
 
 This is a maintainance update without any code change.
