@@ -94,7 +94,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>The goal of this package is to provide weighted and unweighted versions of metrics, scoring functions and performance measures for machine learning.</p>
+<p>{MetricsWeighted} provides weighted and unweighted versions of metrics, scoring functions and performance measures for machine learning.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -128,7 +128,7 @@
 <div class="section level3">
 <h3 id="example-2-dataframe-interface">Example 2: data.frame interface<a class="anchor" aria-label="anchor" href="#example-2-dataframe-interface"></a>
 </h3>
-<p>Can e.g. be used in a {dplyr} chain.</p>
+<p>Useful e.g. in a {dplyr} chain.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> y, <span class="at">pred =</span> pred)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(dat, <span class="at">actual =</span> <span class="st">"y"</span>, <span class="at">predicted =</span> <span class="st">"pred"</span>)</span>
@@ -136,14 +136,17 @@
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> metric    value</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>   rmse <span class="fl">1.581139</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(dat, <span class="at">actual =</span> <span class="st">"y"</span>, <span class="at">predicted =</span> <span class="st">"pred"</span>, </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">metrics =</span> <span class="fu">list</span>(<span class="at">rmse =</span> rmse, <span class="st">`</span><span class="at">R-squared</span><span class="st">`</span> <span class="ot">=</span> r_squared))</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    metric     value</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      rmse <span class="fl">1.5811388</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> R<span class="sc">-</span>squared <span class="fl">0.6969697</span></span></code></pre></div>
-<p>Check the vignette for more applications.</p>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  dat, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">actual =</span> <span class="st">"y"</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">predicted =</span> <span class="st">"pred"</span>, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">list</span>(<span class="at">rmse =</span> rmse, <span class="st">`</span><span class="at">R-squared</span><span class="st">`</span> <span class="ot">=</span> r_squared)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>    metric     value</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span>      rmse <span class="fl">1.5811388</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> R<span class="sc">-</span>squared <span class="fl">0.6969697</span></span></code></pre></div>
+<p>Check out the vignette for more applications.</p>
 </div>
 </div>
 </div>
