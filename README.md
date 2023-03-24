@@ -13,7 +13,7 @@
 
 ## Overview
 
-The goal of this package is to provide weighted and unweighted versions of metrics, scoring functions and performance measures for machine learning.
+{MetricsWeighted} provides weighted and unweighted versions of metrics, scoring functions and performance measures for machine learning.
 
 ## Installation
 
@@ -47,7 +47,7 @@ r_squared(y, pred, deviance_function = deviance_gamma)  # 0.78
 
 ### Example 2: data.frame interface
 
-Can e.g. be used in a {dplyr} chain.
+Useful e.g. in a {dplyr} chain.
 
 ``` r
 dat <- data.frame(y = y, pred = pred)
@@ -57,14 +57,16 @@ performance(dat, actual = "y", predicted = "pred")
 > metric    value
 >   rmse 1.581139
 
-
-performance(dat, actual = "y", predicted = "pred", 
-            metrics = list(rmse = rmse, `R-squared` = r_squared))
+performance(
+  dat, 
+  actual = "y", 
+  predicted = "pred", 
+  metrics = list(rmse = rmse, `R-squared` = r_squared)
+)
 
 >    metric     value
 >      rmse 1.5811388
 > R-squared 0.6969697
-
 ```
 
-Check the vignette for more applications.
+Check out the vignette for more applications.
