@@ -1,24 +1,31 @@
-# MetricsWeighted <a href='https://github.com/mayer79/MetricsWeighted'><img src='man/figures/logo.png' align="right" height="138.5"/></a>
+# MetricsWeighted <a href='https://github.com/mayer79/MetricsWeighted'><img src='man/figures/logo.png' align="right" height="139"/></a>
 
-[![CRAN version](http://www.r-pkg.org/badges/version/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted) [![](https://cranlogs.r-pkg.org/badges/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted) [![](https://cranlogs.r-pkg.org/badges/grand-total/MetricsWeighted?color=orange)](https://cran.r-project.org/package=MetricsWeighted)
+<!-- badges: start -->
 
-The goal of this package is to provide weighted versions of metrics, scoring functions and performance measures for machine learning.
+[![CRAN status](http://www.r-pkg.org/badges/version/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted)
+[![R-CMD-check](https://github.com/mayer79/MetricsWeighted/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mayer79/MetricsWeighted/actions)
+[![Codecov test coverage](https://codecov.io/gh/mayer79/MetricsWeighted/branch/main/graph/badge.svg)](https://app.codecov.io/gh/mayer79/MetricsWeighted?branch=main)
+
+[![](https://cranlogs.r-pkg.org/badges/MetricsWeighted)](https://cran.r-project.org/package=MetricsWeighted) 
+[![](https://cranlogs.r-pkg.org/badges/grand-total/MetricsWeighted?color=orange)](https://cran.r-project.org/package=MetricsWeighted)
+
+<!-- badges: end -->
+
+## Overview
+
+The goal of this package is to provide weighted and unweighted versions of metrics, scoring functions and performance measures for machine learning.
 
 ## Installation
 
-You can install the released version of MetricsWeighted from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
+```r
+# From CRAN
 install.packages("MetricsWeighted")
+
+# Development version
+devtools::install_github("mayer79/MetricsWeighted")
 ```
 
-To get the bleeding edge version, you can run
-``` r
-library(devtools)
-install_github("mayer79/MetricsWeighted")
-```
-
-## Application
+## Usage
 
 There are two ways to apply the package. We will go through them in the following examples. Please have a look at the vignette on CRAN for further information and examples. 
 
@@ -40,7 +47,7 @@ r_squared(y, pred, deviance_function = deviance_gamma)  # 0.78
 
 ### Example 2: data.frame interface
 
-Can e.g. be used in a `dplyr` chain.
+Can e.g. be used in a {dplyr} chain.
 
 ``` r
 dat <- data.frame(y = y, pred = pred)
@@ -60,3 +67,4 @@ performance(dat, actual = "y", predicted = "pred",
 
 ```
 
+Check the vignette for more applications.
