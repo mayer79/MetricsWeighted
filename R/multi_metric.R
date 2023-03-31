@@ -42,7 +42,7 @@ multi_metric <- function(fun, ...) {
       fun,
       c(
         list(actual = actual, predicted = predicted, w = w),
-        setNames(list(p), varying),
+        stats::setNames(list(p), varying),
         param[setdiff(names(len), varying)],
         ...
       )

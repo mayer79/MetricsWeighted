@@ -2,7 +2,8 @@
 
 ## Maintenance
 
-- Reorganization of code.
+- Reorganization of code
+- Switch to `package::function()` notation
 
 # MetricsWeighted 0.5.5
 
