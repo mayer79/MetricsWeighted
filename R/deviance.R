@@ -1,7 +1,7 @@
 #' Bernoulli Deviance
 #'
 #' Calculates weighted average of unit Bernoulli deviance.
-#' Defined as twice logLoss. The smaller the deviance, the better.
+#' Defined as twice log loss. The smaller the deviance, the better.
 #'
 #' @param actual Observed values (0 or 1).
 #' @param predicted Predicted values strictly between 0 and 1.
@@ -19,7 +19,7 @@ deviance_bernoulli <- function(actual, predicted, w = NULL, ...) {
 
 #' Log Loss/Binary Cross Entropy
 #'
-#' Calculates weighted log loss (= cross entropy).
+#' Calculates weighted log loss (= cross-entropy).
 #' Equals half of the unit Bernoulli deviance. The smaller, the better.
 #'
 #' @param actual Observed values (0 or 1).
