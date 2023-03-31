@@ -1,23 +1,17 @@
 Package: MetricsWeighted
-Title: Weighted Metrics, Scoring Functions and Performance Measures for
-    Machine Learning
-Version: 0.5.5
-Authors@R: 
-    c(person(given = "Michael",
-             family = "Mayer",
-             role = c("aut", "cre", "cph"),
-             email = "mayermichael79@gmail.com"),
-      person(given = "Christian",
-             family = "Lorentzen",
-             role = c("ctb", "rev"),
-             email = "lorentzen.ch@googlemail.com"))
-Description: Provides weighted versions of several metrics, scoring
-    functions and performance measures used in machine learning, including
-    average unit deviances of the Bernoulli, Tweedie, Poisson, and Gamma
-    distributions, see Jorgensen B. (1997, ISBN: 978-0412997112). The
-    package also contains a weighted version of generalized R-squared, see
-    e.g. Cohen, J. et al. (2002, ISBN: 978-0805822236). Furthermore,
-    'dplyr' chains are supported.
+Title: Weighted Metrics and Performance Measures for Machine Learning
+Version: 0.5.6
+Authors@R: c(
+    person("Michael", "Mayer", , "mayermichael79@gmail.com", role = c("aut", "cre")),
+    person("Christian", "Lorentzen", , "lorentzen.ch@googlemail.com", role = "ctb")
+  )
+Description: Provides weighted versions of several metrics and performance
+    measures used in machine learning, including average unit deviances of
+    the Bernoulli, Tweedie, Poisson, and Gamma distributions, see
+    Jorgensen B. (1997, ISBN: 978-0412997112).  The package also contains
+    a weighted version of generalized R-squared, see e.g. Cohen, J. et al.
+    (2002, ISBN: 978-0805822236).  Furthermore, 'dplyr' chains are
+    supported.
 License: GPL (>= 2)
 Depends: 
     R (>= 3.1.0)
@@ -25,13 +19,13 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
-    stats,
-    graphics
+    graphics,
+    stats
+URL: https://github.com/mayer79/MetricsWeighted
+BugReports: https://github.com/mayer79/MetricsWeighted/issues
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
-URL: https://github.com/mayer79/MetricsWeighted
-BugReports: https://github.com/mayer79/MetricsWeighted/issues
 VignetteBuilder: knitr
 Config/testthat/edition: 3

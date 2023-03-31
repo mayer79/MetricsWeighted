@@ -29,23 +29,20 @@ test_that("performance does not accept unnamed vector of metrics", {
 })
 
 test_that("performance accepts named list of metrics", {
-  perf <- performance(ir, y, p, w = w,
-                      metrics = list(`R-squared` = r_squared,
-                                  rmse = rmse))
+  metrics <- list(`R-squared` = r_squared, rmse = rmse)
+  perf <- performance(ir, y, p, w = w, metrics = metrics)
   expect_equal(as.character(perf$metric), c("R-squared", "rmse"))
 })
 
 test_that("performance works with parametrized metric", {
-  perf <- performance(ir, y, p, w = w, metrics = r_squared,
-                      deviance_function = deviance_gamma)
+  perf <- performance(
+    ir, y, p, w = w, metrics = r_squared, deviance_function = deviance_gamma
+  )
   expect_equal(perf$value, r_squared_gamma(ir[[y]], ir[[p]], ir[[w]]))
 })
 
 test_that("performance works with multi_metric", {
-  multi <- multi_metric(
-    fun = deviance_tweedie,
-    tweedie_p = c(0, 1, 2)
-  )
+  multi <- multi_metric(fun = deviance_tweedie, tweedie_p = c(0, 1, 2))
   perf <- performance(ir, y, p, w = w, metrics = multi, key = "Tweedie p")
   expected <- c(
     deviance_normal(ir[[y]], ir[[p]], ir[[w]]),

@@ -1,7 +1,6 @@
 ^LICENSE\.md$
 ^packaging.R$
 [.]Rproj$
-^backlog$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^doc$
@@ -11,3 +10,4 @@
 ^logo.png$
 ^\.github$
 ^CRAN-SUBMISSION$
+^cran-comments.md$

@@ -26,8 +26,9 @@ test_that("weight 1 gives same as unweighted", {
   w <- rep(1, length(x))
   expect_equal(weighted_mean(x), weighted_mean(x, w = w))
   expect_equal(weighted_median(x), weighted_median(x, w = w))
-  expect_equal(weighted_quantile(x, probs = 0.2),
-               weighted_quantile(x, probs = 0.2, w = w))
+  expect_equal(
+    weighted_quantile(x, probs = 0.2), weighted_quantile(x, probs = 0.2, w = w)
+  )
   expect_equal(weighted_var(x), weighted_var(x, w = w))
   expect_equal(weighted_cor(x, y), weighted_cor(x, y, w = w))
 
@@ -63,8 +64,9 @@ test_that("weight 1 gives same as weight 2", {
   w2 <- rep(2, length(x))
   expect_equal(weighted_mean(x, w = w2), weighted_mean(x, w = w1))
   expect_equal(weighted_median(x, w = w2), weighted_median(x, w = w1))
-  expect_equal(weighted_quantile(x, w = w2, probs = 0.2),
-               weighted_quantile(x, probs = 0.2, w = w1))
+  expect_equal(
+    weighted_quantile(x, w = w2, probs = 0.2), weighted_quantile(x, probs = 0.2, w = w1)
+  )
   expect_equal(weighted_var(x, w = w2), weighted_var(x, w = w1))
   expect_equal(weighted_cor(x, y, w = w2), weighted_cor(x, y, w = w1))
 
@@ -99,8 +101,9 @@ test_that("non-constant weights have an effect", {
   w <- 1:length(x)
   expect_false(weighted_mean(x) == weighted_mean(x, w = w))
   expect_false(weighted_median(x) == weighted_median(x, w = w))
-  expect_false(weighted_quantile(x, probs = 0.2) ==
-               weighted_quantile(x, probs = 0.2, w = w))
+  expect_false(
+    weighted_quantile(x, probs = 0.2) == weighted_quantile(x, probs = 0.2, w = w)
+  )
   expect_false(weighted_var(x) == weighted_var(x, w = w))
   expect_false(weighted_cor(x, y) == weighted_cor(x, y, w = w))
 
@@ -124,3 +127,12 @@ test_that("non-constant weights have an effect", {
   )
 })
 
+test_that("ML estimate of variance differs the usual one", {
+  x <- c(0, 1, 2, 1, 2, 3, 4, 5)
+  w <- 1:length(x)
+  expect_false(weighted_var(x, method = "unbiased") == weighted_var(x, method = "ML"))
+  expect_false(
+    weighted_var(x, w = w, method = "unbiased") ==
+    weighted_var(x, w = w, method = "ML")
+  )
+})

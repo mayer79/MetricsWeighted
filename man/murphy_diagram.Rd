@@ -9,7 +9,7 @@ murphy_diagram(
   predicted,
   w = NULL,
   alpha = 0.5,
-  theta = seq(-2, 2, length.out = 100),
+  theta = seq(-2, 2, length.out = 100L),
   functional = c("expectile", "quantile"),
   plot = TRUE,
   ...
@@ -22,7 +22,8 @@ murphy_diagram(
 
 \item{w}{Optional case weights.}
 
-\item{alpha}{Level of expectile resp. quantile. The default \code{alpha = 0.5} corresponds to the expectation resp. median.}
+\item{alpha}{Level of expectile resp. quantile. The default \code{alpha = 0.5}
+corresponds to the expectation/median.}
 
 \item{theta}{Vector of evaluation points.}
 
@@ -30,14 +31,17 @@ murphy_diagram(
 
 \item{plot}{Should plot (\code{TRUE}) be returned or the data to be plotted?}
 
-\item{...}{Further arguments passed to \code{plot}.}
+\item{...}{Further arguments passed to \code{graphics::matplot()}.}
 }
 \value{
 A named list of functions.
 }
 \description{
-Murphy diagram of the elementary scoring function for expectiles resp. quantiles at level \code{alpha} for different values of \code{theta}.
-Can be used to study and compare performance of one or multiple models. If the plot needs to be customized, set \code{plot = FALSE} to get the resulting data instead of the plot.
+Murphy diagram of the elementary scoring function for expectiles/quantiles at level
+\code{alpha} for different values of \code{theta}.
+Can be used to study and compare performance of one or multiple models.
+If the plot needs to be customized, set \code{plot = FALSE} to get the
+resulting data instead of the plot.
 }
 \examples{
 y <- 1:10
