@@ -1,3 +1,9 @@
+# MetricsWeighted 0.5.6
+
+## Maintenance
+
+- Reorganization of code.
+
 # MetricsWeighted 0.5.5
 
 ## Maintenance
