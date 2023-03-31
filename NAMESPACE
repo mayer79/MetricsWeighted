@@ -33,3 +33,4 @@ export(weighted_mean)
 export(weighted_median)
 export(weighted_quantile)
 export(weighted_var)
+
