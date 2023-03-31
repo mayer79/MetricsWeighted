@@ -7,32 +7,31 @@
 multi_metric(fun, ...)
 }
 \arguments{
-\item{fun}{A metric/scoring function/performance measure with additional parameter to be varied.}
+\item{fun}{A metric/performance measure with additional parameter to be varied.}
 
-\item{...}{Further arguments passed to \code{fun}, including one varying parameter (specified by a vector).}
+\item{...}{Further arguments passed to \code{fun}, including one varying parameter
+(specified by a vector).}
 }
 \value{
 A named list of functions.
 }
 \description{
-Provides a way to create a list of metrics/scoring functions/performance measures from a parametrized function like the Tweedie deviance or the elementary scoring functions for expectiles.
+Provides a way to create a list of metrics/performance measures from a parametrized
+function like the Tweedie deviance or the elementary scoring functions for expectiles.
 }
 \examples{
 data <- data.frame(act = 1:10, pred = c(1:9, 12))
-multi <- multi_metric(fun = deviance_tweedie,
-                      tweedie_p = c(0, seq(1, 3, by = 0.1)))
+multi <- multi_metric(fun = deviance_tweedie, tweedie_p = c(0, seq(1, 3, by = 0.1)))
 performance(data, actual = "act", predicted = "pred", metrics = multi)
-multi <- multi_metric(fun = r_squared, deviance_function = deviance_tweedie,
-                      tweedie_p = c(0, seq(1, 3, by = 0.1)))
+multi <- multi_metric(
+  fun = r_squared,
+  deviance_function = deviance_tweedie, tweedie_p = c(0, seq(1, 3, by = 0.1))
+)
 performance(data, actual = "act", predicted = "pred", metrics = multi)
-multi <- multi_metric(fun = elementary_score_expectile,
-                      theta = 1:11, alpha = 0.1)
-performance(data, actual = "act", predicted = "pred",
-            metrics = multi, key = "theta")
-multi <- multi_metric(fun = elementary_score_expectile,
-                      theta = 1:11, alpha = 0.5)
-performance(data, actual = "act", predicted = "pred",
-            metrics = multi, key = "theta")
+multi <- multi_metric(fun = elementary_score_expectile, theta = 1:11, alpha = 0.1)
+performance(data, actual = "act", predicted = "pred", metrics = multi, key = "theta")
+multi <- multi_metric(fun = elementary_score_expectile, theta = 1:11, alpha = 0.5)
+performance(data, actual = "act", predicted = "pred", metrics = multi, key = "theta")
 }
 \seealso{
 \code{\link{performance}}.

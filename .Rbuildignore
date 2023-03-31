@@ -1,7 +1,6 @@
 ^LICENSE\.md$
 ^packaging.R$
 [.]Rproj$
-^backlog$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^doc$
