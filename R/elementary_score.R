@@ -25,9 +25,13 @@ NULL
 #' @export
 elementary_score_expectile <- function(actual, predicted, w = NULL,
                                        alpha = 0.5, theta = 0, ...) {
-  stopifnot(length(alpha) == 1L, alpha >= 0, alpha <= 1,
-            length(theta) == 1L,
-            length(actual) == length(predicted))
+  stopifnot(
+    length(alpha) == 1L,
+    alpha >= 0,
+    alpha <= 1,
+    length(theta) == 1L,
+    length(actual) == length(predicted)
+  )
 
   score <- abs((actual < predicted) - alpha) * (
        .positive_part(actual - theta) -
@@ -42,13 +46,15 @@ elementary_score_expectile <- function(actual, predicted, w = NULL,
 #' @export
 elementary_score_quantile <- function(actual, predicted, w = NULL,
                                       alpha = 0.5, theta = 0, ...) {
-  stopifnot(length(alpha) == 1L, alpha >= 0, alpha <= 1,
-            length(theta) == 1L,
-            length(actual) == length(predicted))
+  stopifnot(
+    length(alpha) == 1L,
+    alpha >= 0,
+    alpha <= 1,
+    length(theta) == 1L,
+    length(actual) == length(predicted)
+  )
 
-  score <- ((actual < predicted) - alpha) *
-    ((theta < predicted) - (theta < actual))
-
+  score <- ((actual < predicted) - alpha) * ((theta < predicted) - (theta < actual))
   weighted_mean(x = score, w = w, ...)
 }
 
