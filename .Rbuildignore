@@ -10,3 +10,4 @@
 ^logo.png$
 ^\.github$
 ^CRAN-SUBMISSION$
+^cran-comments.md$
