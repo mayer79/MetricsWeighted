@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MetricsWeighted</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.6</span>
       </span>
     </div>
 
@@ -78,7 +78,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>MetricsWeighted</h1>
             
-            <h4 data-toc-skip class="date">2023-03-24</h4>
+            <h4 data-toc-skip class="date">2023-03-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mayer79/MetricsWeighted/blob/HEAD/vignettes/MetricsWeighted.Rmd" class="external-link"><code>vignettes/MetricsWeighted.Rmd</code></a></small>
       <div class="hidden name"><code>MetricsWeighted.Rmd</code></div>
@@ -89,12 +89,11 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mayer79/MetricsWeighted" class="external-link">MetricsWeighted</a></span><span class="op">)</span></span></code></pre></div>
-<div class="section level3">
-<h3 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
-</h3>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
 <p>{MetricsWeighted} provides weighted versions of different machine
-learning metrics, scoring functions and performance measures as well as
-tools to use it within a {dplyr} chain.</p>
+learning metrics and performance measures.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -105,21 +104,22 @@ tools to use it within a {dplyr} chain.</p>
 <span></span>
 <span><span class="co"># Development version</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mayer79/MetricsWeighted"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <div class="section level3">
-<h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+<h3 id="metrics-and-performance-measures">Metrics and Performance Measures<a class="anchor" aria-label="anchor" href="#metrics-and-performance-measures"></a>
 </h3>
-<div class="section level4">
-<h4 id="metrics-scoring-functions-and-performance-measures">Metrics, Scoring Functions and Performance Measures<a class="anchor" aria-label="anchor" href="#metrics-scoring-functions-and-performance-measures"></a>
-</h4>
-<p>Currently, the following metrics, scoring functions and performance
-measures are available:</p>
+<p>Currently, the following metrics and performance measures are
+available:</p>
 <ul>
 <li><p><code><a href="../reference/accuracy.html">accuracy()</a></code>, <code><a href="../reference/recall.html">recall()</a></code>,
 <code><a href="../reference/precision.html">precision()</a></code>, <code><a href="../reference/f1_score.html">f1_score()</a></code>, and
 <code><a href="../reference/classification_error.html">classification_error()</a></code>: Typical binary performance measures
-derived from the confusion matrix, see e.g. (<a href="https://en.wikipedia.org/wiki/Precision_and_recall" class="external-link uri">https://en.wikipedia.org/wiki/Precision_and_recall</a>).
-Require binary predictions. Except for classification error, high values
-are better.</p></li>
+derived from the confusion matrix, see (<a href="https://en.wikipedia.org/wiki/Precision_and_recall" class="external-link uri">https://en.wikipedia.org/wiki/Precision_and_recall</a>).
+Require binary predictions. Except for classification error, higher
+values are better.</p></li>
 <li><p><code><a href="../reference/AUC.html">AUC()</a></code> and <code><a href="../reference/gini_coefficient.html">gini_coefficient()</a></code>: Area
 under the receiver operating curve (ROC) and the closely related Gini
 coefficient. Actual values must be 0 or 1, while predictions can take
@@ -128,8 +128,8 @@ better.</p></li>
 <li><p><code><a href="../reference/deviance_bernoulli.html">deviance_bernoulli()</a></code> and <code><a href="../reference/logLoss.html">logLoss()</a></code>:
 Further metrics relevant for binary targets, namely the average unit
 deviance of the <em>binary</em> logistic regression model (0-1 response)
-and logLoss (half that deviance). As with all deviance measures, smaller
-values are better.</p></li>
+and log loss (half that deviance). As with all deviance measures,
+smaller values are better.</p></li>
 <li><p><code><a href="../reference/mse.html">mse()</a></code>, <code><a href="../reference/mae.html">mae()</a></code>, <code><a href="../reference/mape.html">mape()</a></code>,
 <code><a href="../reference/rmse.html">rmse()</a></code>, and <code><a href="../reference/medae.html">medae()</a></code>: Typical regression
 metrics (mean-squared error, mean absolute error, mean absolute
@@ -155,9 +155,9 @@ a given band around the true values.</p></li>
 <li><p><code>w</code>: Optional vector with case weights.</p></li>
 <li><p><code>...</code>: Further arguments.</p></li>
 </ol>
-<div class="section level5">
-<h5 id="examples-regression">Examples: Regression<a class="anchor" aria-label="anchor" href="#examples-regression"></a>
-</h5>
+<div class="section level4">
+<h4 id="examples-regression">Examples: Regression<a class="anchor" aria-label="anchor" href="#examples-regression"></a>
+</h4>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># The data</span></span>
 <span><span class="va">y_num</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[[</span><span class="st">"Sepal.Length"</span><span class="op">]</span><span class="op">]</span></span>
@@ -166,11 +166,11 @@ a given band around the true values.</p></li>
 <span><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Performance metrics</span></span>
-<span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span>  <span class="co"># unweighted</span></span>
+<span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span>                             <span class="co"># unweighted</span></span>
 <span><span class="co">#&gt; [1] 0.2428628</span></span>
 <span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_num</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># same</span></span>
 <span><span class="co">#&gt; [1] 0.2428628</span></span>
-<span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>  <span class="co"># different</span></span>
+<span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>                <span class="co"># different</span></span>
 <span><span class="co">#&gt; [1] 0.2561237</span></span>
 <span><span class="fu"><a href="../reference/rmse.html">rmse</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.300627</span></span>
@@ -203,9 +203,9 @@ a given band around the true values.</p></li>
 <span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">2.01</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.00258742</span></span></code></pre></div>
 </div>
-<div class="section level5">
-<h5 id="examples-binary-classification">Examples: Binary classification<a class="anchor" aria-label="anchor" href="#examples-binary-classification"></a>
-</h5>
+<div class="section level4">
+<h4 id="examples-binary-classification">Examples: Binary classification<a class="anchor" aria-label="anchor" href="#examples-binary-classification"></a>
+</h4>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># The data</span></span>
 <span><span class="va">y_cat</span> <span class="op">&lt;-</span> <span class="va">iris</span><span class="op">[[</span><span class="st">"Species"</span><span class="op">]</span><span class="op">]</span> <span class="op">==</span> <span class="st">"setosa"</span></span>
@@ -213,40 +213,34 @@ a given band around the true values.</p></li>
 <span><span class="va">pred_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_cat</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Performance metrics</span></span>
-<span><span class="fu"><a href="../reference/AUC.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>  <span class="co"># unweighted</span></span>
+<span><span class="fu"><a href="../reference/AUC.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>                 <span class="co"># unweighted</span></span>
 <span><span class="co">#&gt; [1] 0.9586</span></span>
-<span><span class="fu"><a href="../reference/AUC.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>  <span class="co"># weighted</span></span>
+<span><span class="fu"><a href="../reference/AUC.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>    <span class="co"># weighted</span></span>
 <span><span class="co">#&gt; [1] 0.9629734</span></span>
-<span><span class="fu"><a href="../reference/logLoss.html">logLoss</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>  <span class="co"># Logloss</span></span>
+<span><span class="fu"><a href="../reference/logLoss.html">logLoss</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>             <span class="co"># Log loss</span></span>
 <span><span class="co">#&gt; [1] 0.2394547</span></span>
-<span><span class="fu"><a href="../reference/deviance_bernoulli.html">deviance_bernoulli</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>  <span class="co"># LogLoss * 2</span></span>
+<span><span class="fu"><a href="../reference/deviance_bernoulli.html">deviance_bernoulli</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>  <span class="co"># Log Loss * 2</span></span>
 <span><span class="co">#&gt; [1] 0.4789093</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level4">
-<h4 id="generalized-r-squared">Generalized R-squared<a class="anchor" aria-label="anchor" href="#generalized-r-squared"></a>
-</h4>
+<div class="section level3">
+<h3 id="generalized-r-squared">Generalized R-squared<a class="anchor" aria-label="anchor" href="#generalized-r-squared"></a>
+</h3>
 <p>Furthermore, we provide a generalization of R-squared, defined as the
 proportion of deviance explained, i.e., one minus the ratio of residual
-deviance and intercept-only deviance, see e.g. <span class="citation">(<a href="#ref-cohen" role="doc-biblioref">Cohen
-2003</a>)</span>. By default, it calculates the ordinary R-squared,
-i.e. proportion of <em>normal</em> deviance (mean-squared error)
-explained. However, you can specify any different deviance function,
-e.g. <code><a href="../reference/deviance_tweedie.html">deviance_tweedie()</a></code> with paramter 1.5 or the deviance
-of the <em>binary</em> logistic regression
-(<code><a href="../reference/deviance_bernoulli.html">deviance_bernoulli()</a></code>).</p>
+deviance and intercept-only deviance, see <span class="citation">(<a href="#ref-cohen" role="doc-biblioref">Cohen 2003</a>)</span>.</p>
 <p><em>For out-of-sample calculations, the null deviance is ideally
 calculated from the average in the training data. This can be controlled
 by setting <code>reference_mean</code> to the (possibly weighted)
 average in the training data.</em></p>
-<div class="section level5">
-<h5 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
-</h5>
+<div class="section level4">
+<h4 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h4>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit_num</span><span class="op">)</span><span class="op">$</span><span class="va">r.squared</span></span>
 <span><span class="co">#&gt; [1] 0.8673123</span></span>
 <span></span>
-<span><span class="co"># same</span></span>
+<span><span class="co"># Same</span></span>
 <span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8673123</span></span>
 <span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
@@ -254,7 +248,7 @@ average in the training data.</em></p>
 <span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8675195</span></span>
 <span></span>
-<span><span class="co"># weighted</span></span>
+<span><span class="co"># Weighted</span></span>
 <span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8300011</span></span>
 <span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span>, deviance_function <span class="op">=</span> <span class="va">deviance_gamma</span><span class="op">)</span> </span>
@@ -266,7 +260,7 @@ average in the training data.</em></p>
 <span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8675195</span></span>
 <span></span>
-<span><span class="co"># respect to 'own' deviance formula</span></span>
+<span><span class="co"># With respect to 'own' deviance formula</span></span>
 <span><span class="va">myTweedie</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">actual</span>, <span class="va">predicted</span>, <span class="va">w</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">actual</span>, <span class="va">predicted</span>, <span class="va">w</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -274,17 +268,17 @@ average in the training data.</em></p>
 <span><span class="co">#&gt; [1] 0.8675195</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level4">
-<h4 id="tidyverse">Tidyverse<a class="anchor" aria-label="anchor" href="#tidyverse"></a>
-</h4>
+<div class="section level3">
+<h3 id="pipe">Pipe<a class="anchor" aria-label="anchor" href="#pipe"></a>
+</h3>
 <p>In order to facilitate the use of these metrics in a {dplyr} chain,
-you can try out the function <code><a href="../reference/performance.html">performance()</a></code>: Starting from a
-data set with actual and predicted values (and optional case weights),
-it calculates one or more metrics. The resulting values are returned as
-a <code>data.frame</code>.</p>
-<div class="section level5">
-<h5 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a>
-</h5>
+use the function <code><a href="../reference/performance.html">performance()</a></code>: Starting from a data set
+with actual and predicted values (and optional case weights), it
+calculates one or more metrics. The resulting values are returned as a
+<code>data.frame</code>.</p>
+<div class="section level4">
+<h4 id="examples-1">Examples<a class="anchor" aria-label="anchor" href="#examples-1"></a>
+</h4>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -351,10 +345,10 @@ a <code>data.frame</code>.</p>
 <span>  <span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level4">
-<h4 id="parametrized-scoring-functions">Parametrized scoring functions<a class="anchor" aria-label="anchor" href="#parametrized-scoring-functions"></a>
-</h4>
-<p>Some scoring functions depend on a further parameter <span class="math inline">\(p\)</span>, e.g.</p>
+<div class="section level3">
+<h3 id="parametrized-scoring-functions">Parametrized scoring functions<a class="anchor" aria-label="anchor" href="#parametrized-scoring-functions"></a>
+</h3>
+<p>Some scoring functions depend on a further parameter <span class="math inline">\(p\)</span>:</p>
 <ul>
 <li>
 <code>tweedie_deviance()</code>: depends on
@@ -369,9 +363,9 @@ a <code>data.frame</code>.</p>
 <p>It might be of key relevance to evaluate such function for varying
 <span class="math inline">\(p\)</span>. That is where the function
 <code><a href="../reference/multi_metric.html">multi_metric()</a></code> shines.</p>
-<div class="section level5">
-<h5 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a>
-</h5>
+<div class="section level4">
+<h4 id="examples-2">Examples<a class="anchor" aria-label="anchor" href="#examples-2"></a>
+</h4>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ir</span> <span class="op">&lt;-</span> <span class="va">iris</span></span>
 <span><span class="va">ir</span><span class="op">$</span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_num</span>, data <span class="op">=</span> <span class="va">ir</span><span class="op">)</span></span>
@@ -420,17 +414,17 @@ a <code>data.frame</code>.</p>
 <p><img src="MetricsWeighted_files/figure-html/unnamed-chunk-5-2.png" width="528"></p>
 </div>
 </div>
-<div class="section level4">
-<h4 id="murphy-diagrams">Murphy diagrams<a class="anchor" aria-label="anchor" href="#murphy-diagrams"></a>
-</h4>
+<div class="section level3">
+<h3 id="murphy-diagrams">Murphy diagrams<a class="anchor" aria-label="anchor" href="#murphy-diagrams"></a>
+</h3>
 <p>The same logic as in the last example can be used to create so-called
 <em>Murphy diagrams</em> <span class="citation">(<a href="#ref-gneiting" role="doc-biblioref">Ehm et al. 2016</a>)</span>. The function
 <code><a href="../reference/murphy_diagram.html">murphy_diagram()</a></code> wraps above calls and allows to get
 elementary scores for one or multiple models across a range of theta
 values, see also R package <a href="https://CRAN.R-project.org/package=murphydiagram" class="external-link">murphydiagram</a>.</p>
-<div class="section level5">
-<h5 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
-</h5>
+<div class="section level4">
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h4>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span><span class="va">two_models</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span>m1 <span class="op">=</span> <span class="fl">1.1</span> <span class="op">*</span> <span class="va">y</span>, m2 <span class="op">=</span> <span class="fl">1.2</span> <span class="op">*</span> <span class="va">y</span><span class="op">)</span></span>
@@ -439,9 +433,9 @@ values, see also R package <a href="https://CRAN.R-project.org/package=murphydia
 </div>
 </div>
 </div>
-<div class="section level3">
-<h3 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h3>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-cohen" class="csl-entry">
 Cohen, Cohen, J. 2003. <em>Applied Multiple Regression/Correlation
@@ -458,7 +452,6 @@ the Royal Statistical Society: Series B (Statistical Methodology)</em>
 Jorgensen, B. 1997. <em>The Theory of Dispersion Models</em>. Chapman
 &amp; Hall/CRC Monographs on Statistics &amp; Applied Probability.
 Taylor &amp; Francis.
-</div>
 </div>
 </div>
 </div>

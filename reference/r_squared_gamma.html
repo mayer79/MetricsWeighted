@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MetricsWeighted</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.6</span>
       </span>
     </div>
 
@@ -47,7 +47,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Pseudo R-Squared regarding Gamma deviance</h1>
-    <small class="dont-index">Source: <a href="https://github.com/mayer79/MetricsWeighted/blob/HEAD/R/r_squared_gamma.R" class="external-link"><code>R/r_squared_gamma.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/mayer79/MetricsWeighted/blob/HEAD/R/r_squared.R" class="external-link"><code>R/r_squared.R</code></a></small>
     <div class="hidden name"><code>r_squared_gamma.Rd</code></div>
     </div>
 
@@ -74,11 +74,12 @@
 
 
 <dt>reference_mean</dt>
-<dd><p>An optional reference mean used to derive the null deviance. Recommended in out-of-sample applications.</p></dd>
+<dd><p>An optional reference mean used to derive the null deviance.
+Recommended in out-of-sample applications.</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Further arguments passed to <code>r_squared</code>.</p></dd>
+<dd><p>Further arguments passed to <code><a href="r_squared.html">r_squared()</a></code>.</p></dd>
 
 </dl></div>
     <div id="value">
@@ -89,7 +90,11 @@
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>The deviance gain is calculated regarding the null model derived from the actual values. While fine for in-sample considerations, this is only an approximation for out-of-sample considerations. There, it is recommended to calculate null deviance regarding the in-sample (weighted) mean. This value can be passed by the argument <code>reference_mean</code>.</p>
+    <p>The deviance gain is calculated regarding the null model derived from the actual
+values. While fine for in-sample considerations, this is only an approximation for
+out-of-sample considerations. There, it is recommended to calculate null deviance
+regarding the in-sample (weighted) mean. This value can be passed by the argument
+<code>reference_mean</code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
