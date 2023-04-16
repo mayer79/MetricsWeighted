@@ -1,4 +1,6 @@
-# MetricsWeighted 0.5.6
+# MetricsWeighted 1.0.0
+
+This release bumps the package to stable version 1.0.0.
 
 ## Maintenance
 
