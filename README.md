@@ -1,4 +1,4 @@
-# MetricsWeighted <a href='https://github.com/mayer79/MetricsWeighted'><img src='man/figures/logo.png' align="right" height="139"/></a>
+# {MetricsWeighted} <a href='https://github.com/mayer79/MetricsWeighted'><img src='man/figures/logo.png' align="right" height="139"/></a>
 
 <!-- badges: start -->
 
