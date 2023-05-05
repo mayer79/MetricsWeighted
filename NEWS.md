@@ -2,7 +2,7 @@
 
 ## Maintenance
 
-- Better help files
+- MOre compact help files
 
 # MetricsWeighted 1.0.0
 

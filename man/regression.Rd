@@ -54,7 +54,7 @@ A numeric vector of length one.
 \description{
 Case-weighted versions of typical regression metrics:
 \itemize{
-\item \code{\link[=MSE]{MSE()}}: Mean-squared error
+\item \code{\link[=mse]{mse()}}: Mean-squared error
 \item \code{\link[=rmse]{rmse()}}: Root-mean-squared error.
 \item \code{\link[=mae]{mae()}}: Mean absolute error
 \item \code{\link[=medae]{medae()}}: Median absolute error
@@ -81,7 +81,7 @@ exceptions:
 \itemize{
 \item \code{\link[=mape]{mape()}}: Non-zero observed values.
 \item \code{\link[=deviance_poisson]{deviance_poisson()}}: Non-negative observed values, strictly positive predictions.
-\item \code{\link[=gamma_poisson]{gamma_poisson()}}: Strictly positive observed values and predictions.
+\item \code{\link[=deviance_poisson]{deviance_poisson()}}: Strictly positive observed values and predictions.
 }
 }
 
@@ -108,6 +108,7 @@ deviance_tweedie(y, pred, tweedie_p = 0)  # Normal
 deviance_tweedie(y, pred, tweedie_p = 1)  # Poisson
 deviance_tweedie(y, pred, tweedie_p = 2)  # Gamma
 deviance_tweedie(y, pred, tweedie_p = 1.5, w = 1:10)
+
 }
 \references{
 Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC.

@@ -51,7 +51,7 @@ Case-weighted versions of typical non-probabilistic and probabilistic classifica
 \item \code{\link[=classification_error]{classification_error()}}: Classification error 1 - Accuracy (lower is better)
 \item 
 \item 
-\item \code{\link[=f1_core]{f1_core()}}: F1 Score. Harmonic mean of precision and recall (higher is better)
+\item \code{\link[=f1_score]{f1_score()}}: F1 Score. Harmonic mean of precision and recall (higher is better)
 \item \code{\link[=AUC]{AUC()}}: Area under the ROC (higher is better)
 \item \code{\link[=gini_coefficient]{gini_coefficient()}}: Gini coefficient, equivalent to \eqn{2 \text{AUC} - 1}.
 Up to ties in \code{predicted}, equivalent to Somer's D (higher is better)

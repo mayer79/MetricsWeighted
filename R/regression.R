@@ -61,7 +61,7 @@
 #' deviance_tweedie(y, pred, tweedie_p = 1)  # Poisson
 #' deviance_tweedie(y, pred, tweedie_p = 2)  # Gamma
 #' deviance_tweedie(y, pred, tweedie_p = 1.5, w = 1:10)
-
+#'
 #' @references
 #'   Jorgensen, B. (1997). The Theory of Dispersion Models. Chapman & Hall/CRC.
 #'     ISBN 978-0412997112.
