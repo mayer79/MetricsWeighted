@@ -1,6 +1,6 @@
 Package: MetricsWeighted
 Title: Weighted Metrics and Performance Measures for Machine Learning
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(
     person("Michael", "Mayer", , "mayermichael79@gmail.com", role = c("aut", "cre")),
     person("Christian", "Lorentzen", , "lorentzen.ch@googlemail.com", role = "ctb")
