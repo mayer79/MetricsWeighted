@@ -1,59 +1,77 @@
-#' Accuracy
+#' Classification Metrics
 #'
-#' Calculates weighted accuracy, i.e. the weighted proportion of elements in
-#' \code{predicted} that are equal to those in \code{actual}. The higher, the better.
+#' @description
+#' Case-weighted versions of typical non-probabilistic and probabilistic classification metrics:
+#' - [accuracy()]: Accuracy (higher is better)
+#' - [classification_error()]: Classification error 1 - Accuracy (lower is better)
+#' - [precision()]: Precision (higher is better)
+#' - [recall()]: Recall (higher is better)
+#' - [f1_score()]: F1 Score. Harmonic mean of precision and recall (higher is better)
+#' - [AUC()]: Area under the ROC (higher is better)
+#' - [gini_coefficient()]: Gini coefficient, equivalent to \eqn{2 \text{AUC} - 1}.
+#'   Up to ties in `predicted`, equivalent to Somer's D (higher is better)
+#' - [deviance_bernoulli()]: Average Bernoulli deviance, equals twice the
+#'   log loss/binary cross entropy (smaller is better)
+#' - [logLoss()]: Log loss/binary cross entropy, equals half the average Bernoulli
+#'   deviance (smaller is better)
+#'
+#' @section Input ranges:
+#' - For [precision()], [recall()], and [f1_core()]: The `actual` and `predicted` values
+#'   need to be in \eqn{\{0, 1\}}.
+#' - For [accuracy()] and [classification_error()]: Any discrete input.
+#' - For [AUC()] and [gini_coefficient()]: Only `actual` must be in \eqn{\{0, 1\}}.
+#' - For [deviance_bernoulli()] and [logLoss()]: The values of `actual` must be in
+#'   \eqn{\{0, 1\}}, while `predicted` must be in the open interval \eqn{(0, 1)}.
+#'
+#' @details
+#' Note that the function [AUC()] was originally modified from the {glmnet} package
+#' to ensure deterministic results. The unweighted version can be different from the
+#' weighted one with unit weights due to ties in `predicted`.
+#'
+#' @name classification
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
-#' @param ... Further arguments passed to \code{weighted_mean()}.
-#' @return A numeric vector of length one.
-#' @export
+#' @param ... Further arguments passed to [weighted_mean()]
+#'   (no effect for [AUC()] and [gini_coefficient()]).
+#' @returns A numeric vector of length one.
 #' @examples
-#' accuracy(c(0, 0, 1, 1), c(0, 0, 1, 1))
-#' accuracy(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-#' @seealso \code{\link{classification_error}}.
+#' y <- c(0, 0, 1, 1)
+#' pred <- c(0, 0, 1, 0)
+#' w <- y * 2
+#'
+#' accuracy(y, pred)
+#' classification_error(y, pred, w = w)
+#' precision(y, pred, w = w)
+#' recall(y, pred, w = w)
+#' f1_score(y, pred, w = w)
+#'
+#' y2 <- c(0, 1, 0, 1)
+#' pred2 <- c(0.1, 0.1, 0.9, 0.8)
+#' w2 <- 1:4
+#'
+#' AUC(y2, pred2)
+#' AUC(y2, pred2, w = rep(1, 4))  # Different due to ties in predicted
+#'
+#' gini_coefficient(y2, pred2, w = w2)
+#' logLoss(y2, pred2, w = w2)
+#' deviance_bernoulli(y2, pred2, w = w2)
+#' @rdname classification
+#' @export
 accuracy <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted))
   weighted_mean(actual == predicted, w = w, ...)
 }
 
-#' Classification Error
-#'
-#' Calculates weighted classification error, i.e. the weighted proportion of elements
-#' in \code{predicted} that are unequal to those in \code{observed}.
-#' Equals 1 - accuracy, thus lower values are better.
-#'
-#' @param actual Observed values.
-#' @param predicted Predicted values.
-#' @param w Optional case weights.
-#' @param ... Further arguments passed to \code{accuracy()}.
-#' @return A numeric vector of length one.
+#' @rdname classification
 #' @export
-#' @examples
-#' classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1))
-#' classification_error(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-#' @seealso \code{\link{accuracy}}.
 classification_error <- function(actual, predicted, w = NULL, ...) {
   1 - accuracy(actual = actual, predicted = predicted, w = w, ...)
 }
 
-#' Precision
-#'
-#' Calculates weighted precision,
-#' see \url{https://en.wikipedia.org/wiki/Precision_and_recall} for the
-#' (unweighted) version. The higher, the better.
-#'
-#' @param actual Observed values (0 or 1).
-#' @param predicted Predicted values (0 or 1).
-#' @param w Optional case weights.
-#' @param ... Further arguments passed to \code{weighted_mean()}.
-#' @return A numeric vector of length one.
+#' @rdname classification
 #' @export
-#' @examples
-#' precision(c(0, 0, 1, 1), c(0, 0, 1, 1))
-#' precision(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-#' @seealso \code{\link{recall}, \link{f1_score}}.
 precision <- function(actual, predicted, w = NULL, ...) {
   stopifnot(
     length(actual) == length(predicted),
@@ -63,22 +81,8 @@ precision <- function(actual, predicted, w = NULL, ...) {
   weighted_mean(actual[predicted == 1], w = w[predicted == 1], ...)
 }
 
-#' Recall
-#'
-#' Calculates weighted recall,
-#' see \url{https://en.wikipedia.org/wiki/Precision_and_recall} for the (unweighted)
-#' definition. The higher, the better.
-#'
-#' @param actual Observed values (0 or 1).
-#' @param predicted Predicted values (0 or 1).
-#' @param w Optional case weights.
-#' @param ... Further arguments passed to \code{weighted_mean()}.
-#' @return A numeric vector of length one.
+#' @rdname classification
 #' @export
-#' @examples
-#' recall(c(0, 0, 1, 1), c(0, 0, 1, 1))
-#' recall(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-#' @seealso \code{\link{precision}, \link{f1_score}}.
 recall <- function(actual, predicted, w = NULL, ...) {
   stopifnot(
     length(actual) == length(predicted),
@@ -88,26 +92,70 @@ recall <- function(actual, predicted, w = NULL, ...) {
   weighted_mean(predicted[actual == 1], w = w[actual == 1], ...)
 }
 
-#' F1 Score
-#'
-#' Calculates weighted F1 score or F measure defined as the harmonic mean of precision
-#' and recall, see \url{https://en.wikipedia.org/wiki/Precision_and_recall} for some
-#' background. The higher, the better.
-#'
-#' @param actual Observed values (0 or 1).
-#' @param predicted Predicted values (0 or 1).
-#' @param w Optional case weights.
-#' @param ... Further arguments passed to \code{precision()} and \code{recall()}.
-#' @return A numeric vector of length one.
+#' @rdname classification
 #' @export
-#' @examples
-#' f1_score(c(0, 0, 1, 1), c(0, 0, 1, 1))
-#' f1_score(c(1, 0, 0, 1), c(0, 0, 1, 1), w = 1:4)
-#' @seealso \code{\link{precision}, \link{recall}}.
 f1_score <- function(actual, predicted, w = NULL, ...) {
   p <- precision(actual = actual, predicted = predicted, w = w, ...)
   r <- recall(actual = actual, predicted = predicted, w = w, ...)
   2 * (p * r) / (p + r)
 }
 
+#' @rdname classification
+#' @export
+AUC <- function(actual, predicted, w = NULL, ...) {
+  stopifnot(
+    length(actual) == length(predicted),
+    all(actual == 0 | actual == 1)
+  )
 
+  # Modified version of glmnet::auc
+  if (is.null(w)) {
+    r <- rank(predicted)
+    n_pos <- sum(actual)
+    n_neg <- length(actual) - n_pos
+    u <- sum(r[actual == 1]) - n_pos * (n_pos + 1) / 2
+    return(exp(log(u) - log(n_pos) - log(n_neg)))
+  }
+  stopifnot(
+    all(w >= 0),
+    length(predicted) == length(w)
+  )
+  if (all(w == 0)) {
+    stop("All weights are zero")
+  }
+  op <- order(predicted)
+  actual <- actual[op]
+  w <- w[op]
+  cw <- cumsum(w)
+  w_pos <- w[actual == 1]
+  cw_pos <- cumsum(w_pos)
+  u <- sum(w_pos * (cw[actual == 1] - cw_pos))
+  sumw_pos <- cw_pos[length(w_pos)]
+  sumw_neg <- cw[length(w)] - sumw_pos
+  exp(log(u) - log(sumw_pos) - log(sumw_neg))
+}
+
+#' @rdname classification
+#' @export
+gini_coefficient <- function(actual, predicted, w = NULL, ...) {
+  -1 + 2 * AUC(actual = actual, predicted = predicted, w = w, ...)
+}
+
+#' @rdname classification
+#' @export
+deviance_bernoulli <- function(actual, predicted, w = NULL, ...) {
+  2 * logLoss(actual = actual, predicted = predicted, w = w, ...)
+}
+
+#' @rdname classification
+#' @export
+logLoss <- function(actual, predicted, w = NULL, ...) {
+  stopifnot(
+    length(actual) == length(predicted),
+    all(actual == 0 | actual == 1),
+    all(predicted > 0 & predicted < 1)
+  )
+  -weighted_mean(
+    actual * log(predicted) + (1 - actual) * log(1 - predicted), w = w, ...
+  )
+}
