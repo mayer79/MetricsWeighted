@@ -16,8 +16,7 @@ performance(
 )
 }
 \arguments{
-\item{data}{A \code{data.frame} containing \code{actual}, \code{predicted}
-and possibly \code{w}.}
+\item{data}{A \code{data.frame} with columns \code{actual}, \code{predicted}, and optionally \code{w}.}
 
 \item{actual}{The column name in \code{data} referring to actual values.}
 
@@ -27,11 +26,17 @@ and possibly \code{w}.}
 
 \item{metrics}{Either a function or a named list of functions.
 Each function represents a metric and has four arguments:
-observed, predicted, case weights and \code{...}.
+\itemize{
+\item \code{observed},
+\item \code{predicted},
+\item \verb{case weights},
+\item and \code{...}.
+}
+
 If not a named list but a single function, the name of the function is guessed by
 \code{deparse(substitute(...))}, which would not provide the actual name of the
-function if called within \code{lapply} etc. In such cases, you can pass a named
-list with one element, e.g. \code{list(rmse = rmse)}.}
+function if called within \code{\link[=lapply]{lapply()}} etc. In such cases, you can pass a named
+list with one element, e.g., \code{list(rmse = rmse)}.}
 
 \item{key}{Name of the resulting column containing the name of the metric.
 Defaults to "metric".}
@@ -39,13 +44,12 @@ Defaults to "metric".}
 \item{value}{Name of the resulting column with the value of the metric.
 Defaults to "value".}
 
-\item{...}{Further arguments passed to the metric functions, e.g. if the metric
-is "r_squared", you could pass the relevant deviance function as additional
+\item{...}{Further arguments passed to the metric functions. E.g., if the metric
+is \code{\link[=r_squared]{r_squared()}}, you could pass the relevant deviance function as additional
 argument (see examples).}
 }
 \value{
-Data frame with one row per metric and two columns:
-\code{key} and \code{value}.
+Data frame with one row per metric and two columns: \code{key} and \code{value}.
 }
 \description{
 Applies one or more metrics to a \code{data.frame} containing columns with

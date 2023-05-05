@@ -1,31 +1,34 @@
 #' Murphy diagram
 #'
 #' Murphy diagram of the elementary scoring function for expectiles/quantiles at level
-#' \code{alpha} for different values of \code{theta}.
-#' Can be used to study and compare performance of one or multiple models.
-#' If the plot needs to be customized, set \code{plot = FALSE} to get the
+#' \eqn{\alpha} for different values of \eqn{\theta}. Can be used to study and
+#' compare performance of one or multiple models.
+#'
+#' If the plot needs to be customized, set `plot = FALSE` to get the
 #' resulting data instead of the plot.
 #'
 #' @param actual Observed values.
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
-#' @param alpha Level of expectile resp. quantile. The default \code{alpha = 0.5}
-#' corresponds to the expectation/median.
+#' @param alpha Level of expectile or quantile. The default `alpha = 0.5`
+#'   corresponds to the expectation/median.
 #' @param theta Vector of evaluation points.
 #' @param functional Either "expectile" or "quantile".
-#' @param plot Should plot (\code{TRUE}) be returned or the data to be plotted?
-#' @param ... Further arguments passed to \code{graphics::matplot()}.
-#' @return A named list of functions.
+#' @param plot Should plot (`TRUE`) be returned or the data to be plotted?
+#' @param ... Further arguments passed to [graphics::matplot()].
+#' @returns A named list of functions.
 #' @export
 #' @references
-#' Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
+#'   Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and
+#'     expectiles: consistent scoring functions, Choquet representations and forecast
+#'     rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 #' @examples
 #' y <- 1:10
 #' predicted <- 1.1 * y
 #' murphy_diagram(y, predicted, theta = seq(0.9, 1.2, by = 0.01))
 #' two_models <- cbind(m1 = predicted, m2 = 1.2 * y)
 #' murphy_diagram(y, two_models, theta = seq(0.9, 1.3, by = 0.01))
-#' @seealso \code{\link{elementary_score}}.
+#' @seealso [elementary_score()]
 murphy_diagram <- function(actual, predicted, w = NULL, alpha = 0.5,
                            theta = seq(-2, 2, length.out = 100L),
                            functional = c("expectile", "quantile"), plot = TRUE, ...) {
@@ -82,5 +85,3 @@ murphy_diagram <- function(actual, predicted, w = NULL, alpha = 0.5,
     )
   }
 }
-
-

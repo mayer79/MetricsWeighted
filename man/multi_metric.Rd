@@ -9,15 +9,16 @@ multi_metric(fun, ...)
 \arguments{
 \item{fun}{A metric/performance measure with additional parameter to be varied.}
 
-\item{...}{Further arguments passed to \code{fun}, including one varying parameter
+\item{...}{Further arguments passed to \code{fun()}, including one varying parameter
 (specified by a vector).}
 }
 \value{
 A named list of functions.
 }
 \description{
-Provides a way to create a list of metrics/performance measures from a parametrized
-function like the Tweedie deviance or the elementary scoring functions for expectiles.
+Provides a way to create a list of metrics/performance measures from a
+parametrized function like the Tweedie deviance or the elementary
+scoring functions for expectiles.
 }
 \examples{
 data <- data.frame(act = 1:10, pred = c(1:9, 12))
@@ -34,5 +35,5 @@ multi <- multi_metric(fun = elementary_score_expectile, theta = 1:11, alpha = 0.
 performance(data, actual = "act", predicted = "pred", metrics = multi, key = "theta")
 }
 \seealso{
-\code{\link{performance}}.
+\code{\link[=performance]{performance()}}
 }

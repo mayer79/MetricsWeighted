@@ -31,19 +31,21 @@ elementary_score_quantile(
 
 \item{w}{Optional case weights.}
 
-\item{alpha}{Optional level of expectile resp. quantile.}
+\item{alpha}{Optional level of expectile or quantile.}
 
 \item{theta}{Optional parameter.}
 
-\item{...}{Further arguments passed to \code{weighted_mean}.}
+\item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}} (no effect for \code{\link[=medae]{medae()}}).}
 }
 \value{
 A numeric vector of length one.
 }
 \description{
-Weighted average of the elementary scoring function for expectiles resp. quantiles at level \code{alpha} with parameter \code{theta}, see reference below.
-Every choice of \code{theta} gives a scoring function consistent for the expectile resp. quantile at level \code{alpha}.
-Note that the expectile at level \code{alpha = 0.5} is the expectation (mean).
+Weighted average of the elementary scoring function for expectiles or quantiles at
+level \eqn{\alpha} with parameter \eqn{\theta}, see reference below.
+Every choice of \eqn{\theta} gives a scoring function consistent for the expectile
+or quantile at level \eqn{\alpha}.
+Note that the expectile at level \eqn{\alpha = 0.5} is the expectation (mean).
 The smaller the score, the better.
 }
 \examples{
@@ -51,8 +53,10 @@ elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
 elementary_score_quantile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
 }
 \references{
-Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
+Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and
+expectiles: consistent scoring functions, Choquet representations and forecast
+rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 }
 \seealso{
-\code{\link{murphy_diagram}}.
+\code{\link[=murphy_diagram]{murphy_diagram()}}
 }

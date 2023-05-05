@@ -1,12 +1,13 @@
 #' Multiple Metrics
 #'
-#' Provides a way to create a list of metrics/performance measures from a parametrized
-#' function like the Tweedie deviance or the elementary scoring functions for expectiles.
+#' Provides a way to create a list of metrics/performance measures from a
+#' parametrized function like the Tweedie deviance or the elementary
+#' scoring functions for expectiles.
 #'
 #' @param fun A metric/performance measure with additional parameter to be varied.
-#' @param ... Further arguments passed to \code{fun}, including one varying parameter
-#' (specified by a vector).
-#' @return A named list of functions.
+#' @param ... Further arguments passed to `fun()`, including one varying parameter
+#'   (specified by a vector).
+#' @returns A named list of functions.
 #' @export
 #' @examples
 #' data <- data.frame(act = 1:10, pred = c(1:9, 12))
@@ -21,7 +22,7 @@
 #' performance(data, actual = "act", predicted = "pred", metrics = multi, key = "theta")
 #' multi <- multi_metric(fun = elementary_score_expectile, theta = 1:11, alpha = 0.5)
 #' performance(data, actual = "act", predicted = "pred", metrics = multi, key = "theta")
-#' @seealso \code{\link{performance}}.
+#' @seealso [performance()]
 multi_metric <- function(fun, ...) {
   param <- list(...)
   stopifnot(
@@ -49,5 +50,3 @@ multi_metric <- function(fun, ...) {
     )
   stats::setNames(lapply(param[[varying]], base_fun), param[[varying]])
 }
-
-
