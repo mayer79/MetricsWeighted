@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MetricsWeighted</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -78,7 +78,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>MetricsWeighted</h1>
             
-            <h4 data-toc-skip class="date">2023-04-16</h4>
+            <h4 data-toc-skip class="date">2023-05-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mayer79/MetricsWeighted/blob/HEAD/vignettes/MetricsWeighted.Rmd" class="external-link"><code>vignettes/MetricsWeighted.Rmd</code></a></small>
       <div class="hidden name"><code>MetricsWeighted.Rmd</code></div>
@@ -114,38 +114,38 @@ learning metrics and performance measures.</p>
 <p>Currently, the following metrics and performance measures are
 available:</p>
 <ul>
-<li><p><code><a href="../reference/accuracy.html">accuracy()</a></code>, <code><a href="../reference/recall.html">recall()</a></code>,
-<code><a href="../reference/precision.html">precision()</a></code>, <code><a href="../reference/f1_score.html">f1_score()</a></code>, and
-<code><a href="../reference/classification_error.html">classification_error()</a></code>: Typical binary performance measures
+<li><p><code><a href="../reference/classification.html">accuracy()</a></code>, <code><a href="../reference/classification.html">recall()</a></code>,
+<code><a href="../reference/classification.html">precision()</a></code>, <code><a href="../reference/classification.html">f1_score()</a></code>, and
+<code><a href="../reference/classification.html">classification_error()</a></code>: Typical binary performance measures
 derived from the confusion matrix, see (<a href="https://en.wikipedia.org/wiki/Precision_and_recall" class="external-link uri">https://en.wikipedia.org/wiki/Precision_and_recall</a>).
 Require binary predictions. Except for classification error, higher
 values are better.</p></li>
-<li><p><code><a href="../reference/AUC.html">AUC()</a></code> and <code><a href="../reference/gini_coefficient.html">gini_coefficient()</a></code>: Area
+<li><p><code><a href="../reference/classification.html">AUC()</a></code> and <code><a href="../reference/classification.html">gini_coefficient()</a></code>: Area
 under the receiver operating curve (ROC) and the closely related Gini
 coefficient. Actual values must be 0 or 1, while predictions can take
 any value (only their order is relevant). The higher, the
 better.</p></li>
-<li><p><code><a href="../reference/deviance_bernoulli.html">deviance_bernoulli()</a></code> and <code><a href="../reference/logLoss.html">logLoss()</a></code>:
+<li><p><code><a href="../reference/classification.html">deviance_bernoulli()</a></code> and <code><a href="../reference/classification.html">logLoss()</a></code>:
 Further metrics relevant for binary targets, namely the average unit
 deviance of the <em>binary</em> logistic regression model (0-1 response)
 and log loss (half that deviance). As with all deviance measures,
 smaller values are better.</p></li>
-<li><p><code><a href="../reference/mse.html">mse()</a></code>, <code><a href="../reference/mae.html">mae()</a></code>, <code><a href="../reference/mape.html">mape()</a></code>,
-<code><a href="../reference/rmse.html">rmse()</a></code>, and <code><a href="../reference/medae.html">medae()</a></code>: Typical regression
+<li><p><code><a href="../reference/regression.html">mse()</a></code>, <code><a href="../reference/regression.html">mae()</a></code>, <code><a href="../reference/regression.html">mape()</a></code>,
+<code><a href="../reference/regression.html">rmse()</a></code>, and <code><a href="../reference/regression.html">medae()</a></code>: Typical regression
 metrics (mean-squared error, mean absolute error, mean absolute
 percentage error, root-mean-squared error, and median absolute error).
 The lower, the better.</p></li>
-<li><p><code><a href="../reference/deviance_tweedie.html">deviance_tweedie()</a></code>: (Unscaled) average unit Tweedie
+<li><p><code><a href="../reference/regression.html">deviance_tweedie()</a></code>: (Unscaled) average unit Tweedie
 deviance with parameter <code>tweedie_p</code>, see <span class="citation">(<a href="#ref-jorgensen" role="doc-biblioref">Jorgensen 1997</a>)</span> and (<a href="https://en.wikipedia.org/wiki/Tweedie_distribution" class="external-link uri">https://en.wikipedia.org/wiki/Tweedie_distribution</a>) for
 a reference of the underlying formula.</p></li>
-<li><p><code><a href="../reference/deviance_normal.html">deviance_normal()</a></code>, <code><a href="../reference/deviance_gamma.html">deviance_gamma()</a></code>,
-and <code><a href="../reference/deviance_poisson.html">deviance_poisson()</a></code>: Special cases of Tweedie.
-<code><a href="../reference/deviance_normal.html">deviance_normal()</a></code> equals mean-squared error.</p></li>
+<li><p><code><a href="../reference/regression.html">deviance_normal()</a></code>, <code><a href="../reference/regression.html">deviance_gamma()</a></code>,
+and <code><a href="../reference/regression.html">deviance_poisson()</a></code>: Special cases of Tweedie.
+<code><a href="../reference/regression.html">deviance_normal()</a></code> equals mean-squared error.</p></li>
 <li><p><code><a href="../reference/elementary_score.html">elementary_score_quantile()</a></code> and
 <code><a href="../reference/elementary_score.html">elementary_score_expectile()</a></code>: Consistent scoring functions
 for quantiles and expectiles, see <span class="citation">(<a href="#ref-gneiting" role="doc-biblioref">Ehm et al.
 2016</a>)</span>.</p></li>
-<li><p><code><a href="../reference/prop_within.html">prop_within()</a></code>: Proportion of predicted values within
+<li><p><code><a href="../reference/regression.html">prop_within()</a></code>: Proportion of predicted values within
 a given band around the true values.</p></li>
 </ul>
 <p>They all take at least four arguments:</p>
@@ -166,41 +166,41 @@ a given band around the true values.</p></li>
 <span><span class="va">weights</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Performance metrics</span></span>
-<span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span>                             <span class="co"># unweighted</span></span>
+<span><span class="fu"><a href="../reference/regression.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span>                             <span class="co"># unweighted</span></span>
 <span><span class="co">#&gt; [1] 0.2428628</span></span>
-<span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_num</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># same</span></span>
+<span><span class="fu"><a href="../reference/regression.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">y_num</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># same</span></span>
 <span><span class="co">#&gt; [1] 0.2428628</span></span>
-<span><span class="fu"><a href="../reference/mae.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>                <span class="co"># different</span></span>
+<span><span class="fu"><a href="../reference/regression.html">mae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>                <span class="co"># different</span></span>
 <span><span class="co">#&gt; [1] 0.2561237</span></span>
-<span><span class="fu"><a href="../reference/rmse.html">rmse</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">rmse</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.300627</span></span>
-<span><span class="fu"><a href="../reference/medae.html">medae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span> <span class="co"># median absolute error</span></span>
+<span><span class="fu"><a href="../reference/regression.html">medae</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span> <span class="co"># median absolute error</span></span>
 <span><span class="co">#&gt; [1] 0.2381186</span></span>
 <span></span>
 <span><span class="co"># Normal deviance equals Tweedie deviance with parameter 0</span></span>
-<span><span class="fu"><a href="../reference/deviance_normal.html">deviance_normal</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_normal</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.09037657</span></span>
-<span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.09037657</span></span>
-<span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="op">-</span><span class="fl">0.001</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="op">-</span><span class="fl">0.001</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.09053778</span></span>
 <span></span>
 <span><span class="co"># Poisson deviance equals Tweedie deviance with parameter 1</span></span>
-<span><span class="fu"><a href="../reference/deviance_poisson.html">deviance_poisson</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_poisson</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.01531595</span></span>
-<span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.01531595</span></span>
-<span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">1.01</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">1.01</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.01504756</span></span>
 <span></span>
 <span><span class="co"># Gamma deviance equals Tweedie deviance with parameter 2</span></span>
-<span><span class="fu"><a href="../reference/deviance_gamma.html">deviance_gamma</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_gamma</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.002633186</span></span>
-<span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.002633186</span></span>
-<span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">1.99</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">1.99</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.002679764</span></span>
-<span><span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">2.01</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, tweedie_p <span class="op">=</span> <span class="fl">2.01</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.00258742</span></span></code></pre></div>
 </div>
 <div class="section level4">
@@ -213,13 +213,13 @@ a given band around the true values.</p></li>
 <span><span class="va">pred_cat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">fit_cat</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Performance metrics</span></span>
-<span><span class="fu"><a href="../reference/AUC.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>                 <span class="co"># unweighted</span></span>
+<span><span class="fu"><a href="../reference/classification.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>                 <span class="co"># unweighted</span></span>
 <span><span class="co">#&gt; [1] 0.9586</span></span>
-<span><span class="fu"><a href="../reference/AUC.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>    <span class="co"># weighted</span></span>
+<span><span class="fu"><a href="../reference/classification.html">AUC</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span>    <span class="co"># weighted</span></span>
 <span><span class="co">#&gt; [1] 0.9629734</span></span>
-<span><span class="fu"><a href="../reference/logLoss.html">logLoss</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>             <span class="co"># Log loss</span></span>
+<span><span class="fu"><a href="../reference/classification.html">logLoss</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>             <span class="co"># Log loss</span></span>
 <span><span class="co">#&gt; [1] 0.2394547</span></span>
-<span><span class="fu"><a href="../reference/deviance_bernoulli.html">deviance_bernoulli</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>  <span class="co"># Log Loss * 2</span></span>
+<span><span class="fu"><a href="../reference/classification.html">deviance_bernoulli</a></span><span class="op">(</span><span class="va">y_cat</span>, <span class="va">pred_cat</span><span class="op">)</span>  <span class="co"># Log Loss * 2</span></span>
 <span><span class="co">#&gt; [1] 0.4789093</span></span></code></pre></div>
 </div>
 </div>
@@ -241,30 +241,30 @@ average in the training data.</em></p>
 <span><span class="co">#&gt; [1] 0.8673123</span></span>
 <span></span>
 <span><span class="co"># Same</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8673123</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8673123</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8675195</span></span>
 <span></span>
 <span><span class="co"># Weighted</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8300011</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span>, deviance_function <span class="op">=</span> <span class="va">deviance_gamma</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span>, deviance_function <span class="op">=</span> <span class="va">deviance_gamma</span><span class="op">)</span> </span>
 <span><span class="co">#&gt; [1] 0.8300644</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span></span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span></span>
 <span>  <span class="va">y_num</span>, <span class="va">pred_num</span>, w <span class="op">=</span> <span class="va">weights</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">2</span></span>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8300644</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">deviance_tweedie</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8675195</span></span>
 <span></span>
 <span><span class="co"># With respect to 'own' deviance formula</span></span>
 <span><span class="va">myTweedie</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">actual</span>, <span class="va">predicted</span>, <span class="va">w</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/deviance_tweedie.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">actual</span>, <span class="va">predicted</span>, <span class="va">w</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span>, <span class="va">...</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="../reference/regression.html">deviance_tweedie</a></span><span class="op">(</span><span class="va">actual</span>, <span class="va">predicted</span>, <span class="va">w</span>, tweedie_p <span class="op">=</span> <span class="fl">1.5</span>, <span class="va">...</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu"><a href="../reference/r_squared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">myTweedie</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/rsquared.html">r_squared</a></span><span class="op">(</span><span class="va">y_num</span>, <span class="va">pred_num</span>, deviance_function <span class="op">=</span> <span class="va">myTweedie</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.8675195</span></span></code></pre></div>
 </div>
 </div>
@@ -358,7 +358,7 @@ calculates one or more metrics. The resulting values are returned as a
 <code><a href="../reference/elementary_score.html">elementary_score_quantile()</a></code>: depend on
 <code>theta</code>.</li>
 <li>
-<code><a href="../reference/prop_within.html">prop_within()</a></code>: Depends on <code>tol</code>.</li>
+<code><a href="../reference/regression.html">prop_within()</a></code>: Depends on <code>tol</code>.</li>
 </ul>
 <p>It might be of key relevance to evaluate such function for varying
 <span class="math inline">\(p\)</span>. That is where the function

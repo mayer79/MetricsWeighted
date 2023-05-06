@@ -22,55 +22,13 @@
     <loc>/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/AUC.html</loc>
-  </url>
-  <url>
-    <loc>/reference/accuracy.html</loc>
-  </url>
-  <url>
-    <loc>/reference/classification_error.html</loc>
-  </url>
-  <url>
-    <loc>/reference/deviance_bernoulli.html</loc>
-  </url>
-  <url>
-    <loc>/reference/deviance_gamma.html</loc>
-  </url>
-  <url>
-    <loc>/reference/deviance_normal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/deviance_poisson.html</loc>
-  </url>
-  <url>
-    <loc>/reference/deviance_tweedie.html</loc>
+    <loc>/reference/classification.html</loc>
   </url>
   <url>
     <loc>/reference/elementary_score.html</loc>
   </url>
   <url>
-    <loc>/reference/f1_score.html</loc>
-  </url>
-  <url>
-    <loc>/reference/gini_coefficient.html</loc>
-  </url>
-  <url>
     <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/logLoss.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mae.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mape.html</loc>
-  </url>
-  <url>
-    <loc>/reference/medae.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mse.html</loc>
   </url>
   <url>
     <loc>/reference/multi_metric.html</loc>
@@ -82,28 +40,10 @@
     <loc>/reference/performance.html</loc>
   </url>
   <url>
-    <loc>/reference/precision.html</loc>
+    <loc>/reference/regression.html</loc>
   </url>
   <url>
-    <loc>/reference/prop_within.html</loc>
-  </url>
-  <url>
-    <loc>/reference/r_squared.html</loc>
-  </url>
-  <url>
-    <loc>/reference/r_squared_bernoulli.html</loc>
-  </url>
-  <url>
-    <loc>/reference/r_squared_gamma.html</loc>
-  </url>
-  <url>
-    <loc>/reference/r_squared_poisson.html</loc>
-  </url>
-  <url>
-    <loc>/reference/recall.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rmse.html</loc>
+    <loc>/reference/rsquared.html</loc>
   </url>
   <url>
     <loc>/reference/weighted_cor.html</loc>

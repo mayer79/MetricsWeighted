@@ -19,7 +19,7 @@ The results are returned as a data.frame and can be used in a pipe."><meta prope
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MetricsWeighted</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -75,8 +75,7 @@ The results are returned as a <code>data.frame</code> and can be used in a pipe.
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
-<dd><p>A <code>data.frame</code> containing <code>actual</code>, <code>predicted</code>
-and possibly <code>w</code>.</p></dd>
+<dd><p>A <code>data.frame</code> with columns <code>actual</code>, <code>predicted</code>, and optionally <code>w</code>.</p></dd>
 
 
 <dt>actual</dt>
@@ -93,12 +92,14 @@ and possibly <code>w</code>.</p></dd>
 
 <dt>metrics</dt>
 <dd><p>Either a function or a named list of functions.
-Each function represents a metric and has four arguments:
-observed, predicted, case weights and <code>...</code>.
-If not a named list but a single function, the name of the function is guessed by
+Each function represents a metric and has four arguments:</p><ul><li><p><code>observed</code>,</p></li>
+<li><p><code>predicted</code>,</p></li>
+<li><p><code>case weights</code>, and</p></li>
+<li><p><code>...</code>.</p></li>
+</ul><p>If not a named list but a single function, the name of the function is guessed by
 <code>deparse(substitute(...))</code>, which would not provide the actual name of the
-function if called within <code>lapply</code> etc. In such cases, you can pass a named
-list with one element, e.g. <code>list(rmse = rmse)</code>.</p></dd>
+function if called within <code><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply()</a></code> etc. In such cases, you can pass a named
+list with one element, e.g., <code>list(rmse = rmse)</code>.</p></dd>
 
 
 <dt>key</dt>
@@ -112,8 +113,8 @@ Defaults to "value".</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Further arguments passed to the metric functions, e.g. if the metric
-is "r_squared", you could pass the relevant deviance function as additional
+<dd><p>Further arguments passed to the metric functions. E.g., if the metric
+is <code><a href="rsquared.html">r_squared()</a></code>, you could pass the relevant deviance function as additional
 argument (see examples).</p></dd>
 
 </dl></div>
@@ -121,8 +122,7 @@ argument (see examples).</p></dd>
     <h2>Value</h2>
     
 
-<p>Data frame with one row per metric and two columns:
-<code>key</code> and <code>value</code>.</p>
+<p>Data frame with one row per metric and two columns: <code>key</code> and <code>value</code>.</p>
     </div>
 
     <div id="ref-examples">

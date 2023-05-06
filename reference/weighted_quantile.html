@@ -18,7 +18,7 @@ If no weights are passed, uses stats::quantile()."><meta property="og:image" con
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MetricsWeighted</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -75,7 +75,7 @@ If no weights are passed, uses <code><a href="https://rdrr.io/r/stats/quantile.h
 
 
 <dt>w</dt>
-<dd><p>Optional non-negative case weights.</p></dd>
+<dd><p>Optional vector of non-negative case weights.</p></dd>
 
 
 <dt>probs</dt>
@@ -83,21 +83,27 @@ If no weights are passed, uses <code><a href="https://rdrr.io/r/stats/quantile.h
 
 
 <dt>na.rm</dt>
-<dd><p>Ignore missing data?</p></dd>
+<dd><p>Ignore missing data? Default is <code>TRUE</code>.</p></dd>
 
 
 <dt>names</dt>
-<dd><p>Return names?</p></dd>
+<dd><p>Return names? Default is <code>TRUE</code>.</p></dd>
 
 
 <dt>...</dt>
-<dd><p>Further arguments passed to <code><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">stats::quantile()</a></code>
-in the unweighted case. Not used in the weighted case.</p></dd>
+<dd><p>Further arguments passed to <code><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">stats::quantile()</a></code> in the unweighted case.
+Not used in the weighted case.</p></dd>
 
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    
+
+<p>A length-one numeric vector.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="weighted_median.html">weighted_median</a></code>.</p></div>
+    <div class="dont-index"><p><code><a href="weighted_median.html">weighted_median()</a></code></p></div>
     </div>
 
     <div id="ref-examples">
