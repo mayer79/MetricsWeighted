@@ -15,7 +15,7 @@ library(usethis)
 use_description(
   fields = list(
     Title = "Weighted Metrics and Performance Measures for Machine Learning",
-    Version = "1.0.0",
+    Version = "1.0.1",
     Description = "Provides weighted versions of several metrics and performance
     measures used in machine learning, including average unit deviances of the
     Bernoulli, Tweedie, Poisson, and Gamma distributions,
@@ -84,8 +84,7 @@ library(devtools)
 
 document()
 test()
-# build_vignettes()
-check(manual = TRUE, cran = TRUE)
+check(manual = TRUE, cran = TRUE, vignettes = FALSE)
 build()
 # build(binary = TRUE)
 install()

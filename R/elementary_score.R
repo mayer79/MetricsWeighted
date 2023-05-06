@@ -1,24 +1,28 @@
 #' Elementary Scoring Function for Expectiles and Quantiles
 #'
-#' Weighted average of the elementary scoring function for expectiles resp. quantiles at level \code{alpha} with parameter \code{theta}, see reference below.
-#' Every choice of \code{theta} gives a scoring function consistent for the expectile resp. quantile at level \code{alpha}.
-#' Note that the expectile at level \code{alpha = 0.5} is the expectation (mean).
+#' Weighted average of the elementary scoring function for expectiles or quantiles at
+#' level \eqn{\alpha} with parameter \eqn{\theta}, see reference below.
+#' Every choice of \eqn{\theta} gives a scoring function consistent for the expectile
+#' or quantile at level \eqn{\alpha}.
+#' Note that the expectile at level \eqn{\alpha = 0.5} is the expectation (mean).
 #' The smaller the score, the better.
 #'
 #' @name elementary_score
-#' @param actual Observed values.
-#' @param predicted Predicted values.
-#' @param w Optional case weights.
-#' @param alpha Optional level of expectile resp. quantile.
-#' @param theta Optional parameter.
-#' @param ... Further arguments passed to \code{weighted_mean}.
-#' @return A numeric vector of length one.
+#'
+#' @inheritParams regression
+#' @param alpha Level of expectile or quantile. The default `alpha = 0.5`
+#'   corresponds to the expectation/median.
+#' @param theta Evaluation point.
+#' @param ... Further arguments passed to [weighted_mean()].
+#' @returns A numeric vector of length one.
 #' @references
-#' Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
+#'   Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and
+#'     expectiles: consistent scoring functions, Choquet representations and forecast
+#'     rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 #' @examples
 #' elementary_score_expectile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
 #' elementary_score_quantile(1:10, c(1:9, 12), alpha = 0.5, theta = 11)
-#' @seealso \code{\link{murphy_diagram}}.
+#' @seealso [murphy_diagram()]
 NULL
 
 #' @rdname elementary_score

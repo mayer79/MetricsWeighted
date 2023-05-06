@@ -22,24 +22,27 @@ murphy_diagram(
 
 \item{w}{Optional case weights.}
 
-\item{alpha}{Level of expectile resp. quantile. The default \code{alpha = 0.5}
+\item{alpha}{Level of expectile or quantile. The default \code{alpha = 0.5}
 corresponds to the expectation/median.}
 
 \item{theta}{Vector of evaluation points.}
 
 \item{functional}{Either "expectile" or "quantile".}
 
-\item{plot}{Should plot (\code{TRUE}) be returned or the data to be plotted?}
+\item{plot}{Should a plot be returned (default is \code{TRUE})? If \code{FALSE},
+a \code{data.frame} containing the results.}
 
-\item{...}{Further arguments passed to \code{graphics::matplot()}.}
+\item{...}{Further arguments passed to \code{\link[graphics:matplot]{graphics::matplot()}}.}
 }
 \value{
-A named list of functions.
+The result of \code{\link[graphics:matplot]{graphics::matplot()}} or a \code{data.frame} containing the results.
 }
 \description{
 Murphy diagram of the elementary scoring function for expectiles/quantiles at level
-\code{alpha} for different values of \code{theta}.
-Can be used to study and compare performance of one or multiple models.
+\eqn{\alpha} for different values of \eqn{\theta}. Can be used to study and
+compare performance of one or multiple models.
+}
+\details{
 If the plot needs to be customized, set \code{plot = FALSE} to get the
 resulting data instead of the plot.
 }
@@ -51,8 +54,10 @@ two_models <- cbind(m1 = predicted, m2 = 1.2 * y)
 murphy_diagram(y, two_models, theta = seq(0.9, 1.3, by = 0.01))
 }
 \references{
-Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and expectiles: consistent scoring functions, Choquet representations and forecast rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
+Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and
+expectiles: consistent scoring functions, Choquet representations and forecast
+rankings. J. R. Stat. Soc. B, 78: 505-562, <doi.org/10.1111/rssb.12154>.
 }
 \seealso{
-\code{\link{elementary_score}}.
+\code{\link[=elementary_score]{elementary_score()}}
 }

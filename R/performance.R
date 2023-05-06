@@ -1,30 +1,32 @@
 #' Performance
 #'
-#' Applies one or more metrics to a \code{data.frame} containing columns with
+#' Applies one or more metrics to a `data.frame` containing columns with
 #' actual and predicted values as well as an optional column with case weights.
-#' The results are returned as a \code{data.frame} and can be used in a pipe.
+#' The results are returned as a `data.frame` and can be used in a pipe.
 #'
-#' @param data A \code{data.frame} containing \code{actual}, \code{predicted}
-#' and possibly \code{w}.
-#' @param actual The column name in \code{data} referring to actual values.
-#' @param predicted The column name in \code{data} referring to predicted values.
-#' @param w The optional column name in \code{data} referring to case weights.
+#' @param data A `data.frame` with columns `actual`, `predicted`, and optionally `w`.
+#' @param actual The column name in `data` referring to actual values.
+#' @param predicted The column name in `data` referring to predicted values.
+#' @param w The optional column name in `data` referring to case weights.
 #' @param metrics Either a function or a named list of functions.
-#' Each function represents a metric and has four arguments:
-#' observed, predicted, case weights and \code{...}.
-#' If not a named list but a single function, the name of the function is guessed by
-#' \code{deparse(substitute(...))}, which would not provide the actual name of the
-#' function if called within \code{lapply} etc. In such cases, you can pass a named
-#' list with one element, e.g. \code{list(rmse = rmse)}.
+#'   Each function represents a metric and has four arguments:
+#'   - `observed`,
+#'   - `predicted`,
+#'   - `case weights`, and
+#'   - `...`.
+#'
+#'   If not a named list but a single function, the name of the function is guessed by
+#'   `deparse(substitute(...))`, which would not provide the actual name of the
+#'   function if called within [lapply()] etc. In such cases, you can pass a named
+#'   list with one element, e.g., `list(rmse = rmse)`.
 #' @param key Name of the resulting column containing the name of the metric.
-#' Defaults to "metric".
+#'   Defaults to "metric".
 #' @param value Name of the resulting column with the value of the metric.
-#' Defaults to "value".
-#' @param ... Further arguments passed to the metric functions, e.g. if the metric
-#' is "r_squared", you could pass the relevant deviance function as additional
-#' argument (see examples).
-#' @return Data frame with one row per metric and two columns:
-#' \code{key} and \code{value}.
+#'   Defaults to "value".
+#' @param ... Further arguments passed to the metric functions. E.g., if the metric
+#'   is [r_squared()], you could pass the relevant deviance function as additional
+#'   argument (see examples).
+#' @return Data frame with one row per metric and two columns: `key` and `value`.
 #' @export
 #' @examples
 #' ir <- iris

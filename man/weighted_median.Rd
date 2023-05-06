@@ -9,12 +9,15 @@ weighted_median(x, w = NULL, ...)
 \arguments{
 \item{x}{Numeric vector.}
 
-\item{w}{Optional non-negative case weights.}
+\item{w}{Optional vector of non-negative case weights.}
 
-\item{...}{Further arguments passed to \code{weighted_quantile()}.}
+\item{...}{Further arguments passed to \code{\link[=weighted_quantile]{weighted_quantile()}}.}
+}
+\value{
+A length-one numeric vector.
 }
 \description{
-Calculates weighted median. For odd sample sizes consistent with unweighted quantiles.
+Calculates weighted median based on \code{\link[=weighted_quantile]{weighted_quantile()}}.
 }
 \examples{
 n <- 21
@@ -25,5 +28,5 @@ weighted_median(x, w = x)
 quantile(rep(x, x), probs = 0.5)
 }
 \seealso{
-\code{\link{weighted_quantile}}.
+\code{\link[=weighted_quantile]{weighted_quantile()}}
 }

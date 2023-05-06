@@ -1,3 +1,10 @@
+# MetricsWeighted 1.0.1
+
+## Maintenance
+
+- Much more compact help files
+- Using Latex in help files
+
 # MetricsWeighted 1.0.0
 
 This release bumps the package to stable version 1.0.0.
