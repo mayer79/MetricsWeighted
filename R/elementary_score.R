@@ -8,9 +8,12 @@
 #' The smaller the score, the better.
 #'
 #' @name elementary_score
-#' @inheritParams mse
-#' @param alpha Optional level of expectile or quantile.
-#' @param theta Optional parameter.
+#'
+#' @inheritParams regression
+#' @param alpha Level of expectile or quantile. The default `alpha = 0.5`
+#'   corresponds to the expectation/median.
+#' @param theta Evaluation point.
+#' @param ... Further arguments passed to [weighted_mean()].
 #' @returns A numeric vector of length one.
 #' @references
 #'   Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and

@@ -7,16 +7,14 @@
 #' If the plot needs to be customized, set `plot = FALSE` to get the
 #' resulting data instead of the plot.
 #'
-#' @param actual Observed values.
-#' @param predicted Predicted values.
-#' @param w Optional case weights.
-#' @param alpha Level of expectile or quantile. The default `alpha = 0.5`
-#'   corresponds to the expectation/median.
+#' @inheritParams elementary_score
 #' @param theta Vector of evaluation points.
 #' @param functional Either "expectile" or "quantile".
-#' @param plot Should plot (`TRUE`) be returned or the data to be plotted?
+#' @param plot Should a plot be returned (default is `TRUE`)? If `FALSE`,
+#'   a `data.frame` containing the results.
 #' @param ... Further arguments passed to [graphics::matplot()].
-#' @returns A named list of functions.
+#' @returns
+#'   The result of [graphics::matplot()] or a `data.frame` containing the results.
 #' @export
 #' @references
 #'   Ehm, W., Gneiting, T., Jordan, A. and Krüger, F. (2016), Of quantiles and

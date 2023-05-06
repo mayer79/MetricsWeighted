@@ -31,11 +31,12 @@ elementary_score_quantile(
 
 \item{w}{Optional case weights.}
 
-\item{alpha}{Optional level of expectile or quantile.}
+\item{alpha}{Level of expectile or quantile. The default \code{alpha = 0.5}
+corresponds to the expectation/median.}
 
-\item{theta}{Optional parameter.}
+\item{theta}{Evaluation point.}
 
-\item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}} (no effect for \code{\link[=medae]{medae()}}).}
+\item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}}.}
 }
 \value{
 A numeric vector of length one.

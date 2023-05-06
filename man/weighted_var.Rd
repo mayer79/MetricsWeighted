@@ -9,21 +9,20 @@ weighted_var(x, w = NULL, method = c("unbiased", "ML"), na.rm = FALSE, ...)
 \arguments{
 \item{x}{Numeric vector.}
 
-\item{w}{Optional non-negative, non-missing case weights.}
+\item{w}{Optional vector of non-negative case weights.}
 
-\item{method}{Specifies how the result is scaled.
-If "unbiased", the denomiator is reduced by -1, unlike "ML".
-See \code{stats::cov.wt} for details.}
+\item{method}{Specifies how the result is scaled. If "unbiased", the denomiator
+is reduced by 1, see \code{\link[stats:cov.wt]{stats::cov.wt()}} for details.}
 
 \item{na.rm}{Should missing values in \code{x} be removed? Default is \code{FALSE}.}
 
-\item{...}{Further arguments passed to \code{stats::cov.wt()}.}
+\item{...}{Further arguments passed to \code{\link[stats:cov.wt]{stats::cov.wt()}}.}
 }
 \value{
 A length-one numeric vector.
 }
 \description{
-Calculates weighted variance, see \code{stats::cov.wt()} or
+Calculates weighted variance, see \code{\link[stats:cov.wt]{stats::cov.wt()}} or
 \url{https://en.wikipedia.org/wiki/Sample_mean_and_covariance#Weighted_samples}
 for details.
 }
@@ -35,5 +34,5 @@ weighted_var(1:10, w = 1:10)
 weighted_var(1:10, w = 1:10, method = "ML")
 }
 \seealso{
-\code{\link{weighted_mean}}.
+\code{\link[stats:cov.wt]{stats::cov.wt()}}
 }

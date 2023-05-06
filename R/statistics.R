@@ -1,18 +1,18 @@
 #' Weighted Mean
 #'
-#' Returns weighted mean of a numeric vector.
-#' In contrast to \code{stats::weighted.mean()}, \code{w} does not need to be specified.
+#' Returns the weighted mean of a numeric vector.
+#' In contrast to [stats::weighted.mean()], `w` does not need to be specified.
 #'
 #' @param x Numeric vector.
-#' @param w Optional non-negative, non-missing case weights.
-#' @param ... Further arguments passed to \code{mean()} or \code{weighted.mean()}.
-#' @return A length-one numeric vector.
+#' @param w Optional vector of non-negative case weights.
+#' @param ... Further arguments passed to [mean()] or [stats::weighted.mean()].
+#' @returns A length-one numeric vector.
 #' @export
 #' @examples
 #' weighted_mean(1:10)
 #' weighted_mean(1:10, w = NULL)
 #' weighted_mean(1:10, w = 1:10)
-#' @seealso \code{\link{weighted_quantile}}.
+#' @seealso [stats::weighted.mean()]
 weighted_mean <- function(x, w = NULL, ...) {
   if (is.null(w)) {
     return(mean(x, ...))
@@ -27,38 +27,18 @@ weighted_mean <- function(x, w = NULL, ...) {
   stats::weighted.mean(x, w = w, ...)
 }
 
-#' Weighted Median
-#'
-#' Calculates weighted median. For odd sample sizes consistent with unweighted quantiles.
-#'
-#' @param x Numeric vector.
-#' @param w Optional non-negative case weights.
-#' @param ... Further arguments passed to \code{weighted_quantile()}.
-#' @export
-#' @examples
-#' n <- 21
-#' x <- seq_len(n)
-#' quantile(x, probs = 0.5)
-#' weighted_median(x, w = rep(1, n))
-#' weighted_median(x, w = x)
-#' quantile(rep(x, x), probs = 0.5)
-#' @seealso \code{\link{weighted_quantile}}.
-weighted_median <- function(x, w = NULL, ...) {
-  weighted_quantile(x = x, w = w, probs = 0.5, names = FALSE, ...)
-}
-
 #' Weighted Quantiles
 #'
 #' Calculates weighted quantiles based on the generalized inverse of the weighted ECDF.
-#' If no weights are passed, uses \code{stats::quantile()}.
+#' If no weights are passed, uses [stats::quantile()].
 #'
-#' @param x Numeric vector.
-#' @param w Optional non-negative case weights.
+#' @inheritParams weighted_mean
 #' @param probs Vector of probabilities.
-#' @param na.rm Ignore missing data?
-#' @param names Return names?
-#' @param ... Further arguments passed to \code{stats::quantile()}
-#' in the unweighted case. Not used in the weighted case.
+#' @param na.rm Ignore missing data? Default is `TRUE`.
+#' @param names Return names? Default is `TRUE`.
+#' @param ... Further arguments passed to [stats::quantile()] in the unweighted case.
+#'   Not used in the weighted case.
+#' @returns A length-one numeric vector.
 #' @export
 #' @examples
 #' n <- 10
@@ -76,7 +56,7 @@ weighted_median <- function(x, w = NULL, ...) {
 #' w <- seq_along(x)
 #' weighted_quantile(x, w)
 #' quantile(rep(x, w)) # same
-#' @seealso \code{\link{weighted_median}}.
+#' @seealso [weighted_median()]
 weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
                               na.rm = TRUE, names = TRUE, ...) {
   # Initial checks and subsetting
@@ -117,20 +97,38 @@ weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
   out
 }
 
+#' Weighted Median
+#'
+#' Calculates weighted median based on [weighted_quantile()].
+#'
+#' @inheritParams weighted_mean
+#' @param ... Further arguments passed to [weighted_quantile()].
+#' @returns A length-one numeric vector.
+#' @export
+#' @examples
+#' n <- 21
+#' x <- seq_len(n)
+#' quantile(x, probs = 0.5)
+#' weighted_median(x, w = rep(1, n))
+#' weighted_median(x, w = x)
+#' quantile(rep(x, x), probs = 0.5)
+#' @seealso [weighted_quantile()]
+weighted_median <- function(x, w = NULL, ...) {
+  weighted_quantile(x = x, w = w, probs = 0.5, names = FALSE, ...)
+}
+
 #' Weighted Variance
 #'
-#' Calculates weighted variance, see \code{stats::cov.wt()} or
+#' Calculates weighted variance, see [stats::cov.wt()] or
 #' \url{https://en.wikipedia.org/wiki/Sample_mean_and_covariance#Weighted_samples}
 #' for details.
 #'
-#' @param x Numeric vector.
-#' @param w Optional non-negative, non-missing case weights.
-#' @param method Specifies how the result is scaled.
-#' If "unbiased", the denomiator is reduced by -1, unlike "ML".
-#' See \code{stats::cov.wt} for details.
-#' @param na.rm Should missing values in \code{x} be removed? Default is \code{FALSE}.
-#' @param ... Further arguments passed to \code{stats::cov.wt()}.
-#' @return A length-one numeric vector.
+#' @inheritParams weighted_mean
+#' @param method Specifies how the result is scaled. If "unbiased", the denomiator
+#'   is reduced by 1, see [stats::cov.wt()] for details.
+#' @param na.rm Should missing values in `x` be removed? Default is `FALSE`.
+#' @param ... Further arguments passed to [stats::cov.wt()].
+#' @returns A length-one numeric vector.
 #' @export
 #' @examples
 #' weighted_var(1:10)
@@ -138,7 +136,7 @@ weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
 #' weighted_var(1:10, w = rep(1, 10))
 #' weighted_var(1:10, w = 1:10)
 #' weighted_var(1:10, w = 1:10, method = "ML")
-#' @seealso \code{\link{weighted_mean}}.
+#' @seealso [stats::cov.wt()]
 weighted_var <- function(x, w = NULL, method = c("unbiased", "ML"),
                          na.rm = FALSE, ...) {
   method <- match.arg(method)
@@ -170,20 +168,17 @@ weighted_var <- function(x, w = NULL, method = c("unbiased", "ML"),
 #' Weighted Pearson Correlation
 #'
 #' Calculates weighted Pearson correlation coefficient between observed and predicted
-#' values by the help of \code{stats::cov.wt()}.
+#' values by the help of [stats::cov.wt()].
 #'
-#' @param actual Observed values.
-#' @param predicted Predicted values.
-#' @param w Optional case weights.
-#' @param na.rm Should missing values in \code{observed} or \code{predicted} be removed?
-#' Default is \code{FALSE}.
-#' @param ... Further arguments passed to \code{stats::cov.wt()}.
-#' @return A length-one numeric vector.
+#' @inheritParams regression
+#' @param na.rm Should observations with missing values in `observed` or `predicted`
+#'   be removed? Default is `FALSE`.
+#' @param ... Further arguments passed to [stats::cov.wt()].
+#' @returns A length-one numeric vector.
 #' @export
 #' @examples
 #' weighted_cor(1:10, c(1, 1:9))
 #' weighted_cor(1:10, c(1, 1:9), w = 1:10)
-#' @seealso \code{\link{weighted_mean}}.
 weighted_cor <- function(actual, predicted, w = NULL, na.rm = FALSE, ...) {
   stopifnot(length(actual) == length(predicted))
   if (is.null(w)) {
@@ -206,6 +201,3 @@ weighted_cor <- function(actual, predicted, w = NULL, na.rm = FALSE, ...) {
   }
   stats::cov.wt(cbind(actual, predicted), wt = w, cor = TRUE, ...)$cor[1L, 2L]
 }
-
-
-

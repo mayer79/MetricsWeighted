@@ -41,7 +41,7 @@ deviance_tweedie(actual, predicted, w = NULL, tweedie_p = 0, ...)
 
 \item{w}{Optional case weights.}
 
-\item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}} (no effect for \code{\link[=medae]{medae()}}).}
+\item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}} (no effect for \code{medae()}).}
 
 \item{tol}{Predictions in \eqn{[\text{actual} \pm \text{tol}]} count as "within"
 (only relevant for \code{\link[=prop_within]{prop_within()}}).}
@@ -54,24 +54,24 @@ A numeric vector of length one.
 \description{
 Case-weighted versions of typical regression metrics:
 \itemize{
-\item \code{\link[=mse]{mse()}}: Mean-squared error
-\item \code{\link[=rmse]{rmse()}}: Root-mean-squared error.
-\item \code{\link[=mae]{mae()}}: Mean absolute error
-\item \code{\link[=medae]{medae()}}: Median absolute error
-\item \code{\link[=mape]{mape()}}: Mean Absolute Percentage Error
-\item \code{\link[=prop_within]{prop_within()}}: Proportion of predictions that are within a given tolerance
+\item \code{mse()}: Mean-squared error
+\item \code{rmse()}: Root-mean-squared error.
+\item \code{mae()}: Mean absolute error
+\item \code{medae()}: Median absolute error
+\item \code{mape()}: Mean Absolute Percentage Error
+\item \code{prop_within()}: Proportion of predictions that are within a given tolerance
 around the actual values
-\item \link{deviance_normal}: Average (unscaled) normal deviance. Equals MSE, and also the
+\item \code{deviance_normal()}: Average (unscaled) normal deviance. Equals MSE, and also the
 average Tweedie deviance with \eqn{p = 0}
-\item \link{deviance_poisson}: Average (unscaled) Poisson deviance. Equals average Tweedie
+\item \code{deviance_poisson()}: Average (unscaled) Poisson deviance. Equals average Tweedie
 deviance with \eqn{p=1}
-\item \link{deviance_gamma}: Average (unscaled) Gamma deviance. Equals average Tweedie
+\item \code{deviance_gamma()}: Average (unscaled) Gamma deviance. Equals average Tweedie
 deviance with \eqn{p=2}
-\item \link{deviance_tweedie}: Average Tweedie deviance with parameter
+\item \code{deviance_tweedie()}: Average Tweedie deviance with parameter
 \eqn{p \in \{0\} \cup [1, \infty)}, see reference.
 }
 
-Lower values mean better performance. Notable exception is \code{\link[=prop_within]{prop_within()}},
+Lower values mean better performance. Notable exception is \code{prop_within()},
 where higher is better.
 }
 \section{Input range}{
@@ -79,9 +79,9 @@ where higher is better.
 The values of \code{actual} and \code{predicted} can be any real numbers, with the following
 exceptions:
 \itemize{
-\item \code{\link[=mape]{mape()}}: Non-zero observed values.
-\item \code{\link[=deviance_poisson]{deviance_poisson()}}: Non-negative observed values, strictly positive predictions.
-\item \code{\link[=deviance_poisson]{deviance_poisson()}}: Strictly positive observed values and predictions.
+\item \code{mape()}: Non-zero observed values.
+\item \code{deviance_poisson()}: Non-negative observed values, strictly positive predictions.
+\item \code{deviance_gamma()}: Strictly positive observed values and predictions.
 }
 }
 

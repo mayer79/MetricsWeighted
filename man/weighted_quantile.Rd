@@ -16,20 +16,23 @@ weighted_quantile(
 \arguments{
 \item{x}{Numeric vector.}
 
-\item{w}{Optional non-negative case weights.}
+\item{w}{Optional vector of non-negative case weights.}
 
 \item{probs}{Vector of probabilities.}
 
-\item{na.rm}{Ignore missing data?}
+\item{na.rm}{Ignore missing data? Default is \code{TRUE}.}
 
-\item{names}{Return names?}
+\item{names}{Return names? Default is \code{TRUE}.}
 
-\item{...}{Further arguments passed to \code{stats::quantile()}
-in the unweighted case. Not used in the weighted case.}
+\item{...}{Further arguments passed to \code{\link[stats:quantile]{stats::quantile()}} in the unweighted case.
+Not used in the weighted case.}
+}
+\value{
+A length-one numeric vector.
 }
 \description{
 Calculates weighted quantiles based on the generalized inverse of the weighted ECDF.
-If no weights are passed, uses \code{stats::quantile()}.
+If no weights are passed, uses \code{\link[stats:quantile]{stats::quantile()}}.
 }
 \examples{
 n <- 10
@@ -49,5 +52,5 @@ weighted_quantile(x, w)
 quantile(rep(x, w)) # same
 }
 \seealso{
-\code{\link{weighted_median}}.
+\code{\link[=weighted_median]{weighted_median()}}
 }

@@ -13,22 +13,19 @@ weighted_cor(actual, predicted, w = NULL, na.rm = FALSE, ...)
 
 \item{w}{Optional case weights.}
 
-\item{na.rm}{Should missing values in \code{observed} or \code{predicted} be removed?
-Default is \code{FALSE}.}
+\item{na.rm}{Should observations with missing values in \code{observed} or \code{predicted}
+be removed? Default is \code{FALSE}.}
 
-\item{...}{Further arguments passed to \code{stats::cov.wt()}.}
+\item{...}{Further arguments passed to \code{\link[stats:cov.wt]{stats::cov.wt()}}.}
 }
 \value{
 A length-one numeric vector.
 }
 \description{
 Calculates weighted Pearson correlation coefficient between observed and predicted
-values by the help of \code{stats::cov.wt()}.
+values by the help of \code{\link[stats:cov.wt]{stats::cov.wt()}}.
 }
 \examples{
 weighted_cor(1:10, c(1, 1:9))
 weighted_cor(1:10, c(1, 1:9), w = 1:10)
-}
-\seealso{
-\code{\link{weighted_mean}}.
 }

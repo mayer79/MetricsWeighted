@@ -2,7 +2,8 @@
 
 ## Maintenance
 
-- MOre compact help files
+- Much more compact help files
+- Using Latex in help files
 
 # MetricsWeighted 1.0.0
 

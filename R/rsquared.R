@@ -6,11 +6,11 @@
 #' The higher, the better.
 #'
 #' The convenience functions
-#' - [r_squared_poisson()],
-#' - [r_squared_gamma()], and
-#' - [r_squared_bernoulli()]
+#' - `r_squared_poisson()`,
+#' - `r_squared_gamma()`, and
+#' - `r_squared_bernoulli()`
 #'
-#' call the function [r_squared(..., deviance_function = fun)] with the right deviance
+#' call the function `r_squared(..., deviance_function = fun)` with the right deviance
 #' function.
 #'
 #' @details
@@ -22,11 +22,10 @@
 #'
 #' @name rsquared
 #'
-#' @param actual Observed values.
-#' @param predicted Predicted values.
-#' @param w Optional case weights.
+#' @inheritParams regression
 #' @param deviance_function A positive (deviance) function taking four arguments:
-#'   "actual", "predicted", "w" and "...".
+#'   "actual", "predicted", "w" and "...". The default is `mse()`, which equals
+#'   the average normal deviance.
 #' @param reference_mean An optional reference mean used to derive the null deviance.
 #'   Recommended in out-of-sample applications.
 #' @param ... Further arguments passed to [weighted_mean()] and `deviance_function()`.
@@ -36,7 +35,7 @@
 #'     the Behavioral Sciences (3rd ed.). Routledge. ISBN 978-0805822236.
 #' @examples
 #' y <- 1:10
-#' pred <- c(1, 1:9))
+#' pred <- c(1, 1:9)
 #' w <- 1:10
 #'
 #' r_squared(y, pred)

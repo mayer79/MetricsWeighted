@@ -29,8 +29,8 @@ Each function represents a metric and has four arguments:
 \itemize{
 \item \code{observed},
 \item \code{predicted},
-\item \verb{case weights},
-\item and \code{...}.
+\item \verb{case weights}, and
+\item \code{...}.
 }
 
 If not a named list but a single function, the name of the function is guessed by

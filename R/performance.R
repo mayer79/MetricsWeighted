@@ -12,8 +12,8 @@
 #'   Each function represents a metric and has four arguments:
 #'   - `observed`,
 #'   - `predicted`,
-#'   - `case weights`,
-#'   - and `...`.
+#'   - `case weights`, and
+#'   - `...`.
 #'
 #'   If not a named list but a single function, the name of the function is guessed by
 #'   `deparse(substitute(...))`, which would not provide the actual name of the

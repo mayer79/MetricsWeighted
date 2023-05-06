@@ -84,7 +84,6 @@ library(devtools)
 
 document()
 test()
-# build_vignettes()
 check(manual = TRUE, cran = TRUE, vignettes = FALSE)
 build()
 # build(binary = TRUE)

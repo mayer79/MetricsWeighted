@@ -39,41 +39,41 @@ logLoss(actual, predicted, w = NULL, ...)
 \item{w}{Optional case weights.}
 
 \item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}}
-(no effect for \code{\link[=AUC]{AUC()}} and \code{\link[=gini_coefficient]{gini_coefficient()}}).}
+(no effect for \code{AUC()} and \code{gini_coefficient()}).}
 }
 \value{
 A numeric vector of length one.
 }
 \description{
-Case-weighted versions of typical non-probabilistic and probabilistic classification metrics:
+Weighted versions of non-probabilistic and probabilistic classification metrics:
 \itemize{
-\item 
-\item \code{\link[=classification_error]{classification_error()}}: Classification error 1 - Accuracy (lower is better)
-\item 
-\item 
-\item \code{\link[=f1_score]{f1_score()}}: F1 Score. Harmonic mean of precision and recall (higher is better)
-\item \code{\link[=AUC]{AUC()}}: Area under the ROC (higher is better)
-\item \code{\link[=gini_coefficient]{gini_coefficient()}}: Gini coefficient, equivalent to \eqn{2 \text{AUC} - 1}.
+\item \code{accuracy()}: Accuracy (higher is better)
+\item \code{classification_error()}: Classification error = 1 - Accuracy (lower is better)
+\item \code{precision()}: Precision (higher is better)
+\item \code{recall()}: Recall (higher is better)
+\item \code{f1_score()}: F1 Score. Harmonic mean of precision and recall (higher is better)
+\item \code{AUC()}: Area under the ROC (higher is better)
+\item \code{gini_coefficient()}: Gini coefficient, equivalent to \eqn{2 \cdot \text{AUC} - 1}.
 Up to ties in \code{predicted}, equivalent to Somer's D (higher is better)
-\item \code{\link[=deviance_bernoulli]{deviance_bernoulli()}}: Average Bernoulli deviance, equals twice the
+\item \code{deviance_bernoulli()}: Average Bernoulli deviance. Equals twice the
 log loss/binary cross entropy (smaller is better)
-\item \code{\link[=logLoss]{logLoss()}}: Log loss/binary cross entropy, equals half the average Bernoulli
+\item \code{logLoss()}: Log loss/binary cross entropy. Equals half the average Bernoulli
 deviance (smaller is better)
 }
 }
 \details{
-Note that the function \code{\link[=AUC]{AUC()}} was originally modified from the {glmnet} package
+Note that the function \code{AUC()} was originally modified from the {glmnet} package
 to ensure deterministic results. The unweighted version can be different from the
 weighted one with unit weights due to ties in \code{predicted}.
 }
 \section{Input ranges}{
 
 \itemize{
-\item For \code{\link[=precision]{precision()}}, \code{\link[=recall]{recall()}}, and \code{\link[=f1_core]{f1_core()}}: The \code{actual} and \code{predicted} values
+\item For \code{precision()}, \code{recall()}, and \code{f1_score()}: The \code{actual} and \code{predicted} values
 need to be in \eqn{\{0, 1\}}.
-\item For \code{\link[=accuracy]{accuracy()}} and \code{\link[=classification_error]{classification_error()}}: Any discrete input.
-\item For \code{\link[=AUC]{AUC()}} and \code{\link[=gini_coefficient]{gini_coefficient()}}: Only \code{actual} must be in \eqn{\{0, 1\}}.
-\item For \code{\link[=deviance_bernoulli]{deviance_bernoulli()}} and \code{\link[=logLoss]{logLoss()}}: The values of \code{actual} must be in
+\item For \code{accuracy()} and \code{classification_error()}: Any discrete input.
+\item For \code{AUC()} and \code{gini_coefficient()}: Only \code{actual} must be in \eqn{\{0, 1\}}.
+\item For \code{deviance_bernoulli()} and \code{logLoss()}: The values of \code{actual} must be in
 \eqn{\{0, 1\}}, while \code{predicted} must be in the open interval \eqn{(0, 1)}.
 }
 }

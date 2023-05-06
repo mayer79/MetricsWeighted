@@ -29,12 +29,13 @@ corresponds to the expectation/median.}
 
 \item{functional}{Either "expectile" or "quantile".}
 
-\item{plot}{Should plot (\code{TRUE}) be returned or the data to be plotted?}
+\item{plot}{Should a plot be returned (default is \code{TRUE})? If \code{FALSE},
+a \code{data.frame} containing the results.}
 
 \item{...}{Further arguments passed to \code{\link[graphics:matplot]{graphics::matplot()}}.}
 }
 \value{
-A named list of functions.
+The result of \code{\link[graphics:matplot]{graphics::matplot()}} or a \code{data.frame} containing the results.
 }
 \description{
 Murphy diagram of the elementary scoring function for expectiles/quantiles at level
