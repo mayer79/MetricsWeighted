@@ -1,6 +1,6 @@
 # MetricsWeighted 1.0.1
 
-## Maintenance
+## Documentation
 
 - Much more compact help files
 - Using Latex in help files

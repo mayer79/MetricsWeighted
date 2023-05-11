@@ -1,33 +1,28 @@
-# MetricsWeighted 1.0.0
+# MetricsWeighted 1.0.1
 
-Dear CRAN team
+Hello CRAN
 
-Its time to indicate that MetricsWeighted is stable. This is why I am bumping it to version 1.0.0.
+I have invested some time into documentation:
+
+- Much less redundancies
+- Using Latex equations
 
 ## Checks
 
 ### R-CMD
 
-❯ checking for unstated dependencies in examples ... OK
-   WARNING
-  'qpdf' is needed for checks on size reduction of PDFs
-
-❯ checking for future file timestamps ... NOTE
-  unable to verify current time
-
-0 errors ✔ | 1 warning ✖ | 1 note ✖
+NOTE: Skipping checking HTML validation: no command 'tidy' found
 
 ### Winbuilder: OK
 
 Status: OK
 
-### RHub: OK
+### RHub: Notes
 
-Found the following files/directories:
-  'lastMiKTeXException'
+* Skipping checking HTML validation: no command 'tidy' found
+* Skipping checking math rendering: package 'V8' unavailable
 
 ### RevDep: OK
 
-✔ flashlight 0.8.0                       ── E: 0     | W: 0     | N: 0                                                
-OK: 1                                                                                                               
+OK: 1                                                                                           
 BROKEN: 0
