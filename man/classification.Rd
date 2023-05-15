@@ -53,7 +53,7 @@ Weighted versions of non-probabilistic and probabilistic classification metrics:
 \item \code{recall()}: Recall (higher is better)
 \item \code{f1_score()}: F1 Score. Harmonic mean of precision and recall (higher is better)
 \item \code{AUC()}: Area under the ROC (higher is better)
-\item \code{gini_coefficient()}: Gini coefficient, equivalent to \eqn{2 \cdot \text{AUC} - 1}.
+\item \code{gini_coefficient()}: Gini coefficient, equivalent to \eqn{2 \cdot \textrm{AUC} - 1}.
 Up to ties in \code{predicted}, equivalent to Somer's D (higher is better)
 \item \code{deviance_bernoulli()}: Average Bernoulli deviance. Equals twice the
 log loss/binary cross entropy (smaller is better)

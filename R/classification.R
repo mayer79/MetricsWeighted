@@ -8,7 +8,7 @@
 #' - `recall()`: Recall (higher is better)
 #' - `f1_score()`: F1 Score. Harmonic mean of precision and recall (higher is better)
 #' - `AUC()`: Area under the ROC (higher is better)
-#' - `gini_coefficient()`: Gini coefficient, equivalent to \eqn{2 \cdot \text{AUC} - 1}.
+#' - `gini_coefficient()`: Gini coefficient, equivalent to \eqn{2 \cdot \textrm{AUC} - 1}.
 #'   Up to ties in `predicted`, equivalent to Somer's D (higher is better)
 #' - `deviance_bernoulli()`: Average Bernoulli deviance. Equals twice the
 #'   log loss/binary cross entropy (smaller is better)

@@ -43,7 +43,7 @@ deviance_tweedie(actual, predicted, w = NULL, tweedie_p = 0, ...)
 
 \item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}} (no effect for \code{medae()}).}
 
-\item{tol}{Predictions in \eqn{[\text{actual} \pm \text{tol}]} count as "within"
+\item{tol}{Predictions in \eqn{[\textrm{actual} \pm \textrm{tol}]} count as "within"
 (only relevant for \code{\link[=prop_within]{prop_within()}}).}
 
 \item{tweedie_p}{Tweedie power \eqn{p \in \{0\} \cup [1, \infty)}.}
