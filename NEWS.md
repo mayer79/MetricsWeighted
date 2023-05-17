@@ -1,3 +1,9 @@
+# MetricsWeighted 1.0.2
+
+## Documentation
+
+- Fix Latex problem in MacOS help files.
+
 # MetricsWeighted 1.0.1
 
 ## Documentation

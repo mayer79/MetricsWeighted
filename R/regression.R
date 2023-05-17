@@ -34,7 +34,7 @@
 #' @param predicted Predicted values.
 #' @param w Optional case weights.
 #' @param tweedie_p Tweedie power \eqn{p \in \{0\} \cup [1, \infty)}.
-#' @param tol Predictions in \eqn{[\text{actual} \pm \text{tol}]} count as "within"
+#' @param tol Predictions in \eqn{[\textrm{actual} \pm \textrm{tol}]} count as "within"
 #'   (only relevant for [prop_within()]).
 #' @param ... Further arguments passed to [weighted_mean()] (no effect for `medae()`).
 #' @returns A numeric vector of length one.
