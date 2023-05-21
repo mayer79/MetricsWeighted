@@ -3,6 +3,7 @@
 ## Documentation
 
 - Fix Latex problem in MacOS help files.
+- Slight improvements in docu.
 
 # MetricsWeighted 1.0.1
 

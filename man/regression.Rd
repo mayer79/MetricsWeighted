@@ -44,7 +44,7 @@ deviance_tweedie(actual, predicted, w = NULL, tweedie_p = 0, ...)
 \item{...}{Further arguments passed to \code{\link[=weighted_mean]{weighted_mean()}} (no effect for \code{medae()}).}
 
 \item{tol}{Predictions in \eqn{[\textrm{actual} \pm \textrm{tol}]} count as "within"
-(only relevant for \code{\link[=prop_within]{prop_within()}}).}
+(only relevant for \code{prop_within()}).}
 
 \item{tweedie_p}{Tweedie power \eqn{p \in \{0\} \cup [1, \infty)}.}
 }
@@ -54,19 +54,19 @@ A numeric vector of length one.
 \description{
 Case-weighted versions of typical regression metrics:
 \itemize{
-\item \code{mse()}: Mean-squared error
+\item \code{mse()}: Mean-squared error.
 \item \code{rmse()}: Root-mean-squared error.
-\item \code{mae()}: Mean absolute error
-\item \code{medae()}: Median absolute error
-\item \code{mape()}: Mean Absolute Percentage Error
+\item \code{mae()}: Mean absolute error.
+\item \code{medae()}: Median absolute error.
+\item \code{mape()}: Mean absolute percentage error.
 \item \code{prop_within()}: Proportion of predictions that are within a given tolerance
-around the actual values
+around the actual values.
 \item \code{deviance_normal()}: Average (unscaled) normal deviance. Equals MSE, and also the
-average Tweedie deviance with \eqn{p = 0}
+average Tweedie deviance with \eqn{p = 0}.
 \item \code{deviance_poisson()}: Average (unscaled) Poisson deviance. Equals average Tweedie
-deviance with \eqn{p=1}
+deviance with \eqn{p=1}.
 \item \code{deviance_gamma()}: Average (unscaled) Gamma deviance. Equals average Tweedie
-deviance with \eqn{p=2}
+deviance with \eqn{p=2}.
 \item \code{deviance_tweedie()}: Average Tweedie deviance with parameter
 \eqn{p \in \{0\} \cup [1, \infty)}, see reference.
 }
@@ -79,9 +79,9 @@ where higher is better.
 The values of \code{actual} and \code{predicted} can be any real numbers, with the following
 exceptions:
 \itemize{
-\item \code{mape()}: Non-zero observed values.
-\item \code{deviance_poisson()}: Non-negative observed values, strictly positive predictions.
-\item \code{deviance_gamma()}: Strictly positive observed values and predictions.
+\item \code{mape()}: Non-zero actual values.
+\item \code{deviance_poisson()}: Non-negative actual values, strictly positive predictions.
+\item \code{deviance_gamma()}: Strictly positive actual values and predictions.
 }
 }
 
