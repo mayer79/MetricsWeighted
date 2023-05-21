@@ -167,11 +167,11 @@ weighted_var <- function(x, w = NULL, method = c("unbiased", "ML"),
 
 #' Weighted Pearson Correlation
 #'
-#' Calculates weighted Pearson correlation coefficient between observed and predicted
+#' Calculates weighted Pearson correlation coefficient between actual and predicted
 #' values by the help of [stats::cov.wt()].
 #'
 #' @inheritParams regression
-#' @param na.rm Should observations with missing values in `observed` or `predicted`
+#' @param na.rm Should observations with missing values in `actual` or `predicted`
 #'   be removed? Default is `FALSE`.
 #' @param ... Further arguments passed to [stats::cov.wt()].
 #' @returns A length-one numeric vector.

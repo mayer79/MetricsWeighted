@@ -2,19 +2,19 @@
 #'
 #' @description
 #' Case-weighted versions of typical regression metrics:
-#' - `mse()`: Mean-squared error
+#' - `mse()`: Mean-squared error.
 #' - `rmse()`: Root-mean-squared error.
-#' - `mae()`: Mean absolute error
-#' - `medae()`: Median absolute error
-#' - `mape()`: Mean Absolute Percentage Error
+#' - `mae()`: Mean absolute error.
+#' - `medae()`: Median absolute error.
+#' - `mape()`: Mean absolute percentage error.
 #' - `prop_within()`: Proportion of predictions that are within a given tolerance
-#'   around the actual values
+#'   around the actual values.
 #' - `deviance_normal()`: Average (unscaled) normal deviance. Equals MSE, and also the
-#'   average Tweedie deviance with \eqn{p = 0}
+#'   average Tweedie deviance with \eqn{p = 0}.
 #' - `deviance_poisson()`: Average (unscaled) Poisson deviance. Equals average Tweedie
-#'   deviance with \eqn{p=1}
+#'   deviance with \eqn{p=1}.
 #' - `deviance_gamma()`: Average (unscaled) Gamma deviance. Equals average Tweedie
-#'   deviance with \eqn{p=2}
+#'   deviance with \eqn{p=2}.
 #' - `deviance_tweedie()`: Average Tweedie deviance with parameter
 #'   \eqn{p \in \{0\} \cup [1, \infty)}, see reference.
 #'
@@ -24,9 +24,9 @@
 #' @section Input range:
 #' The values of `actual` and `predicted` can be any real numbers, with the following
 #' exceptions:
-#' - `mape()`: Non-zero observed values.
-#' - `deviance_poisson()`: Non-negative observed values, strictly positive predictions.
-#' - `deviance_gamma()`: Strictly positive observed values and predictions.
+#' - `mape()`: Non-zero actual values.
+#' - `deviance_poisson()`: Non-negative actual values, strictly positive predictions.
+#' - `deviance_gamma()`: Strictly positive actual values and predictions.
 #'
 #' @name regression
 #'
@@ -35,7 +35,7 @@
 #' @param w Optional case weights.
 #' @param tweedie_p Tweedie power \eqn{p \in \{0\} \cup [1, \infty)}.
 #' @param tol Predictions in \eqn{[\textrm{actual} \pm \textrm{tol}]} count as "within"
-#'   (only relevant for [prop_within()]).
+#'   (only relevant for `prop_within()`).
 #' @param ... Further arguments passed to [weighted_mean()] (no effect for `medae()`).
 #' @returns A numeric vector of length one.
 #' @examples
