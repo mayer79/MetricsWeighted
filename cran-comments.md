@@ -1,28 +1,26 @@
-# MetricsWeighted 1.0.1
+# MetricsWeighted 1.0.2
 
 Hello CRAN
 
-I have invested some time into documentation:
+This update fixes a problem with latex ("text" instead of "textrm") introduced in the last release, yielding warnings/errors on
 
-- Much less redundancies
-- Using Latex equations
+- r-oldrel-macos-arm64
+- r-oldrel-macos-x86_64
 
 ## Checks
 
 ### R-CMD
 
-NOTE: Skipping checking HTML validation: no command 'tidy' found
-
-### Winbuilder: OK
+ checking HTML version of manual ... NOTE
+  Skipping checking HTML validation: no command 'tidy' found
+  
+### Winbuilder
 
 Status: OK
 
-### RHub: Notes
+### RHub
 
-* Skipping checking HTML validation: no command 'tidy' found
-* Skipping checking math rendering: package 'V8' unavailable
+- Skipping checking HTML validation: no command 'tidy' found
+- Skipping checking math rendering: package 'V8' unavailable
 
-### RevDep: OK
-
-OK: 1                                                                                           
-BROKEN: 0
+### RevDep: OK (flashlight)
