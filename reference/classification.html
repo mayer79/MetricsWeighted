@@ -31,7 +31,7 @@ deviance (smaller is better).
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MetricsWeighted</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -140,7 +140,7 @@ need to be in \(\{0, 1\}\).</p></li>
 <li><p>For <code>accuracy()</code> and <code>classification_error()</code>: Any discrete input.</p></li>
 <li><p>For <code>AUC()</code> and <code>gini_coefficient()</code>: Only <code>actual</code> must be in \(\{0, 1\}\).</p></li>
 <li><p>For <code>deviance_bernoulli()</code> and <code>logLoss()</code>: The values of <code>actual</code> must be in
-\(\{0, 1\}\), while <code>predicted</code> must be in the open interval \((0, 1)\).</p></li>
+\(\{0, 1\}\), while <code>predicted</code> must be in the closed interval \([0, 1]\).</p></li>
 </ul></div>
 
     <div id="ref-examples">
