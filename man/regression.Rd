@@ -80,7 +80,7 @@ The values of \code{actual} and \code{predicted} can be any real numbers, with t
 exceptions:
 \itemize{
 \item \code{mape()}: Non-zero actual values.
-\item \code{deviance_poisson()}: Non-negative actual values, strictly positive predictions.
+\item \code{deviance_poisson()}: Non-negative actual values and predictions.
 \item \code{deviance_gamma()}: Strictly positive actual values and predictions.
 }
 }

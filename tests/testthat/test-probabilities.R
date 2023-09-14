@@ -28,11 +28,13 @@ test_that("actual values are 0 or 1", {
 test_that("predicted values are within (0, 1) for logLoss", {
   y <- c(0, 0, 1)
   pred <- c(0.1, 0.9, 0.5)
-  pred_bad_1 <- c(0, 0.9, 0.5)
+  pred_good_1 <- c(0, 0.9, 0.5)
+  pred_bad_1 <- c(1, 0.9, 0.5)
   pred_bad_2 <- c(0.1, 1.1, 0.5)
   w <- 1:3
   expect_silent(logLoss(y, pred, w))
-  expect_error(logLoss(y, pred_bad_1, w))
+  expect_silent(logLoss(y, pred_good_1, w))
+  expect_equal(logLoss(y, pred_bad_1, w), Inf)
   expect_error(logLoss(y, pred_bad_2, w))
 })
 
@@ -75,3 +77,15 @@ test_that("logLoss of one incorrect prediction of 0.5 equals log(2)", {
   expect_equal(logLoss(1 - y, pred), log(2))
 })
 
+test_that("The 0/0 case is okay with logloss", {
+  expect_equal(logLoss(0:1, 0:1), 0)
+})
+
+test_that("xlogy is ok (copied from {hstats}", {
+  expect_equal(xlogy(1:3, 1:3), (1:3) * log(1:3))
+  expect_equal(xlogy(0:2, 0:2), c(0, 0, 2 * log(2)))
+  expect_equal(
+    xlogy(cbind(1:3, 0:2), cbind(1:3, 0:2)),
+    cbind(xlogy(1:3, 1:3), xlogy(0:2, 0:2))
+  )
+})
