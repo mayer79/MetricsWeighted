@@ -4,12 +4,12 @@ test_that("normal deviance equals MSE", {
   expect_equal(mse(y, pred), deviance_normal(y, pred))
 })
 
-test_that("Poisson deviance only accepts positive predictions", {
+test_that("Poisson deviance also accepts predictions of 0", {
   y <- 0:3
   pred <- y + 0.1
   pred_bad <- y
   expect_silent(deviance_poisson(y, pred))
-  expect_error(deviance_poisson(y, pred_bad))
+  expect_silent(deviance_poisson(y, pred_bad))
 })
 
 test_that("Poisson deviance only accepts non-negative actual values", {
@@ -37,9 +37,11 @@ test_that("Gamma deviance only accepts positive actual values", {
 })
 
 test_that("Poisson deviance is 0 if actual = predicted", {
-  y <- 1:2
-  pred <- y
-  expect_equal(deviance_poisson(y, pred), 0)
+  expect_equal(deviance_poisson(0:2, 0:2), 0)
+})
+
+test_that("Poisson deviance is Inf if actual > 0 and predicted = 0", {
+  expect_equal(deviance_poisson(1, 0), Inf)
 })
 
 test_that("Poisson deviance is 2 * pred for actual 0", {

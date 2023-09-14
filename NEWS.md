@@ -1,3 +1,9 @@
+# MetricsWeighted 1.0.3
+
+## Improvements
+
+- `logLoss()` and `deviance_poisson()` are now less picky about predictions of 0 (or 1).
+
 # MetricsWeighted 1.0.2
 
 ## Documentation

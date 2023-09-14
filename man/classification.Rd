@@ -74,7 +74,7 @@ need to be in \eqn{\{0, 1\}}.
 \item For \code{accuracy()} and \code{classification_error()}: Any discrete input.
 \item For \code{AUC()} and \code{gini_coefficient()}: Only \code{actual} must be in \eqn{\{0, 1\}}.
 \item For \code{deviance_bernoulli()} and \code{logLoss()}: The values of \code{actual} must be in
-\eqn{\{0, 1\}}, while \code{predicted} must be in the open interval \eqn{(0, 1)}.
+\eqn{\{0, 1\}}, while \code{predicted} must be in the closed interval \eqn{[0, 1]}.
 }
 }
 

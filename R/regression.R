@@ -25,7 +25,7 @@
 #' The values of `actual` and `predicted` can be any real numbers, with the following
 #' exceptions:
 #' - `mape()`: Non-zero actual values.
-#' - `deviance_poisson()`: Non-negative actual values, strictly positive predictions.
+#' - `deviance_poisson()`: Non-negative actual values and predictions.
 #' - `deviance_gamma()`: Strictly positive actual values and predictions.
 #'
 #' @name regression
@@ -124,7 +124,7 @@ deviance_poisson <- function(actual, predicted, w = NULL, ...) {
   stopifnot(
     length(actual) == length(predicted),
     all(actual >= 0),
-    all(predicted > 0)
+    all(predicted >= 0)
   )
   pos <- actual > 0
   predicted[pos] <- (actual * log(actual / predicted) - (actual - predicted))[pos]
@@ -139,9 +139,8 @@ deviance_gamma <- function(actual, predicted, w = NULL, ...) {
     all(predicted > 0),
     all(actual > 0)
   )
-  u <- -log(ifelse(actual == 0, 1, actual / predicted)) +
-    (actual - predicted) / predicted
-  weighted_mean(x = 2 * u, w = w, ...)
+  losses <- -2 * (log(actual / predicted) - (actual - predicted) / predicted)
+  weighted_mean(x = losses, w = w, ...)
 }
 
 #' @rdname regression
