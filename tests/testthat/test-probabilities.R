@@ -81,11 +81,12 @@ test_that("The 0/0 case is okay with logloss", {
   expect_equal(logLoss(0:1, 0:1), 0)
 })
 
-test_that("xlogy is ok (copied from {hstats}", {
+test_that("xlogy works (copied from {hstats})", {
   expect_equal(xlogy(1:3, 1:3), (1:3) * log(1:3))
   expect_equal(xlogy(0:2, 0:2), c(0, 0, 2 * log(2)))
-  expect_equal(
-    xlogy(cbind(1:3, 0:2), cbind(1:3, 0:2)),
-    cbind(xlogy(1:3, 1:3), xlogy(0:2, 0:2))
-  )
+
+  x <- cbind(c(0,   0, 4), c( 0, 1, 2))
+  y <- cbind(c(100, 0, 0), c(10, 1, 2))
+  expected <- cbind(c(0, 0, -Inf), c(0, 0, 2 * log(2)))
+  expect_equal(xlogy(x, y), expected)
 })
