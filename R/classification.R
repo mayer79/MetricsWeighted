@@ -164,6 +164,7 @@ logLoss <- function(actual, predicted, w = NULL, ...) {
 #' Calculates x*log(y)
 #'
 #' Internal function originally implemented in {hstats}.
+#' Returns 0 whenever x = 0 and y >= 0.
 #'
 #' @noRd
 #' @keywords internal
@@ -172,8 +173,7 @@ logLoss <- function(actual, predicted, w = NULL, ...) {
 #' @param y A numeric vector/matrix.
 #' @returns A numeric vector or matrix.
 xlogy <- function(x, y) {
-  out <- x
-  p <- x != 0
-  out[p] <- x[p] * log(y[p])
-  out
+  out <- x * log(y)
+  out[x == 0] <- 0
+  return(out)
 }
