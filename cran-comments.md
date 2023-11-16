@@ -1,17 +1,14 @@
-# MetricsWeighted 1.0.2
+# MetricsWeighted 1.0.3
 
-Hello CRAN
+Hello CRAN team
 
-This update fixes a problem with latex ("text" instead of "textrm") introduced in the last release, yielding warnings/errors on
-
-- r-oldrel-macos-arm64
-- r-oldrel-macos-x86_64
+This is a small update making some performance metrics more tolerant to edge cases.
 
 ## Checks
 
-### R-CMD
+### R-CMD (local)
 
- checking HTML version of manual ... NOTE
+checking HTML version of manual ... NOTE
   Skipping checking HTML validation: no command 'tidy' found
   
 ### Winbuilder
@@ -20,7 +17,11 @@ Status: OK
 
 ### RHub
 
-- Skipping checking HTML validation: no command 'tidy' found
-- Skipping checking math rendering: package 'V8' unavailable
+* checking HTML version of manual ... NOTE
+Skipping checking HTML validation: no command 'tidy' found
+Skipping checking math rendering: package 'V8' unavailable
 
-### RevDep: OK (flashlight)
+### RevDep
+
+OK: 2                                                                            
+BROKEN: 0

@@ -62,7 +62,7 @@ deviance (smaller is better).
 }
 }
 \details{
-Note that the function \code{AUC()} was originally modified from the {glmnet} package
+Note that the function \code{AUC()} was originally modified from the 'glmnet' package
 to ensure deterministic results. The unweighted version can be different from the
 weighted one with unit weights due to ties in \code{predicted}.
 }
