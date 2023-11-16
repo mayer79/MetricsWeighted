@@ -24,7 +24,7 @@
 #'   \eqn{\{0, 1\}}, while `predicted` must be in the closed interval \eqn{[0, 1]}.
 #'
 #' @details
-#' Note that the function `AUC()` was originally modified from the {glmnet} package
+#' Note that the function `AUC()` was originally modified from the 'glmnet' package
 #' to ensure deterministic results. The unweighted version can be different from the
 #' weighted one with unit weights due to ties in `predicted`.
 #'
@@ -163,7 +163,7 @@ logLoss <- function(actual, predicted, w = NULL, ...) {
 
 #' Calculates x*log(y)
 #'
-#' Internal function originally implemented in {hstats}.
+#' Internal function originally implemented in 'hstats'.
 #' Returns 0 whenever x = 0 and y >= 0.
 #'
 #' @noRd
