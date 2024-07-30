@@ -1,63 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>/articles/MetricsWeighted.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/classification.html</loc>
-  </url>
-  <url>
-    <loc>/reference/elementary_score.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/multi_metric.html</loc>
-  </url>
-  <url>
-    <loc>/reference/murphy_diagram.html</loc>
-  </url>
-  <url>
-    <loc>/reference/performance.html</loc>
-  </url>
-  <url>
-    <loc>/reference/regression.html</loc>
-  </url>
-  <url>
-    <loc>/reference/rsquared.html</loc>
-  </url>
-  <url>
-    <loc>/reference/weighted_cor.html</loc>
-  </url>
-  <url>
-    <loc>/reference/weighted_mean.html</loc>
-  </url>
-  <url>
-    <loc>/reference/weighted_median.html</loc>
-  </url>
-  <url>
-    <loc>/reference/weighted_quantile.html</loc>
-  </url>
-  <url>
-    <loc>/reference/weighted_var.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE.html</loc></url>
+<url><loc>/articles/MetricsWeighted.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/classification.html</loc></url>
+<url><loc>/reference/elementary_score.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/multi_metric.html</loc></url>
+<url><loc>/reference/murphy_diagram.html</loc></url>
+<url><loc>/reference/performance.html</loc></url>
+<url><loc>/reference/regression.html</loc></url>
+<url><loc>/reference/rsquared.html</loc></url>
+<url><loc>/reference/weighted_cor.html</loc></url>
+<url><loc>/reference/weighted_mean.html</loc></url>
+<url><loc>/reference/weighted_median.html</loc></url>
+<url><loc>/reference/weighted_quantile.html</loc></url>
+<url><loc>/reference/weighted_var.html</loc></url>
 </urlset>
+
