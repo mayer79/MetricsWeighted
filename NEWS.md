@@ -5,6 +5,7 @@
 - Better code formatting.
 - More return() statements.
 - Speed-up for some regression metrics.
+- Push code coverage version.
 
 # MetricsWeighted 1.0.3
 
