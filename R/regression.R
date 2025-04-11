@@ -44,7 +44,7 @@
 #' w <- 1:10
 #'
 #' rmse(y, pred)
-#' sqrt(mse(y, pred))  # Same
+#' sqrt(mse(y, pred)) # Same
 #'
 #' mae(y, pred)
 #' mae(y, pred, w = w)
@@ -57,9 +57,9 @@
 #' deviance_poisson(y, pred)
 #' deviance_gamma(y, pred)
 #'
-#' deviance_tweedie(y, pred, tweedie_p = 0)  # Normal
-#' deviance_tweedie(y, pred, tweedie_p = 1)  # Poisson
-#' deviance_tweedie(y, pred, tweedie_p = 2)  # Gamma
+#' deviance_tweedie(y, pred, tweedie_p = 0) # Normal
+#' deviance_tweedie(y, pred, tweedie_p = 1) # Poisson
+#' deviance_tweedie(y, pred, tweedie_p = 2) # Gamma
 #' deviance_tweedie(y, pred, tweedie_p = 1.5, w = 1:10)
 #'
 #' @references
@@ -71,27 +71,27 @@ NULL
 #' @export
 mse <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted))
-  weighted_mean((actual - predicted)^2, w = w, ...)
+  return(weighted_mean((actual - predicted)^2, w = w, ...))
 }
 
 #' @rdname regression
 #' @export
 rmse <- function(actual, predicted, w = NULL, ...) {
-  sqrt(mse(actual = actual, predicted = predicted, w = w, ...))
+  return(sqrt(mse(actual = actual, predicted = predicted, w = w, ...)))
 }
 
 #' @rdname regression
 #' @export
 mae <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted))
-  weighted_mean(abs(actual - predicted), w = w, ...)
+  return(weighted_mean(abs(actual - predicted), w = w, ...))
 }
 
 #' @rdname regression
 #' @export
 medae <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted))
-  weighted_median(abs(actual - predicted), w = w, ...)
+  return(weighted_median(abs(actual - predicted), w = w, ...))
 }
 
 #' @rdname regression
@@ -102,20 +102,20 @@ mape <- function(actual, predicted, w = NULL, ...) {
     all(actual != 0)
   )
   val <- abs(actual - predicted) / abs(actual)
-  100 * weighted_mean(val, w = w, ...)
+  return(100 * weighted_mean(val, w = w, ...))
 }
 
 #' @rdname regression
 #' @export
 prop_within <- function(actual, predicted, w = NULL, tol = 1, ...) {
   stopifnot(length(actual) == length(predicted))
-  weighted_mean(abs(actual - predicted) <= tol, w = w, ...)
+  return(weighted_mean(abs(actual - predicted) <= tol, w = w, ...))
 }
 
 #' @rdname regression
 #' @export
 deviance_normal <- function(actual, predicted, w = NULL, ...) {
-  mse(actual = actual, predicted = predicted, w = w, ...)
+  return(mse(actual = actual, predicted = predicted, w = w, ...))
 }
 
 #' @rdname regression
@@ -128,7 +128,7 @@ deviance_poisson <- function(actual, predicted, w = NULL, ...) {
   )
   pos <- actual > 0
   predicted[pos] <- (actual * log(actual / predicted) - (actual - predicted))[pos]
-  weighted_mean(x = 2 * predicted, w = w, ...)
+  return(2 * weighted_mean(predicted, w = w, ...))
 }
 
 #' @rdname regression
@@ -139,8 +139,8 @@ deviance_gamma <- function(actual, predicted, w = NULL, ...) {
     all(predicted > 0),
     all(actual > 0)
   )
-  losses <- -2 * (log(actual / predicted) - (actual - predicted) / predicted)
-  weighted_mean(x = losses, w = w, ...)
+  losses <- log(actual / predicted) - (actual - predicted) / predicted
+  return(-2 * weighted_mean(losses, w = w, ...))
 }
 
 #' @rdname regression
@@ -173,5 +173,5 @@ deviance_tweedie <- function(actual, predicted, w = NULL, tweedie_p = 0, ...) {
   u <- pmax(actual, 0)^(2 - tweedie_p) / ((1 - tweedie_p) * (2 - tweedie_p)) -
     (actual * predicted^(1 - tweedie_p)) / (1 - tweedie_p) +
     (predicted^(2 - tweedie_p) / (2 - tweedie_p))
-  weighted_mean(x = 2 * u, w = w, ...)
+  return(2 * weighted_mean(u, w = w, ...))
 }
