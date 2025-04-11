@@ -64,8 +64,13 @@ NULL
 
 #' @rdname rsquared
 #' @export
-r_squared <- function(actual, predicted, w = NULL, deviance_function = mse,
-                      reference_mean = NULL, ...) {
+r_squared <- function(
+    actual,
+    predicted,
+    w = NULL,
+    deviance_function = mse,
+    reference_mean = NULL,
+    ...) {
   stopifnot(is.function(deviance_function))
   if (is.null(reference_mean)) {
     actual_mean <- rep(weighted_mean(actual, w = w, ...), length(actual))
@@ -75,7 +80,7 @@ r_squared <- function(actual, predicted, w = NULL, deviance_function = mse,
   }
   d0 <- deviance_function(actual = actual, predicted = actual_mean, w = w, ...)
   dres <- deviance_function(actual = actual, predicted = predicted, w = w, ...)
-  1 - dres / d0
+  return(1 - dres / d0)
 }
 
 #' @rdname rsquared
@@ -106,8 +111,12 @@ r_squared_gamma <- function(actual, predicted, w = NULL, reference_mean = NULL, 
 
 #' @rdname rsquared
 #' @export
-r_squared_bernoulli <- function(actual, predicted, w = NULL,
-                                reference_mean = NULL, ...) {
+r_squared_bernoulli <- function(
+    actual,
+    predicted,
+    w = NULL,
+    reference_mean = NULL,
+    ...) {
   r_squared(
     actual = actual,
     predicted = predicted,

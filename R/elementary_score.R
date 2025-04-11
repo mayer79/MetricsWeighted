@@ -27,8 +27,13 @@ NULL
 
 #' @rdname elementary_score
 #' @export
-elementary_score_expectile <- function(actual, predicted, w = NULL,
-                                       alpha = 0.5, theta = 0, ...) {
+elementary_score_expectile <- function(
+    actual,
+    predicted,
+    w = NULL,
+    alpha = 0.5,
+    theta = 0,
+    ...) {
   stopifnot(
     length(alpha) == 1L,
     alpha >= 0,
@@ -38,18 +43,23 @@ elementary_score_expectile <- function(actual, predicted, w = NULL,
   )
 
   score <- abs((actual < predicted) - alpha) * (
-       .positive_part(actual - theta) -
-       .positive_part(predicted - theta) -
-       (actual - predicted) * (theta < predicted)
-    )
+    .positive_part(actual - theta) -
+      .positive_part(predicted - theta) -
+      (actual - predicted) * (theta < predicted)
+  )
 
-  weighted_mean(x = score, w = w, ...)
+  return(weighted_mean(score, w = w, ...))
 }
 
 #' @rdname elementary_score
 #' @export
-elementary_score_quantile <- function(actual, predicted, w = NULL,
-                                      alpha = 0.5, theta = 0, ...) {
+elementary_score_quantile <- function(
+    actual,
+    predicted,
+    w = NULL,
+    alpha = 0.5,
+    theta = 0,
+    ...) {
   stopifnot(
     length(alpha) == 1L,
     alpha >= 0,
@@ -59,12 +69,10 @@ elementary_score_quantile <- function(actual, predicted, w = NULL,
   )
 
   score <- ((actual < predicted) - alpha) * ((theta < predicted) - (theta < actual))
-  weighted_mean(x = score, w = w, ...)
+  return(weighted_mean(score, w = w, ...))
 }
 
 # Helper function
 .positive_part <- function(x) {
-  (x + abs(x)) / 2
+  return((x + abs(x)) / 2)
 }
-
-

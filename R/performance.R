@@ -55,8 +55,15 @@
 #'   deviance_function = deviance_tweedie,
 #'   tweedie_p = 2
 #' )
-performance <- function(data, actual, predicted, w = NULL, metrics = rmse,
-                        key = "metric", value = "value", ...) {
+performance <- function(
+    data,
+    actual,
+    predicted,
+    w = NULL,
+    metrics = rmse,
+    key = "metric",
+    value = "value",
+    ...) {
   stopifnot(
     is.data.frame(data),
     c(actual, predicted, w) %in% names(data)
@@ -87,5 +94,5 @@ performance <- function(data, actual, predicted, w = NULL, metrics = rmse,
     c(Map(one_metric, metrics, names(metrics)), list(make.row.names = FALSE))
   )
   out[[key]] <- factor(out[[key]], names(metrics))
-  out
+  return(out)
 }
