@@ -1,6 +1,6 @@
-#=============================================================================
+# =============================================================================
 # Put together the package
-#=============================================================================
+# =============================================================================
 
 # WORKFLOW: UPDATE EXISTING PACKAGE
 # 1) Modify package content and documentation.
@@ -15,7 +15,7 @@ library(usethis)
 use_description(
   fields = list(
     Title = "Weighted Metrics and Performance Measures for Machine Learning",
-    Version = "1.0.3",
+    Version = "1.0.4",
     Description = "Provides weighted versions of several metrics and performance
     measures used in machine learning, including average unit deviances of the
     Bernoulli, Tweedie, Poisson, and Gamma distributions,
@@ -24,7 +24,7 @@ use_description(
     see e.g. Cohen, J. et al. (2002, ISBN: 978-0805822236).
     Furthermore, 'dplyr' chains are supported.",
     `Authors@R` =
-    "c(person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre')),
+      "c(person('Michael', 'Mayer', email = 'mayermichael79@gmail.com', role = c('aut', 'cre')),
        person('Christian', 'Lorentzen', email = 'lorentzen.ch@googlemail.com', role = 'ctb'))",
     Depends = "R (>= 3.1.0)",
     LazyData = NULL
@@ -40,8 +40,10 @@ use_gpl_license(2)
 use_github_links() # use this if this project is on github
 
 # Your files that do not belong to the package itself (others are added by "use_* function")
-use_build_ignore(c("^packaging.R$", "[.]Rproj$",
-                   "^cran-comments.md$", "^logo.png$"), escape = FALSE)
+use_build_ignore(c(
+  "^packaging.R$", "[.]Rproj$",
+  "^cran-comments.md$", "^logo.png$"
+), escape = FALSE)
 
 # If your code uses the pipe operator %>%
 # use_pipe()
@@ -57,7 +59,7 @@ use_vignette("MetricsWeighted")
 
 # If you want to add unit tests
 use_testthat()
-#use_test("accurary-error.R")
+# use_test("accurary-error.R")
 
 # On top of NEWS.md, describe changes made to the package
 use_news_md()
@@ -76,9 +78,9 @@ use_github_action("pkgdown")
 # Revdep
 use_revdep()
 
-#=============================================================================
+# =============================================================================
 # Finish package building (can use fresh session)
-#=============================================================================
+# =============================================================================
 
 library(devtools)
 
