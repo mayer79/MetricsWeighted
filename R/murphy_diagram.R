@@ -27,13 +27,18 @@
 #' two_models <- cbind(m1 = predicted, m2 = 1.2 * y)
 #' murphy_diagram(y, two_models, theta = seq(0.9, 1.3, by = 0.01))
 #' @seealso [elementary_score()]
-murphy_diagram <- function(actual, predicted, w = NULL, alpha = 0.5,
-                           theta = seq(-2, 2, length.out = 100L),
-                           functional = c("expectile", "quantile"), plot = TRUE, ...) {
+murphy_diagram <- function(
+    actual,
+    predicted,
+    w = NULL,
+    alpha = 0.5,
+    theta = seq(-2, 2, length.out = 100L),
+    functional = c("expectile", "quantile"),
+    plot = TRUE,
+    ...) {
   # Create list of elementary scores
   functional <- match.arg(functional)
-  fun <- switch(
-    functional,
+  fun <- switch(functional,
     expectile = elementary_score_expectile,
     quantile = elementary_score_quantile
   )
@@ -65,7 +70,7 @@ murphy_diagram <- function(actual, predicted, w = NULL, alpha = 0.5,
       key = "theta",
       value = "score"
     )
-    p$score
+    return(p$score)
   }
   perf <- lapply(nms, get_scores)
   names(perf) <- nms

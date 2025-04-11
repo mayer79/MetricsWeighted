@@ -38,15 +38,18 @@ multi_metric <- function(fun, ...) {
     varying <- names(len)[1L]
   }
   # Create function
-  base_fun <- function(p) function(actual, predicted, w = NULL, ...)
-    do.call(
-      fun,
-      c(
-        list(actual = actual, predicted = predicted, w = w),
-        stats::setNames(list(p), varying),
-        param[setdiff(names(len), varying)],
-        ...
+  base_fun <- function(p) {
+    function(actual, predicted, w = NULL, ...) {
+      do.call(
+        fun,
+        c(
+          list(actual = actual, predicted = predicted, w = w),
+          stats::setNames(list(p), varying),
+          param[setdiff(names(len), varying)],
+          ...
+        )
       )
-    )
+    }
+  }
   stats::setNames(lapply(param[[varying]], base_fun), param[[varying]])
 }

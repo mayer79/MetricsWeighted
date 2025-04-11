@@ -94,7 +94,7 @@ pred2 <- c(0.1, 0.1, 0.9, 0.8)
 w2 <- 1:4
 
 AUC(y2, pred2)
-AUC(y2, pred2, w = rep(1, 4))  # Different due to ties in predicted
+AUC(y2, pred2, w = rep(1, 4)) # Different due to ties in predicted
 
 gini_coefficient(y2, pred2, w = w2)
 logLoss(y2, pred2, w = w2)

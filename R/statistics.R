@@ -24,7 +24,7 @@ weighted_mean <- function(x, w = NULL, ...) {
   if (all(w == 0)) {
     stop("All weights are zero")
   }
-  stats::weighted.mean(x, w = w, ...)
+  return(stats::weighted.mean(x, w = w, ...))
 }
 
 #' Weighted Quantiles
@@ -57,8 +57,13 @@ weighted_mean <- function(x, w = NULL, ...) {
 #' weighted_quantile(x, w)
 #' quantile(rep(x, w)) # same
 #' @seealso [weighted_median()]
-weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
-                              na.rm = TRUE, names = TRUE, ...) {
+weighted_quantile <- function(
+    x,
+    w = NULL,
+    probs = seq(0, 1, 0.25),
+    na.rm = TRUE,
+    names = TRUE,
+    ...) {
   # Initial checks and subsetting
   if (is.null(w)) {
     return(stats::quantile(x = x, probs = probs, na.rm = na.rm, names = names, ...))
@@ -79,7 +84,6 @@ weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
   )
   if (all(w == 0)) {
     stop("All weights are zero")
-
   }
   if (length(x) == 1L) {
     out <- rep(x, length(probs))
@@ -94,7 +98,7 @@ weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
   if (names) {
     names(out) <- paste0(format(100 * probs, trim = TRUE), "%")
   }
-  out
+  return(out)
 }
 
 #' Weighted Median
@@ -114,7 +118,7 @@ weighted_quantile <- function(x, w = NULL, probs = seq(0, 1, 0.25),
 #' quantile(rep(x, x), probs = 0.5)
 #' @seealso [weighted_quantile()]
 weighted_median <- function(x, w = NULL, ...) {
-  weighted_quantile(x = x, w = w, probs = 0.5, names = FALSE, ...)
+  return(weighted_quantile(x = x, w = w, probs = 0.5, names = FALSE, ...))
 }
 
 #' Weighted Variance
@@ -137,8 +141,12 @@ weighted_median <- function(x, w = NULL, ...) {
 #' weighted_var(1:10, w = 1:10)
 #' weighted_var(1:10, w = 1:10, method = "ML")
 #' @seealso [stats::cov.wt()]
-weighted_var <- function(x, w = NULL, method = c("unbiased", "ML"),
-                         na.rm = FALSE, ...) {
+weighted_var <- function(
+    x,
+    w = NULL,
+    method = c("unbiased", "ML"),
+    na.rm = FALSE,
+    ...) {
   method <- match.arg(method)
   cf <- 1
   if (is.null(w)) {
@@ -162,7 +170,7 @@ weighted_var <- function(x, w = NULL, method = c("unbiased", "ML"),
   } else if (anyNA(x)) {
     return(NA)
   }
-  as.numeric(stats::cov.wt(cbind(x), wt = w, method = method, ...)$cov)
+  return(as.numeric(stats::cov.wt(cbind(x), wt = w, method = method, ...)$cov))
 }
 
 #' Weighted Pearson Correlation
@@ -199,5 +207,5 @@ weighted_cor <- function(actual, predicted, w = NULL, na.rm = FALSE, ...) {
   } else if (anyNA(actual) || anyNA(predicted)) {
     return(NA)
   }
-  stats::cov.wt(cbind(actual, predicted), wt = w, cor = TRUE, ...)$cor[1L, 2L]
+  return(stats::cov.wt(cbind(actual, predicted), wt = w, cor = TRUE, ...)$cor[1L, 2L])
 }

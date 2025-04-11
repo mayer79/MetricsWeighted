@@ -50,7 +50,7 @@
 #' w2 <- 1:4
 #'
 #' AUC(y2, pred2)
-#' AUC(y2, pred2, w = rep(1, 4))  # Different due to ties in predicted
+#' AUC(y2, pred2, w = rep(1, 4)) # Different due to ties in predicted
 #'
 #' gini_coefficient(y2, pred2, w = w2)
 #' logLoss(y2, pred2, w = w2)
@@ -61,13 +61,13 @@ NULL
 #' @export
 accuracy <- function(actual, predicted, w = NULL, ...) {
   stopifnot(length(actual) == length(predicted))
-  weighted_mean(actual == predicted, w = w, ...)
+  return(weighted_mean(actual == predicted, w = w, ...))
 }
 
 #' @rdname classification
 #' @export
 classification_error <- function(actual, predicted, w = NULL, ...) {
-  1 - accuracy(actual = actual, predicted = predicted, w = w, ...)
+  return(1 - accuracy(actual = actual, predicted = predicted, w = w, ...))
 }
 
 #' @rdname classification
@@ -78,7 +78,7 @@ precision <- function(actual, predicted, w = NULL, ...) {
     all(actual == 0 | actual == 1),
     all(predicted == 0 | predicted == 1)
   )
-  weighted_mean(actual[predicted == 1], w = w[predicted == 1], ...)
+  return(weighted_mean(actual[predicted == 1], w = w[predicted == 1], ...))
 }
 
 #' @rdname classification
@@ -89,7 +89,7 @@ recall <- function(actual, predicted, w = NULL, ...) {
     all(actual == 0 | actual == 1),
     all(predicted == 0 | predicted == 1)
   )
-  weighted_mean(predicted[actual == 1], w = w[actual == 1], ...)
+  return(weighted_mean(predicted[actual == 1], w = w[actual == 1], ...))
 }
 
 #' @rdname classification
@@ -97,7 +97,7 @@ recall <- function(actual, predicted, w = NULL, ...) {
 f1_score <- function(actual, predicted, w = NULL, ...) {
   p <- precision(actual = actual, predicted = predicted, w = w, ...)
   r <- recall(actual = actual, predicted = predicted, w = w, ...)
-  2 * (p * r) / (p + r)
+  return(2 * (p * r) / (p + r))
 }
 
 #' @rdname classification
@@ -132,19 +132,19 @@ AUC <- function(actual, predicted, w = NULL, ...) {
   u <- sum(w_pos * (cw[actual == 1] - cw_pos))
   sumw_pos <- cw_pos[length(w_pos)]
   sumw_neg <- cw[length(w)] - sumw_pos
-  exp(log(u) - log(sumw_pos) - log(sumw_neg))
+  return(exp(log(u) - log(sumw_pos) - log(sumw_neg)))
 }
 
 #' @rdname classification
 #' @export
 gini_coefficient <- function(actual, predicted, w = NULL, ...) {
-  -1 + 2 * AUC(actual = actual, predicted = predicted, w = w, ...)
+  return(-1 + 2 * AUC(actual = actual, predicted = predicted, w = w, ...))
 }
 
 #' @rdname classification
 #' @export
 deviance_bernoulli <- function(actual, predicted, w = NULL, ...) {
-  2 * logLoss(actual = actual, predicted = predicted, w = w, ...)
+  return(2 * logLoss(actual = actual, predicted = predicted, w = w, ...))
 }
 
 #' @rdname classification
@@ -156,7 +156,7 @@ logLoss <- function(actual, predicted, w = NULL, ...) {
     all(predicted >= 0 & predicted <= 1)
   )
   losses <- -xlogy(actual, predicted) - xlogy(1 - actual, 1 - predicted)
-  weighted_mean(losses, w = w, ...)
+  return(weighted_mean(losses, w = w, ...))
 }
 
 # Helper function
