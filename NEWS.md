@@ -1,3 +1,11 @@
+# MetricsWeighted 1.0.4
+
+## Minor improvements
+
+- Better code formatting.
+- More return() statements.
+- Speed-up for some regression metrics.
+
 # MetricsWeighted 1.0.3
 
 ## Improvements

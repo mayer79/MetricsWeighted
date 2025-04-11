@@ -91,7 +91,7 @@ pred <- c(1:9, 12)
 w <- 1:10
 
 rmse(y, pred)
-sqrt(mse(y, pred))  # Same
+sqrt(mse(y, pred)) # Same
 
 mae(y, pred)
 mae(y, pred, w = w)
@@ -104,9 +104,9 @@ deviance_normal(y, pred)
 deviance_poisson(y, pred)
 deviance_gamma(y, pred)
 
-deviance_tweedie(y, pred, tweedie_p = 0)  # Normal
-deviance_tweedie(y, pred, tweedie_p = 1)  # Poisson
-deviance_tweedie(y, pred, tweedie_p = 2)  # Gamma
+deviance_tweedie(y, pred, tweedie_p = 0) # Normal
+deviance_tweedie(y, pred, tweedie_p = 1) # Poisson
+deviance_tweedie(y, pred, tweedie_p = 2) # Gamma
 deviance_tweedie(y, pred, tweedie_p = 1.5, w = 1:10)
 
 }
