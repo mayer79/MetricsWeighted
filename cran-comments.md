@@ -1,27 +1,20 @@
-# MetricsWeighted 1.0.3
+# MetricsWeighted 1.0.4
 
 Hello CRAN team
 
-This is a small update making some performance metrics more tolerant to edge cases.
+This small update is mainly for maintenance (code formatting), and it brings a speed-up for some metrics.
 
 ## Checks
 
 ### R-CMD (local)
 
-checking HTML version of manual ... NOTE
-  Skipping checking HTML validation: no command 'tidy' found
-  
+OK
+
 ### Winbuilder
 
-Status: OK
-
-### RHub
-
-* checking HTML version of manual ... NOTE
-Skipping checking HTML validation: no command 'tidy' found
-Skipping checking math rendering: package 'V8' unavailable
+OK
 
 ### RevDep
 
-OK: 2                                                                            
+OK: 3
 BROKEN: 0
